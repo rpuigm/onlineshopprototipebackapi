@@ -8,9 +8,9 @@
 		<artifactId>ostemplate</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.ostemplate.app.eureka</groupId>
-	<artifactId>ostemplate-servicio-clientes-1</artifactId>
-	<name>ostemplate-servicio-clientes-1</name>
+	<groupId>com.ostemplate.app.empleados</groupId>
+	<artifactId>ostemplate-servicio-empleados</artifactId>
+	<name>ostemplate-servicio-empleados</name>
 	<description>Servicio de clientes</description>
 
 

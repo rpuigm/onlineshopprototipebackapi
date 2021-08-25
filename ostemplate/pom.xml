@@ -19,7 +19,7 @@
 
 	<modules>
 		<module>ostemplate-servicio-clientes</module>
-		<module>ostemplate-servicio-clientes-1</module>
+		<module>ostemplate-servicio-empleados</module>
 		<module>ostemplate-servicio-eureka-server</module>
 		<module>ostemplate-servicio-productos</module>
 	</modules>
