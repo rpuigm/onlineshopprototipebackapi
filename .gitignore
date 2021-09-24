@@ -27,3 +27,13 @@ hs_err_pid*
 /.metadata/
 
 RemoteSystemsTempFiles/
+ostemplate-servicio-clientes/.classpath
+ostemplate-servicio-clientes/.factorypath
+ostemplate-servicio-clientes/.project
+*.prefs
+ostemplate-servicio-clientes/target/
+*.classpath
+*.project
+ostemplate-servicio-eureka-server/target/
+*.factorypath
+ostemplate-servicio-productos/target/
