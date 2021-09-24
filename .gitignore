@@ -28,3 +28,8 @@ hs_err_pid*
 ectemplate-servicio-persona/mvnw
 *.cmd
 ectemplate-servicio-persona/.mvn/
+ectemplate-servicio-personas/.classpath
+*.factorypath
+ectemplate-servicio-personas/.settings/
+ectemplate-servicio-personas/target/
+*.project
