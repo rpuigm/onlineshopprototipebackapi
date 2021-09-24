@@ -25,11 +25,12 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 /.metadata/
-ectemplate-servicio-persona/mvnw
+*/mvnw
 *.cmd
-ectemplate-servicio-persona/.mvn/
-ectemplate-servicio-personas/.classpath
+*/.mvn/
+*/.classpath
 *.factorypath
-ectemplate-servicio-personas/.settings/
-ectemplate-servicio-personas/target/
+*/.settings/
+*/target/
 *.project
+

@@ -1,0 +1,24 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: servicio-empleados
+        uri: lb://servicio-empleados
+        predicates:
+          - Path=/api/empleados/**
+        filters:
+          - StripPrefix=2
+      - id: servicio-clientes
+        uri: lb://servicio-clientes
+        predicates:
+          - Path=/api/clientes/**
+        filters:
+          - StripPrefix=2
+      - id: servicio-personas
+        uri: lb://servicio-personas
+        predicates:
+          - Path=/api/personas/**
+        filters:
+          - StripPrefix=2
+          
+      
