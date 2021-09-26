@@ -37,3 +37,7 @@ ostemplate-servicio-clientes/target/
 ostemplate-servicio-eureka-server/target/
 *.factorypath
 ostemplate-servicio-productos/target/
+*/mvnw
+*.cmd
+*/.mvn
+*/target/**
