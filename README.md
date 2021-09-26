@@ -6,6 +6,7 @@
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=rpuigm_ecommercewebtemplate&metric=code_smells)](https://sonarcloud.io/dashboard?id=rpuigm_ecommercewebtemplate)
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 ### E-COMMERCE WEB TEMPLATE
 ### PLANTILLA DE COMERCIO ELECTRÓNICO WEB
