@@ -4,7 +4,7 @@
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=rpuigm_ecommercewebtemplate&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=rpuigm_ecommercewebtemplate)
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=rpuigm_ecommercewebtemplate&metric=codesmell)](https://sonarcloud.io/dashboard?id=rpuigm_ecommercewebtemplate)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=rpuigm_ecommercewebtemplate&metric=codesmells)](https://sonarcloud.io/dashboard?id=rpuigm_ecommercewebtemplate)
 
 
 ### E-COMMERCE WEB TEMPLATE
