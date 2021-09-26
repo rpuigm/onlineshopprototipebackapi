@@ -1,0 +1,39 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: servicio-productos
+        uri: lb://servicio-productos
+        predicates:
+          - Path=/api/productos/**
+        filters:
+          - StripPrefix=2
+      - id: servicio-empleados
+        uri: lb://servicio-empleados
+        predicates:
+          - Path=/api/empleados/**
+        filters:
+          - StripPrefix=2
+      - id: servicio-clientes
+        uri: lb://servicio-clientes
+        predicates:
+          - Path=/api/clientes/**
+        filters:
+          - StripPrefix=2
+      - id: servicio-personas
+        uri: lb://servicio-personas
+        predicates:
+          - Path=/api/personas/**
+        filters:
+          - StripPrefix=2
+      - id: shocases-service
+        uri: lb://shocases-service
+        predicates:
+          - Path=/api/showcases/**
+        filters:
+          - StripPrefix=2
+          
+          
+
+          
+      

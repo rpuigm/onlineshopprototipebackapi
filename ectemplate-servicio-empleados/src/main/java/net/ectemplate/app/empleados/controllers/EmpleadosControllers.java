@@ -1,16 +1,15 @@
-package net.ostemplate.app.clientes.controllers;
+package net.ectemplate.app.empleados.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController 
-public class ClientesController {
-	
-	@GetMapping("/prueba")
+@RestController
+public class EmpleadosControllers {
+
+	@GetMapping("prueba")
 	public String prueba() {
 		
 		return "OK";
 	}
 	
-
 }

@@ -3,6 +3,7 @@ package net.ostemplate.app.productos.controllers;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.hibernate.cfg.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 //import org.springframework.core.env.Environment;
@@ -22,7 +23,7 @@ public class ProductoController {
 	@Autowired
 	private IProductoService productoService;
 	
-	@GetMapping("/listaproductos")
+	@GetMapping("/lista")
 	public List<Producto> listar(){
 		return productoService.findAll().stream().map(producto ->{
 			producto.setPort(port);
