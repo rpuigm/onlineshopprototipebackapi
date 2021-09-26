@@ -1,4 +1,4 @@
-package net.ostemplate.app.clientes.model.entity;
+package net.ectemplate.app.clientes.model.entity;
 
 import java.io.Serializable;
 
@@ -17,6 +17,17 @@ public class Cliente implements Serializable{
 	private Long id;
 	private String nombre;
 	private String apellidos;
+	
+	public Cliente() {
+		super();
+	}
+
+	public Cliente(Long id, String nombre, String apellidos) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+	}
 
 	public Long getId() {
 		return id;
@@ -34,26 +45,18 @@ public class Cliente implements Serializable{
 		this.nombre = nombre;
 	}
 
-
-
 	public String getApellidos() {
 		return apellidos;
 	}
-
-
 
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
 
-
-
-
-
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 	private static final long serialVersionUID = -5194223577234328629L;
-	
-	
-	
 
 }

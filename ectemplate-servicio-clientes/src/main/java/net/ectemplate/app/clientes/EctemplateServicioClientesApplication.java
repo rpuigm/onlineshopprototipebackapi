@@ -1,4 +1,4 @@
-package net.ostemplate.app.clientes;
+package net.ectemplate.app.clientes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
