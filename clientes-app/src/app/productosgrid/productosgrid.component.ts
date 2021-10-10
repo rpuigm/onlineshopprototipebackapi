@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductosgridComponent implements OnInit {
 
+  elemento: string[] = ['Arboles', 'Decoración Arbol', 'Belén', 'Ciudad de Dickens', 'Especiales'];
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+
+
 
 }

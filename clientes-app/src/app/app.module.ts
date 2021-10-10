@@ -19,7 +19,8 @@ const routes: Routes = [
   {path:'directivas', component: DirectivaComponent},
   {path:'clientes', component: ClientesComponent},
   {path:'clientes/form', component: FormComponent},
-  {path:'principal', component: PrincipalComponent}
+  {path:'principal', component: PrincipalComponent},
+  {path:'productosgrid', component: ProductosgridComponent}
 ];
 
 @NgModule({
