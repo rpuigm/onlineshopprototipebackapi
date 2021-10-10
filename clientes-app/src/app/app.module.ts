@@ -10,7 +10,8 @@ import { ClienteService } from './clientes/cliente.service';
 import { RouterModule, Routes } from '@angular/router';
 import { FormComponent } from './clientes/form.component';
 import { FormsModule } from '@angular/forms';
-import { PrincipalComponent } from './principal/principal.component'
+import { PrincipalComponent } from './principal/principal.component';
+import { ProductoComponent } from './producto/producto.component'
 
 const routes: Routes = [
   {path:'', redirectTo:'/clientes', pathMatch: 'full'},
@@ -28,7 +29,8 @@ const routes: Routes = [
     DirectivaComponent,
     ClientesComponent,
     FormComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    ProductoComponent
   ],
   imports: [
     BrowserModule,
