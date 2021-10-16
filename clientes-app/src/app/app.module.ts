@@ -12,10 +12,11 @@ import { FormComponent } from './clientes/form.component';
 import { FormsModule } from '@angular/forms';
 import { PrincipalComponent } from './principal/principal.component';
 import { ProductoComponent } from './producto/producto.component';
-import { ProductosgridComponent } from './productosgrid/productosgrid.component'
+import { ProductosgridComponent } from './productosgrid/productosgrid.component';
+import { ItemproductoComponent } from './productosgrid/itemproducto/itemproducto.component'
 
 const routes: Routes = [
-  {path:'', redirectTo:'/clientes', pathMatch: 'full'},
+  {path:'', redirectTo:'/productosgrid', pathMatch: 'full'},
   {path:'directivas', component: DirectivaComponent},
   {path:'clientes', component: ClientesComponent},
   {path:'clientes/form', component: FormComponent},
@@ -33,7 +34,8 @@ const routes: Routes = [
     FormComponent,
     PrincipalComponent,
     ProductoComponent,
-    ProductosgridComponent
+    ProductosgridComponent,
+    ItemproductoComponent
   ],
   imports: [
     BrowserModule,

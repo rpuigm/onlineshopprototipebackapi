@@ -1,17 +1,17 @@
-<div class="container">
+<div class="container-fluid">
   <app-header></app-header>
-    <div class="container mt-5 mb-5">
-<div class="row g-1">
-
-    <div *ngFor="let item of elemento">
-      <div class="item">
-          <app-producto></app-producto>
+  <div class="row">
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-3 p-1" *ngFor="let item of elemento">
+        <app-itemproducto></app-itemproducto>
       </div>
     </div>
   </div>
-</div>
   <app-footer></app-footer>
 </div>
-
-
-
