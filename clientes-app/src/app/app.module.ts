@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { PrincipalComponent } from './principal/principal.component';
 import { ProductoComponent } from './producto/producto.component';
 import { ProductosgridComponent } from './productosgrid/productosgrid.component';
+import { HeaderempleadoComponent } from './headerempleado/headerempleado.component';
+import { EmpleadosComponent } from './empleados/empleados.component';
 
 
 const routes: Routes = [
@@ -22,7 +24,8 @@ const routes: Routes = [
   {path:'clientes/form', component: FormComponent},
   {path:'principal', component: PrincipalComponent},
   {path:'productosgrid', component: ProductosgridComponent},
-  {path:'producto', component: ProductoComponent}
+  {path:'producto', component: ProductoComponent},
+  {path:'empleados', component: EmpleadosComponent}
 ];
 
 @NgModule({
@@ -35,7 +38,9 @@ const routes: Routes = [
     FormComponent,
     PrincipalComponent,
     ProductoComponent,
-    ProductosgridComponent
+    ProductosgridComponent,
+    HeaderempleadoComponent,
+    EmpleadosComponent
 
   ],
   imports: [
