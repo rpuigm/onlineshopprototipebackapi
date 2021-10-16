@@ -35,8 +35,7 @@ const routes: Routes = [
     FormComponent,
     PrincipalComponent,
     ProductoComponent,
-    ProductosgridComponent,
-    ItemproductoComponent
+    ProductosgridComponent
 
   ],
   imports: [
