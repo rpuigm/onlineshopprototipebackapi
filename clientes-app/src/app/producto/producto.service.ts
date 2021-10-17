@@ -14,4 +14,8 @@ export class ProductoService {
     return of(PRODUCTOS);
   }
 
+  setProducto(producto: Producto){
+    PRODUCTOS.push(producto);
+
+  }
 }
