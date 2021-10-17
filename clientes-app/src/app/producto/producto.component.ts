@@ -9,7 +9,7 @@ import { Producto } from './producto.model';
 export class ProductoComponent implements OnInit {
 
   @Input() elemento: string;
-  @Input() producto: Producto[];
+  @Input() producto: Producto;
 
   constructor( ) {
    }
