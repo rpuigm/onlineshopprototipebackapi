@@ -1,15 +1,27 @@
 <app-headerempleado></app-headerempleado>
+<div class="container">
+
+
 <form>
   <div class="form-group row">
     <label for="inputNombre" class="col-sm-2 col-form-label">Nombre</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputNombre" placeholder="Nombre del producto" [(ngModel)]='titulo'>{{titulo}}
+      <input type="text" class="form-control" id="inputNombre" placeholder="Nombre del producto">
+      <div class="col-12"></div>
     </div>
   </div>
   <div class="form-group row">
     <label for="inputPrecio" class="col-sm-2 col-form-label">Precio</label>
     <div class="col-sm-10">
-      <input type="number" class="form-control" id="inputPrecio" placeholder="Precio" name="inputprecio" [(ngModel)]='precio'>{{precio}}
+      <input type="number" class="form-control" id="inputPrecio" placeholder="Precio" name="inputPrecio" >
+      <div class="col-12"></div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputCategoria" class="col-sm-2 col-form-label">Categoría</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputCategoria" placeholder="Precio" name="inputCategoria">
+      <div class="col-12"></div>
     </div>
   </div>
 
@@ -22,5 +34,7 @@
     </div>
   </div>
 </form>
+
+</div>
 <app-footer></app-footer>
 
