@@ -1,6 +1,7 @@
 import { ProductoService } from './../producto/producto.service';
 import { Component, OnInit } from '@angular/core';
 import { Producto } from '../producto/producto.model';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-altaproducto',
@@ -9,12 +10,19 @@ import { Producto } from '../producto/producto.model';
 })
 export class AltaproductoComponent implements OnInit {
 
-  producto!: Producto;
+  producto: Producto;
+  titulo: string;
+  precio: number;
 
-  constructor(productoService: ProductoService) { }
+  constructor(private productoService: ProductoService) { }
 
   ngOnInit(): void {
   }
 
 
+  agregarProducto(){
+    console.log('entra en agregar');
+    this.productoService.setProducto(this.producto);
+
+  }
 }

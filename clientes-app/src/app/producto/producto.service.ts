@@ -16,6 +16,7 @@ export class ProductoService {
 
   setProducto(producto: Producto){
     PRODUCTOS.push(producto);
+    console.log('producto agregado')
 
   }
 }
