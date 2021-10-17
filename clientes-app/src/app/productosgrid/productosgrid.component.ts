@@ -11,7 +11,6 @@ import { Component, OnInit } from '@angular/core';
 export class ProductosgridComponent implements OnInit {
 
   productos: Producto[];
-
   elemento: string[] = ['Arboles', 'Decoración Arbol', 'Belén', 'Ciudad de Dickens', 'Especiales'];
 
   constructor(private productoService: ProductoService) { }

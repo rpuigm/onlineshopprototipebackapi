@@ -15,6 +15,15 @@
       ></app-producto>
     </div>
   </div>
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-12 col-lg-3 p-1"
+        *ngFor="let productoItem of productos">
+        <p> {{productoItem.nombre}} </p>
+      ></div>
+    </div>
+  </div>
 </div>
 
 <app-footer></app-footer>
