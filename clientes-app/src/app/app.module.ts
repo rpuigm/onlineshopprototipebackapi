@@ -17,6 +17,7 @@ import { HeaderempleadoComponent } from './headerempleado/headerempleado.compone
 import { EmpleadosComponent } from './empleados/empleados.component';
 import { PersonaComponent } from './persona/persona.component';
 import { AltapersonaComponent } from './altapersona/altapersona.component';
+import { ProductoService } from './producto/producto.service';
 
 const routes: Routes = [
   {path:'', redirectTo:'/productosgrid', pathMatch: 'full'},
@@ -52,7 +53,8 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ClienteService],
+  providers: [ClienteService,
+              ProductoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

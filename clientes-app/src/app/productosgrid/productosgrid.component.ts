@@ -1,5 +1,6 @@
+import { Producto } from './../producto/producto.model';
+import { ProductoService } from './../producto/producto.service';
 import { Component, OnInit } from '@angular/core';
-import { Persona } from '../persona/persona.model';
 
 
 @Component({
@@ -9,13 +10,18 @@ import { Persona } from '../persona/persona.model';
 })
 export class ProductosgridComponent implements OnInit {
 
-
+  productos: Producto[];
 
   elemento: string[] = ['Arboles', 'Decoración Arbol', 'Belén', 'Ciudad de Dickens', 'Especiales'];
 
-  constructor() { }
+  constructor(private productoService: ProductoService) { }
 
   ngOnInit(): void {
+    this.productoService.getProductos().subscribe(
+      productos => this.productos= productos
+    )
+    console.log(this.productos[3].precio)
+
   }
 
 
