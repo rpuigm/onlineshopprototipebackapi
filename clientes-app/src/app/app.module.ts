@@ -15,6 +15,8 @@ import { ProductoComponent } from './producto/producto.component';
 import { ProductosgridComponent } from './productosgrid/productosgrid.component';
 import { HeaderempleadoComponent } from './headerempleado/headerempleado.component';
 import { EmpleadosComponent } from './empleados/empleados.component';
+import { PersonaComponent } from './persona/persona.component';
+import { AltapersonaComponent } from './altapersona/altapersona.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'/productosgrid', pathMatch: 'full'},
@@ -24,7 +26,8 @@ const routes: Routes = [
   {path:'principal', component: PrincipalComponent},
   {path:'productosgrid', component: ProductosgridComponent},
   {path:'producto', component: ProductoComponent},
-  {path:'empleados', component: EmpleadosComponent}
+  {path:'empleados', component: EmpleadosComponent},
+  {path:'altapersona', component: AltapersonaComponent}
 ];
 
 @NgModule({
@@ -39,7 +42,9 @@ const routes: Routes = [
     ProductoComponent,
     ProductosgridComponent,
     HeaderempleadoComponent,
-    EmpleadosComponent
+    EmpleadosComponent,
+    PersonaComponent,
+    AltapersonaComponent
 
   ],
   imports: [
