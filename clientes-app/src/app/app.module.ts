@@ -16,7 +16,6 @@ import { ProductosgridComponent } from './productosgrid/productosgrid.component'
 import { HeaderempleadoComponent } from './headerempleado/headerempleado.component';
 import { EmpleadosComponent } from './empleados/empleados.component';
 
-
 const routes: Routes = [
   {path:'', redirectTo:'/productosgrid', pathMatch: 'full'},
   {path:'directivas', component: DirectivaComponent},
