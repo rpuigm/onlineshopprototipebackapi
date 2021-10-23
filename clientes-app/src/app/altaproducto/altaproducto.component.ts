@@ -22,7 +22,6 @@ export class AltaproductoComponent implements OnInit {
 
   agregarProducto(){
     console.log('entra en agregar');
-    this.productoService.setProducto(this.producto);
 
   }
 }

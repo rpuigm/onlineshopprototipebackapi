@@ -23,6 +23,9 @@ export class ProductosgridComponent implements OnInit {
 
   }
 
+  agregarProducto(producto: Producto){
+    this.productos.push(producto);
+  }
 
 
 
