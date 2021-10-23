@@ -1,0 +1,19 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <app-producto
+        class="col-12 col-lg-3 p-1"
+        *ngFor="let productoItem of productos"
+        [producto]="productoItem"
+      ></app-producto>
+    </div>
+  </div>
+
+<app-footer></app-footer>

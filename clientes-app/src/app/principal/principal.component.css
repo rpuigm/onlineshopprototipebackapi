@@ -1,0 +1,40 @@
+.container {
+  max-width: 960px;
+  position: relative;
+}
+
+
+.superior-primera {
+  background-size: 100% auto;
+  background-image: url("/assets/images/christmas-paisage.jpg");
+  border-radius: 25px;
+}
+
+.escaparate-iz1 {
+  max-width: 50%;
+  height: auto;
+  background-image: url("/assets/images/christmas-decoration-bolas.jpg");
+  border-radius: 25px;
+}
+
+.escaparate-de1 {
+  max-width: 50%;
+  height: auto;
+  background-image: url("/assets/images/christmas-dickens.jpg");
+  border-radius: 25px;
+}
+
+
+
+/*
+ * Extra utilities
+ */
+
+.flex-equal > * {
+  flex: 1;
+}
+@media (min-width: 768px) {
+  .flex-md-equal > * {
+    flex: 1;
+  }
+}

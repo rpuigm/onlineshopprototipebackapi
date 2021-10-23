@@ -34,3 +34,11 @@ hs_err_pid*
 */target/
 *.project
 
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace

@@ -9,13 +9,28 @@ import { ClientesComponent } from './clientes/clientes.component';
 import { ClienteService } from './clientes/cliente.service';
 import { RouterModule, Routes } from '@angular/router';
 import { FormComponent } from './clientes/form.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { PrincipalComponent } from './principal/principal.component';
+import { ProductoComponent } from './producto/producto.component';
+import { ProductosgridComponent } from './productosgrid/productosgrid.component';
+import { HeaderempleadoComponent } from './headerempleado/headerempleado.component';
+import { EmpleadosComponent } from './empleados/empleados.component';
+import { PersonaComponent } from './persona/persona.component';
+import { AltapersonaComponent } from './altapersona/altapersona.component';
+import { ProductoService } from './producto/producto.service';
+import { AltaproductoComponent } from './altaproducto/altaproducto.component';
 
 const routes: Routes = [
-  {path:'', redirectTo:'/clientes', pathMatch: 'full'},
+  {path:'', redirectTo:'/productosgrid', pathMatch: 'full'},
   {path:'directivas', component: DirectivaComponent},
   {path:'clientes', component: ClientesComponent},
   {path:'clientes/form', component: FormComponent},
+  {path:'principal', component: PrincipalComponent},
+  {path:'productosgrid', component: ProductosgridComponent},
+  {path:'producto', component: ProductoComponent},
+  {path:'empleados', component: EmpleadosComponent},
+  {path:'altapersona', component: AltapersonaComponent},
+  {path:'altaproducto', component: AltaproductoComponent}
 ];
 
 @NgModule({
@@ -25,14 +40,24 @@ const routes: Routes = [
     FooterComponent,
     DirectivaComponent,
     ClientesComponent,
-    FormComponent
+    FormComponent,
+    PrincipalComponent,
+    ProductoComponent,
+    ProductosgridComponent,
+    HeaderempleadoComponent,
+    EmpleadosComponent,
+    PersonaComponent,
+    AltapersonaComponent,
+    AltaproductoComponent
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ClienteService],
+  providers: [ClienteService,
+              ProductoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

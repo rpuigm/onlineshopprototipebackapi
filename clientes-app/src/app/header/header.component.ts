@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 
 
 export class HeaderComponent {
-  title: string = 'Menu'
+  title: string = 'CHRISTMASZON'
 
 
 }

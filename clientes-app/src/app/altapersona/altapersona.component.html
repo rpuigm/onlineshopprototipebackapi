@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>prueba</h1>
+  <app-persona *ngFor="let personaElemento of personas"
+    [persona]="personaElemento">
+  </app-persona>
+  <div *ngFor="let personaElemento of personas">
+  <p>{{personaElemento.nombre}}</p>
+  </div>
+
+  <div *ngFor="let personaElemento of personas">
+  <p>{{personaElemento.nombre}}</p>
+  </div>
+
+</div>
