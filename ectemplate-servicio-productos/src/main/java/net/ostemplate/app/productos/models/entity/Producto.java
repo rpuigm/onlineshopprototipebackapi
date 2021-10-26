@@ -23,6 +23,8 @@ public class Producto implements Serializable{
 	
 	private String nombre;
 	private Double precio;
+	private String categoria;
+	private Double valoracion;
 	
 	@Column(name = "create_at")
 	@Temporal(TemporalType.DATE)
@@ -52,9 +54,23 @@ public class Producto implements Serializable{
 	public Date getCreateAt() {
 		return createAt;
 	}
+	public String getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+	public Double getValoracion() {
+		return valoracion;
+	}
+	public void setValoracion(Double valoracion) {
+		this.valoracion = valoracion;
+	}
 	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
 	}
+	
+	
 	
 	public Integer getPort() {
 		return port;
