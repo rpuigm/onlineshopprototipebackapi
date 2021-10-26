@@ -43,5 +43,12 @@ public class ProductoController {
 	public void insertarProducto (@RequestBody Producto producto) {
 		productoService.insertProducto(producto);
 	}
+	
+	@GetMapping("/producto/{nombre}")
+	public List<Producto> buscarProductoPorNombre(@PathVariable String nombre){
+		return productoService.buscarPorNombre(nombre);
+		
+		
+	}
 
 }

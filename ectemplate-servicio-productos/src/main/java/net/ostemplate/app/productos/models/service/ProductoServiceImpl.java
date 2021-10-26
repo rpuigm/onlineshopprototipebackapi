@@ -6,40 +6,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import net.ostemplate.app.productos.models.dao.ProductoDao;
+import net.ostemplate.app.productos.models.dao.ProductoRepository;
 import net.ostemplate.app.productos.models.entity.Producto;
 
 @Service
 public class ProductoServiceImpl implements IProductoService{
 
 	@Autowired
-	private ProductoDao productoDao;
+	private ProductoRepository productoRepository;
 	
 	@Override
 	@Transactional(readOnly = true)
 	public List<Producto> findAll() {
-		return (List<Producto>) productoDao.findAll();
+		return (List<Producto>) productoRepository.findAll();
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public Producto findById(Long id) {
-		return productoDao.findById(id).orElse(null);
+		return productoRepository.findById(id).orElse(null);
 	}
 
 	@Override
 	public void insertProducto(Producto producto) {
-		productoDao.save(producto);
+		productoRepository.save(producto);
 	}
 
 	@Override
 	public void borrarProducto(Long id) {
-		productoDao.deleteById(id);
+		productoRepository.deleteById(id);
 	}
 
 	@Override
-	public Producto buscarPorNombre(String nombre) {
-		return null;
+	public List<Producto> buscarPorNombre(String nombre) {
+		return productoRepository.findByNombre(nombre);
 	}
 
 }

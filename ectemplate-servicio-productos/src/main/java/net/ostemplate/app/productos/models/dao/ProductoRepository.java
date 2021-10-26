@@ -1,12 +1,13 @@
 package net.ostemplate.app.productos.models.dao;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 
 import net.ostemplate.app.productos.models.entity.Producto;
 
 
-public interface ProductoDao extends CrudRepository<Producto, Long>{
+public interface ProductoRepository extends CrudRepository<Producto, Long>{
 	
-	public Producto findByNombre(String nombre);
-
+	List<Producto> findByNombre (String nombre);
 }

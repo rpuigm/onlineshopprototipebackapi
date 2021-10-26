@@ -10,5 +10,5 @@ public interface IProductoService {
 	public Producto findById(Long id);
 	public void insertProducto(Producto producto);
 	public void borrarProducto(Long id);
-	public Producto buscarPorNombre(String nombre);
+	public List<Producto> buscarPorNombre(String nombre);
 }
