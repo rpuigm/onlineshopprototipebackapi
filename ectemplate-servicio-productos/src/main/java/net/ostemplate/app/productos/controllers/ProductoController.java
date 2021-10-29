@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.DeleteMapping;
 //import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,16 +41,16 @@ public class ProductoController {
 	}
 	
 	@PostMapping("/producto/nuevo")
-	public void insertarProducto (@RequestBody Producto producto) {
-		productoService.insertProducto(producto);
+	public Producto insertarProducto (@RequestBody Producto producto) {
+		return productoService.insertProducto(producto);
 	}
 	
-	@PostMapping("/producto/borrar/{id}")
+	@DeleteMapping("/producto/borrar/{id}")
 	public void borrarProducto (@RequestBody Long id) {
 		productoService.borrarProducto(id);
 	}
 	
-	@GetMapping("/producto/{nombre}")
+	@GetMapping("/producto/nombre/{nombre}")
 	public List<Producto> buscarProductoPorNombre(@PathVariable String nombre){
 		return productoService.buscarPorNombre(nombre);
 		

@@ -23,7 +23,7 @@ public interface IProductoService {
 	 * Guarda un nuevo producto
 	 * @param producto
 	 */
-	public void insertProducto(Producto producto);
+	public Producto insertProducto(Producto producto);
 	
 	/**
 	 * Borra un producto por su identificador
@@ -44,4 +44,9 @@ public interface IProductoService {
 	 * @return
 	 */
 	public List<Producto> buscarPorContieneEnNombre(String nombre);
+	
+	
+	public Producto modificarProducto(Producto producto);
+	
+	
 }

@@ -29,8 +29,8 @@ public class ProductoServiceImpl implements IProductoService{
 
 	@Override
 	@Transactional
-	public void insertProducto(Producto producto) {
-		productoRepository.save(producto);
+	public Producto insertProducto(Producto producto) {
+		return productoRepository.save(producto);
 	}
 
 	@Override
@@ -49,6 +49,14 @@ public class ProductoServiceImpl implements IProductoService{
 	@Transactional
 	public List<Producto> buscarPorContieneEnNombre(String nombre) {
 		return productoRepository.findByNombreLike("%"+nombre+"%");
+	}
+
+	@Override
+	public Producto modificarProducto(Producto producto) {
+		
+		if (productoRepository.existsById(producto.getId()))
+			return productoRepository.save(producto);
+		return producto;
 	}
 
 }

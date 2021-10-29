@@ -13,10 +13,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Data;
 
-@Builder(access = AccessLevel.PUBLIC)
 @Entity
 @Table(name = "productos")
 public class Producto implements Serializable{

@@ -49,12 +49,12 @@ public class ProductoServiceImplTest {
 	
 	private Producto mapToProducto() throws ParseException {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
-		return Producto.builder()
-				.categoria("categoria")
-				.id(1L)
-				.nombre("nombre")
-				.createAt(simpleDateFormat.parse("10/10/2021"))
-				.build();
+		Producto producto = new Producto();
+		producto.setCategoria("categoria");
+		producto.setId(1L);
+		producto.setCategoria("nombre");
+		producto.setCreateAt(simpleDateFormat.parse("10/10/2021"));
+		return producto;
 		
 	}
 
