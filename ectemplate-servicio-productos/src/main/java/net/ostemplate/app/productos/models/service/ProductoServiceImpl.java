@@ -28,18 +28,27 @@ public class ProductoServiceImpl implements IProductoService{
 	}
 
 	@Override
+	@Transactional
 	public void insertProducto(Producto producto) {
 		productoRepository.save(producto);
 	}
 
 	@Override
+	@Transactional
 	public void borrarProducto(Long id) {
 		productoRepository.deleteById(id);
 	}
 
 	@Override
+	@Transactional
 	public List<Producto> buscarPorNombre(String nombre) {
 		return productoRepository.findByNombre(nombre);
+	}
+
+	@Override
+	@Transactional
+	public List<Producto> buscarPorContieneEnNombre(String nombre) {
+		return productoRepository.findByNombreLike("%"+nombre+"%");
 	}
 
 }

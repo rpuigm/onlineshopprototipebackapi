@@ -44,8 +44,19 @@ public class ProductoController {
 		productoService.insertProducto(producto);
 	}
 	
+	@PostMapping("/producto/borrar/{id}")
+	public void borrarProducto (@RequestBody Long id) {
+		productoService.borrarProducto(id);
+	}
+	
 	@GetMapping("/producto/{nombre}")
 	public List<Producto> buscarProductoPorNombre(@PathVariable String nombre){
+		return productoService.buscarPorNombre(nombre);
+		
+		
+	}
+	@GetMapping("/producto/contiene/{nombre}")
+	public List<Producto> buscarProductoPorContieneNombre(@PathVariable String nombre){
 		return productoService.buscarPorNombre(nombre);
 		
 		

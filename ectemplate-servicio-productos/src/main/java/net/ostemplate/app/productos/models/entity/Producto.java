@@ -13,6 +13,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import lombok.AccessLevel;
+import lombok.Builder;
+
+@Builder(access = AccessLevel.PUBLIC)
 @Entity
 @Table(name = "productos")
 public class Producto implements Serializable{
@@ -80,5 +84,7 @@ public class Producto implements Serializable{
 	}
 	
 	private static final long serialVersionUID = 1285454306356845809L;
+
+
 
 }
