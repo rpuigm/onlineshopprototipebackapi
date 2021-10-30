@@ -28,7 +28,6 @@ public class ProductoController {
 	@GetMapping("/lista")
 	public List<Producto> listar(){
 		return productoService.findAll().stream().map(producto ->{
-			producto.setPort(port);
 			return producto;
 		}).collect(Collectors.toList());
 	}
@@ -36,7 +35,6 @@ public class ProductoController {
 	@GetMapping("/producto/{id}")
 	public Producto detalle(@PathVariable Long id) {
 		Producto producto = productoService.findById(id);
-		producto.setPort(port);
 		return producto;
 	}
 	
