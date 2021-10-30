@@ -21,4 +21,7 @@
   Personas
   Añadir Producto
 
+- #T001: Se ha configurado SonarQube Cloud en flujo CI/CD Github y
+algunas otras herramientas de análisis
+
 ## [0.0.0-alpha.1] (2021-10-30)
