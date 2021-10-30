@@ -1,6 +1,15 @@
 spring:
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:4200"
+            allowedMethods:
+            - GET
+            - PUT
+            - DELETE
+            - POST
       routes:
       - id: servicio-productos
         uri: lb://servicio-productos
@@ -8,7 +17,6 @@ spring:
           - Path=/api/productos/**
         filters:
           - StripPrefix=2
-
 
           
           

@@ -19,9 +19,6 @@ import net.ostemplate.app.productos.models.service.IProductoService;
 @RestController
 public class ProductoController {
 	
-	@Value("${server.port}")
-	private Integer port;
-	
 	@Autowired
 	private IProductoService productoService;
 	

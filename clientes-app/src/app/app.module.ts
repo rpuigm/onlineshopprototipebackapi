@@ -19,6 +19,7 @@ import { PersonaComponent } from './persona/persona.component';
 import { AltapersonaComponent } from './altapersona/altapersona.component';
 import { ProductoService } from './producto/producto.service';
 import { AltaproductoComponent } from './altaproducto/altaproducto.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {path:'', redirectTo:'/productosgrid', pathMatch: 'full'},
@@ -53,6 +54,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     RouterModule.forRoot(routes)
   ],
