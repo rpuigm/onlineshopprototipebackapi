@@ -19,7 +19,6 @@ export class ProductosgridComponent implements OnInit {
     this.productoService.getProductos().subscribe(
       productos => this.productos= productos
     )
-    console.log(this.productos[3].precio)
 
   }
 
