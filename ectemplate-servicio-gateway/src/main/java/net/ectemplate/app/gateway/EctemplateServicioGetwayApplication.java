@@ -1,4 +1,4 @@
-package net.ectemplate.app.getway;
+package net.ectemplate.app.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

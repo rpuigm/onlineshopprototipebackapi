@@ -1,22 +1,23 @@
 package net.ectemplate.app.personas.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name="personas")
 public class Persona implements Serializable {
-
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4037542469806028888L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +26,16 @@ public class Persona implements Serializable {
 	private String nombre;
 	private String apellidos;
 	private String edad;
+	
+	@Column(unique = true, length = 20)
+	private String username;
+	private String password;
+	
+	@ManyToMany(fetch= FetchType.LAZY)
+	@JoinTable(name="personas_roles", joinColumns = @JoinColumn(name="persona_id"),
+	inverseJoinColumns = @JoinColumn(name="role_id"),
+	uniqueConstraints = {@UniqueConstraint(columnNames = {"persona_id", "role_id"})})
+	private List<Role> roles;
 	
 	public Long getId() {
 		return id;
@@ -57,9 +68,34 @@ public class Persona implements Serializable {
 	public void setEdad(String edad) {
 		this.edad = edad;
 	}
-
-
-
 	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4037542469806028888L;
 	
 }

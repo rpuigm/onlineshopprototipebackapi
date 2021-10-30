@@ -26,8 +26,8 @@ spring:
           - Path=/api/personas/**
         filters:
           - StripPrefix=2
-      - id: shocases-service
-        uri: lb://shocases-service
+      - id: showcases-service
+        uri: lb://showcases-service
         predicates:
           - Path=/api/showcases/**
         filters:
