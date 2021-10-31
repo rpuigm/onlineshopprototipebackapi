@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.DeleteMapping;
 //import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.ostemplate.app.productos.models.entity.Producto;
-import net.ostemplate.app.productos.models.service.IProductoService;
+import net.ostemplate.app.productos.models.service.ProductoServiceI;
 
 @RestController
 public class ProductoController {
 	
 	@Autowired
-	private IProductoService productoService;
+	private ProductoServiceI productoService;
 	
 	@GetMapping("/lista")
 	public List<Producto> listar(){

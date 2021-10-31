@@ -3,6 +3,7 @@ package net.ostemplate.app.productos.models.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,8 +33,8 @@ public class Producto implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date createAt;
 
-    @OneToOne
-    @JoinColumn(name="idProductoCaracteristicas")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="fk_idProductoCaracteristicas")
 	private ProductoCaracteristicas productoCaracteristicas;
 
 	public Long getId() {
@@ -83,6 +84,17 @@ public class Producto implements Serializable {
 	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
 	}
+
+	
+	public ProductoCaracteristicas getProductoCaracteristicas() {
+		return productoCaracteristicas;
+	}
+
+	public void setProductoCaracteristicas(ProductoCaracteristicas productoCaracteristicas) {
+		this.productoCaracteristicas = productoCaracteristicas;
+	}
+
+
 
 	private static final long serialVersionUID = 1285454306356845809L;
 

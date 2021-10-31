@@ -4,7 +4,7 @@ import java.util.List;
 
 import net.ostemplate.app.productos.models.entity.Producto;
 
-public interface IProductoService {
+public interface ProductoServiceI {
 
 	/**
 	 * Devuelve la lista de todos los productos

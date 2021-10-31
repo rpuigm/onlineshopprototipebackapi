@@ -1,5 +1,6 @@
 package net.ostemplate.app.productos.models.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import net.ostemplate.app.productos.models.dao.ProductoRepository;
 import net.ostemplate.app.productos.models.entity.Producto;
+import net.ostemplate.app.productos.models.entity.ProductoCaracteristicas;
+import net.ostemplate.app.productos.models.entity.ProductoEspecificaciones;
 
 @Service
-public class ProductoServiceImpl implements IProductoService{
+public class ProductoServiceImpl implements ProductoServiceI{
 
 	@Autowired
 	private ProductoRepository productoRepository;
@@ -30,6 +33,14 @@ public class ProductoServiceImpl implements IProductoService{
 	@Override
 	@Transactional
 	public Producto insertProducto(Producto producto) {
+		ProductoCaracteristicas pc = new ProductoCaracteristicas();
+		ProductoEspecificaciones pe = new ProductoEspecificaciones();
+		pe.setClaveEspecificacion("pruebaClave");
+		pe.setDescripcionEspecificacion("pruebaDescript");
+		List<ProductoEspecificaciones> lpe = new ArrayList<ProductoEspecificaciones>();
+		lpe.add(pe);
+		pc.setDescripción("prueba total");
+		pc.setProductoEspecificaciones(lpe);
 		return productoRepository.save(producto);
 	}
 

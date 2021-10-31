@@ -2,11 +2,13 @@ package net.ostemplate.app.productos.models.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +22,10 @@ public class ProductoEspecificaciones implements Serializable {
 	
 	private String claveEspecificacion;
 	private String descripcionEspecificacion;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private ProductoCaracteristicas productoCaracteristicas; 
+	
 	public Long getIdProductoEspecificacion() {
 		return idProductoEspecificacion;
 	}

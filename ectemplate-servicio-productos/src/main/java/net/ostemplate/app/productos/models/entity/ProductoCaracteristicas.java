@@ -3,12 +3,15 @@ package net.ostemplate.app.productos.models.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,10 +25,15 @@ public class ProductoCaracteristicas implements Serializable {
 	
 	private String descripción;
 	
-	@OneToMany
+	@OneToOne(cascade = CascadeType.ALL)
+	private Producto productos;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="fk_id_imagen_producto")
 	private List<ImagenesProducto> imagenesProducto;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="fk_id_producto_especificacion")
 	private List<ProductoEspecificaciones> productoEspecificaciones;
 
 	public Long getIdProductoCaracteristicas() {
@@ -44,6 +52,25 @@ public class ProductoCaracteristicas implements Serializable {
 	public void setDescripción(String descripción) {
 		this.descripción = descripción;
 	}
+
+	
+
+	public List<ImagenesProducto> getImagenesProducto() {
+		return imagenesProducto;
+	}
+
+	public void setImagenesProducto(List<ImagenesProducto> imagenesProducto) {
+		this.imagenesProducto = imagenesProducto;
+	}
+
+	public List<ProductoEspecificaciones> getProductoEspecificaciones() {
+		return productoEspecificaciones;
+	}
+
+	public void setProductoEspecificaciones(List<ProductoEspecificaciones> productoEspecificaciones) {
+		this.productoEspecificaciones = productoEspecificaciones;
+	}
+
 
 
 	/**

@@ -2,11 +2,13 @@ package net.ostemplate.app.productos.models.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,17 +19,20 @@ public class ImagenesProducto implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id_imagen_producto")
-	private Long idImageneProducto;
+	private Long idImagenProducto;
 	
 	private String nombreImagen;
 	private String descripcionImagen;
 	private byte[] imagen;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private ProductoCaracteristicas productoCaracteristicas; 
 		
 	public Long getIdImageneProducto() {
-		return idImageneProducto;
+		return idImagenProducto;
 	}
-	public void setIdImageneProducto(Long idImageneProducto) {
-		this.idImageneProducto = idImageneProducto;
+	public void setIdImageneProducto(Long idImagenProducto) {
+		this.idImagenProducto = idImagenProducto;
 	}
 	public String getNombreImagen() {
 		return nombreImagen;
