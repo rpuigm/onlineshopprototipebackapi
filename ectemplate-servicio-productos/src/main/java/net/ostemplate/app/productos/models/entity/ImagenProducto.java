@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="imagenes_productos")
-public class ImagenesProducto implements Serializable{
+public class ImagenProducto implements Serializable{
 	
 
 	@Id
@@ -23,7 +23,7 @@ public class ImagenesProducto implements Serializable{
 	
 	private String nombreImagen;
 	private String descripcionImagen;
-	private byte[] imagen;
+	private String imagen;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private ProductoCaracteristicas productoCaracteristicas; 
@@ -46,10 +46,10 @@ public class ImagenesProducto implements Serializable{
 	public void setDescripcionImagen(String descripcionImagen) {
 		this.descripcionImagen = descripcionImagen;
 	}
-	public byte[] getImagen() {
+	public String getImagen() {
 		return imagen;
 	}
-	public void setImagen(byte[] imagen) {
+	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
 	

@@ -30,7 +30,7 @@ public class ProductoCaracteristicas implements Serializable {
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="fk_id_imagen_producto")
-	private List<ImagenesProducto> imagenesProducto;
+	private List<ImagenProducto> imagenesProducto;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="fk_id_producto_especificacion")
@@ -44,7 +44,6 @@ public class ProductoCaracteristicas implements Serializable {
 		this.idProductoCaracteristicas = idProductoCaracteristicas;
 	}
 
-
 	public String getDescripción() {
 		return descripción;
 	}
@@ -53,13 +52,11 @@ public class ProductoCaracteristicas implements Serializable {
 		this.descripción = descripción;
 	}
 
-	
-
-	public List<ImagenesProducto> getImagenesProducto() {
+	public List<ImagenProducto> getImagenesProducto() {
 		return imagenesProducto;
 	}
 
-	public void setImagenesProducto(List<ImagenesProducto> imagenesProducto) {
+	public void setImagenesProducto(List<ImagenProducto> imagenesProducto) {
 		this.imagenesProducto = imagenesProducto;
 	}
 
@@ -70,8 +67,6 @@ public class ProductoCaracteristicas implements Serializable {
 	public void setProductoEspecificaciones(List<ProductoEspecificaciones> productoEspecificaciones) {
 		this.productoEspecificaciones = productoEspecificaciones;
 	}
-
-
 
 	/**
 	 * 
