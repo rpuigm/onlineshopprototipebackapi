@@ -18,7 +18,7 @@ export class ProductoService {
   private urlProductosLista:string = 'http://localhost:8090/api/productos/lista'
   private urlProductoNuevo:string = 'http://localhost:8090/api/productos/producto/nuevo'
 
-  private httpHeaders = new HttpHeaders({'Content-Type': 'application/joson'})
+  private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
 
   constructor(private http:HttpClient ) { }
 

@@ -10,51 +10,34 @@ import { Router } from '@angular/router'
 })
 export class AltaproductoComponent implements OnInit {
 
-  productoAlta!: Producto;
-
-  private prueba: string;
-  deshabilitar=false;
-
-  private mensaje='no se agrego';
-  private titulo ='';
+  private producto: Producto;
 
   constructor(private productoService: ProductoService,
     private router: Router) { }
 
-
-
   ngOnInit():void {
-    this.prueba= '45345';
-  }
-
-  getPrueba(): string{
-    return this.prueba;
+    this.producto = new Producto();
   }
 
   agregarProducto(): void{
 
-    console.log(this.productoAlta.nombre);
-    this.productoService.setProducto(this.productoAlta).subscribe(
+    this.productoService.setProducto(this.producto).subscribe(
       response => this.router.navigate(['/productosgrid'])
     );
     console.log('sale');
 
   }
 
-  getTitulo(){
-    return this.titulo;
+  setProductoNombre (event: Event){
+    this.producto.nombre =(<HTMLInputElement>event.target).value;
+  }
+  setProductoCategoria (event: Event){
+    this.producto.categoria =(<HTMLInputElement>event.target).value;
+  }
+  setProductoPrecio (event: Event){
+    this.producto.precio =Number((<HTMLInputElement>event.target).value);
   }
 
-  getPruebaMensaje(){
-    return this.mensaje;
-  }
-  setPrueba(){
-    this.mensaje='agregado';
-  }
-
-  modificarTitulo(event: Event){
-    this.titulo = (<HTMLInputElement>event.target).value;
-  }
 
 
 }

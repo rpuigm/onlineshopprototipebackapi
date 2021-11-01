@@ -1,7 +1,6 @@
 package net.ostemplate.app.productos.controllers;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import net.ostemplate.app.productos.models.entity.Producto;
 import net.ostemplate.app.productos.models.service.ProductoServiceI;
+
 
 @RestController
 public class ProductoController {
@@ -35,7 +35,7 @@ public class ProductoController {
 		return productoService.findById(id);
 	}
 	
-	@PostMapping("/producto/nuevo")
+	@PostMapping(value="/producto/nuevo")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Producto insertarProducto (@RequestBody Producto producto) {
 		return productoService.insertProducto(producto);
