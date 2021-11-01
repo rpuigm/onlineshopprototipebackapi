@@ -1,3 +1,4 @@
+import { ProductoCaracteristicas } from './productoCaracteristicas.model';
 
 export class Producto{
   id!: number;
@@ -5,4 +6,5 @@ export class Producto{
   nombre!: string;
   precio!: number;
   valoracion!: number;
+  productoCaracteristicas!: ProductoCaracteristicas
 }

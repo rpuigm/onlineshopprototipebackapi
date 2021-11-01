@@ -1,8 +1,10 @@
+import { map } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductoService } from './../producto/producto.service';
 import { Component, OnInit } from '@angular/core';
 import { Producto } from '../producto/producto.model';
 import { ThrowStmt } from '@angular/compiler';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-producto-item',
@@ -12,6 +14,7 @@ import { ThrowStmt } from '@angular/compiler';
 export class ProductoItemComponent implements OnInit {
 
   private imagenSeleccionada: File;
+  private descripcionImagen: string;
 
   producto: Producto;
 
@@ -31,6 +34,21 @@ export class ProductoItemComponent implements OnInit {
   }
 
   selecionarFoto(event: Event){
+    this.imagenSeleccionada = (<HTMLInputElement>event.target).files![0];
   }
+
+  asignarDescripcion(event: Event){
+    this.descripcionImagen = (<HTMLInputElement>event.target).value;
+  }
+
+
+  subirImagen(){
+    this.productoService.subirFoto(this.imagenSeleccionada, String(this.producto.id), this.descripcionImagen)
+    .subscribe(producto => {
+      this.producto = producto;
+    });
+  }
+
+
 
 }

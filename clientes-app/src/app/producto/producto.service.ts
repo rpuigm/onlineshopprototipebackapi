@@ -42,7 +42,7 @@ export class ProductoService {
 
   }
 
-  subirFoto(archivo: File, id: string | Blob): Observable<Producto>{
+  subirFoto(archivo: File, id: string | Blob, descripcionImagen: string): Observable<Producto>{
     let formData = new FormData();
     formData.append("archivo", archivo);
     formData.append("id", id);
