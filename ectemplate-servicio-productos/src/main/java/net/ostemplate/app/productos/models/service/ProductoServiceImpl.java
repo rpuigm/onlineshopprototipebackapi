@@ -1,6 +1,5 @@
 package net.ostemplate.app.productos.models.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,15 +8,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import net.ostemplate.app.productos.models.dao.ProductoRepository;
 import net.ostemplate.app.productos.models.entity.Producto;
-import net.ostemplate.app.productos.models.entity.ProductoCaracteristicas;
-import net.ostemplate.app.productos.models.entity.ProductoEspecificaciones;
 
 @Service
-public class ProductoServiceImpl implements ProductoServiceI{
+public class ProductoServiceImpl implements ProductoServiceI {
 
 	@Autowired
 	private ProductoRepository productoRepository;
-	
+
 	@Override
 	@Transactional(readOnly = true)
 	public List<Producto> findAll() {
@@ -33,14 +30,6 @@ public class ProductoServiceImpl implements ProductoServiceI{
 	@Override
 	@Transactional
 	public Producto insertProducto(Producto producto) {
-		ProductoCaracteristicas pc = new ProductoCaracteristicas();
-		ProductoEspecificaciones pe = new ProductoEspecificaciones();
-		pe.setClaveEspecificacion("pruebaClave");
-		pe.setDescripcionEspecificacion("pruebaDescript");
-		List<ProductoEspecificaciones> lpe = new ArrayList<ProductoEspecificaciones>();
-		lpe.add(pe);
-		pc.setDescripción("prueba total");
-		pc.setProductoEspecificaciones(lpe);
 		return productoRepository.save(producto);
 	}
 
@@ -59,15 +48,17 @@ public class ProductoServiceImpl implements ProductoServiceI{
 	@Override
 	@Transactional
 	public List<Producto> buscarPorContieneEnNombre(String nombre) {
-		return productoRepository.findByNombreLike("%"+nombre+"%");
+		return productoRepository.findByNombreLike("%" + nombre + "%");
 	}
 
 	@Override
+	@Transactional
 	public Producto modificarProducto(Producto producto) {
-		
 		if (productoRepository.existsById(producto.getId()))
 			return productoRepository.save(producto);
 		return producto;
 	}
+	
+	
 
 }

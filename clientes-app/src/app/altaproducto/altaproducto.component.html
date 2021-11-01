@@ -28,11 +28,19 @@
 
   <div class="form-group row">
     <div class="col-sm-10 offset-sm-2">
-      <button type="submit" class="btn btn-primary"
-      (click)="agregarProducto()"
-      >Guardar</button>
+      <button type="submit" class="btn btn-primary" [disabled]='deshabilitar'
+      (click)="setPrueba()">Guardar</button>
+      <p>{{ getPruebaMensaje() }}</p>
     </div>
   </div>
+
+  <div>
+    <label>titulo</label>
+    <input type="text" class='form-control'
+    (input)='modificarTitulo($event)'>
+    {{ getTitulo() }}
+  </div>
+
 </form>
 
 </div>

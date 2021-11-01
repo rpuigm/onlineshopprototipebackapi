@@ -1,7 +1,7 @@
 import { ProductoService } from './../producto/producto.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Producto } from '../producto/producto.model';
-import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-altaproducto',
@@ -10,18 +10,51 @@ import { FormsModule } from '@angular/forms';
 })
 export class AltaproductoComponent implements OnInit {
 
-  producto: Producto;
-  titulo: string;
-  precio: number;
+  productoAlta!: Producto;
 
-  constructor(private productoService: ProductoService) { }
+  private prueba: string;
+  deshabilitar=false;
 
-  ngOnInit(): void {
+  private mensaje='no se agrego';
+  private titulo ='';
+
+  constructor(private productoService: ProductoService,
+    private router: Router) { }
+
+
+
+  ngOnInit():void {
+    this.prueba= '45345';
+  }
+
+  getPrueba(): string{
+    return this.prueba;
+  }
+
+  agregarProducto(): void{
+
+    console.log(this.productoAlta.nombre);
+    this.productoService.setProducto(this.productoAlta).subscribe(
+      response => this.router.navigate(['/productosgrid'])
+    );
+    console.log('sale');
+
+  }
+
+  getTitulo(){
+    return this.titulo;
+  }
+
+  getPruebaMensaje(){
+    return this.mensaje;
+  }
+  setPrueba(){
+    this.mensaje='agregado';
+  }
+
+  modificarTitulo(event: Event){
+    this.titulo = (<HTMLInputElement>event.target).value;
   }
 
 
-  agregarProducto(){
-    console.log('entra en agregar');
-
-  }
 }

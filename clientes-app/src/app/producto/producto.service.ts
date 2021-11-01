@@ -1,11 +1,7 @@
-import { HttpClientModule } from '@angular/common/http';
-import { ProductoComponent } from './producto.component';
-import { PRODUCTOS } from './producto.model.json';
 import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Producto } from './producto.model';
-import { ProductosgridComponent } from '../productosgrid/productosgrid.component';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
@@ -19,19 +15,24 @@ export class ServiceNameService {
 })
 export class ProductoService {
 
-  private urlEndPoint:string = 'http://localhost:8090/api/productos/lista'
+  private urlProductosLista:string = 'http://localhost:8090/api/productos/lista'
+  private urlProductoNuevo:string = 'http://localhost:8090/api/productos/producto/nuevo'
+
+  private httpHeaders = new HttpHeaders({'Content-Type': 'application/joson'})
+
   constructor(private http:HttpClient ) { }
 
   getProductos(): Observable<Producto[]>{
     //return of(PRODUCTOS);
-    return this.http.get(this.urlEndPoint).pipe(
+    return this.http.get(this.urlProductosLista).pipe(
       map( response => response as Producto[])
     )
   }
 
-  setProducto(productosgridComponent: ProductosgridComponent, producto: Producto){
-    productosgridComponent.productos.push(producto)
-    console.log('producto agregado')
+  setProducto(producto: Producto): Observable<Producto> {
+      console.log(producto.nombre);
+      return this.http.post<Producto>(this.urlProductoNuevo, producto, {headers: this.httpHeaders});
+
 
   }
 }

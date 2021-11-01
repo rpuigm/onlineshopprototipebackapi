@@ -45,7 +45,11 @@ public interface ProductoServiceI {
 	 */
 	public List<Producto> buscarPorContieneEnNombre(String nombre);
 	
-	
+	/**
+	 * Devuelve el producto modificado
+	 * @param producto
+	 * @return producto
+	 */
 	public Producto modificarProducto(Producto producto);
 	
 	
