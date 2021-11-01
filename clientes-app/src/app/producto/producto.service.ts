@@ -46,6 +46,7 @@ export class ProductoService {
     let formData = new FormData();
     formData.append("archivo", archivo);
     formData.append("id", id);
+    formData.append("descripcionImagen", descripcionImagen);
     return this.http.post(`${this.urlEndPoint}/imagen`, formData).pipe(
       map((response: any)=> response.producto as Producto),
 

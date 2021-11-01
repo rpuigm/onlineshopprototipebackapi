@@ -36,14 +36,14 @@
                     Subir
                   </button>
                 </div>
-            <div class="col-sm-3">
+            <div class="col-sm-3" *ngIf=producto?.productoCaracteristicas>
               <div
                 *ngFor="
                   let imagen of producto.productoCaracteristicas
                     .imagenesProducto
                 "
               >
-                <p>{{ imagen.imagen }}</p>
+                <p>{{ imagen.descripcionImagen }}</p>
                 <img
                   src="http://localhost:8090/api/productos/producto/imagen/{{
                     imagen.imagen

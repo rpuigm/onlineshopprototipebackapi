@@ -84,7 +84,8 @@ public class ProductoController {
 	}
 	
 	@PostMapping("/producto/imagen")
-	public ResponseEntity<?> subidaImagen (@RequestParam ("archivo") MultipartFile archivo, @RequestParam("id") Long id){
+	public ResponseEntity<?> subidaImagen (@RequestParam ("archivo") MultipartFile archivo, @RequestParam("id") Long id
+			,@RequestParam("descripcionImagen") String descripcionImagen){
 		Map<String, Object> response= new HashMap<>();
 		
 		Producto producto = productoService.findById(id);
@@ -109,8 +110,9 @@ public class ProductoController {
 				if (!Objects.isNull(productoCaracteristicas.getImagenesProducto()))
 					listaImagenProducto = productoCaracteristicas.getImagenesProducto();
 			
-			imagenProducto.setNombreImagen("nombre");
+			imagenProducto.setNombreImagen(archivo.getOriginalFilename());
 			imagenProducto.setImagen(nombreArchivo);
+			imagenProducto.setDescripcionImagen(descripcionImagen);
 			listaImagenProducto.add(imagenProducto);
 			productoCaracteristicas.setImagenesProducto(listaImagenProducto);
 			producto.setProductoCaracteristicas(productoCaracteristicas);
