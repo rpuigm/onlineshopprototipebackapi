@@ -37,6 +37,16 @@
                     Subir
                   </button>
                 </div>
+            <div class="input-group-append">
+                  <button
+                    (click)="botonTerminar()"
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    id="inputGroupFileAddon04"
+                  >
+                    Terminar
+                  </button>
+                </div>
             <div class="col-sm-3" *ngIf=producto?.productoCaracteristicas>
               <div
                 *ngFor="

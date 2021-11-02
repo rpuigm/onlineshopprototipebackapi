@@ -19,7 +19,7 @@ export class ProductoItemComponent implements OnInit {
   producto: Producto;
 
   constructor(private productoService: ProductoService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(params =>
@@ -47,6 +47,10 @@ export class ProductoItemComponent implements OnInit {
     .subscribe(producto => {
       this.producto = producto;
     });
+  }
+
+  botonTerminar(): void {
+    this.router.navigate(['/productosgrid']);
   }
 
 
