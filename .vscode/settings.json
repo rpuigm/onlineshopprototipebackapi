@@ -1,0 +1,4 @@
+{
+    "boot-java.change-detection.on": true,
+    "maven.terminal.useJavaHome": true
+}

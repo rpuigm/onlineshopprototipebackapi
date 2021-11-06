@@ -6,19 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import net.ectemplate.app.personas.dao.PersonasRepository;
-import net.ectemplate.app.personas.entities.Persona;
+import net.ectemplate.app.personas.dao.UsuariosRepository;
+import net.ectemplate.app.personas.entities.Usuario;
 
 @Service
 public class PersonasServicesImpl implements PersonasServicesI{
 	
 	@Autowired
-	private PersonasRepository personasRepository;
+	private UsuariosRepository personasRepository;
 
 	@Override
 	@Transactional
-	public List<Persona> findAll() {
-		return (List<Persona>)personasRepository.findAll();
+	public List<Usuario> findAll() {
+		return (List<Usuario>)personasRepository.findAll();
 	}
 
 }

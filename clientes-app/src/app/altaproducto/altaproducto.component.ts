@@ -1,6 +1,6 @@
 import { ProductoCaracteristicas } from './../producto/productoCaracteristicas.model';
 import { Observable } from 'rxjs';
-import { ProductoEspecificaciones } from './../producto/productoespecificaciones.model';
+import { ProductoEspecificaciones } from '../producto/productoEspecificaciones.model';
 import { ProductoService } from './../producto/producto.service';
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { Producto } from '../producto/producto.model';
@@ -24,13 +24,13 @@ export class AltaproductoComponent implements OnInit {
 
   ngOnInit():void {
     this.producto = new Producto();
+    this.listaProductoEspecificaciones = new Array<ProductoEspecificaciones>();
     this.productoEspecificaciones = new ProductoEspecificaciones();
     this.productoCaracteristicas = new ProductoCaracteristicas();
 
   }
 
   agregarProducto(): void{
-    this.producto.productoCaracteristicas= this.productoCaracteristicas;
     this.productoService.setProducto(this.producto).subscribe(
       response => this.router.navigate(['/item/'+ response.id])
     );
@@ -67,8 +67,11 @@ export class AltaproductoComponent implements OnInit {
     this.productoEspecificaciones.descripcionEspecificacion=(<HTMLInputElement>event.target).value;
   }
 
-  agregarEspecificacion():void{
-     this.listaProductoEspecificaciones.push(this.productoEspecificaciones);
-     this.productoEspecificaciones= new ProductoEspecificaciones();
+  agregarEspecificacion():void {
+    this.listaProductoEspecificaciones.push(this.productoEspecificaciones);
+    this.productoCaracteristicas.productoEspecificaciones= this.listaProductoEspecificaciones;
+    console.log(this.productoCaracteristicas.productoEspecificaciones.length);
+    this.producto.productoCaracteristicas = this.productoCaracteristicas;
+    this.productoEspecificaciones= new ProductoEspecificaciones();
   }
 }
