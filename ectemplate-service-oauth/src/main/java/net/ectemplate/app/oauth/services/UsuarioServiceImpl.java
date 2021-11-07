@@ -18,7 +18,7 @@ import net.ectemplate.app.oauth.clients.UsuarioFeignClient;
 import net.ectemplate.app.oauth.entities.Usuario;
 
 @Service
-public class UsuarioServiceImpl implements UserDetailsService{
+public class UsuarioServiceImpl implements UserDetailsService, UsuarioServiceI{
 	
 	private Logger log = LoggerFactory.getLogger(UsuarioServiceImpl.class);
 
@@ -39,6 +39,11 @@ public class UsuarioServiceImpl implements UserDetailsService{
 				.peek(authoriry -> log.info("Role " + authoriry.getAuthority()))
 				.collect(Collectors.toList());
 		return new User(usuario.getUsername(), usuario.getPassword(), true,true,true,true, listaGrantedAuthority);
+	}
+
+	@Override
+	public Usuario fingByUsername(String username) {
+		return usuarioFeignClient.findByUsername(username);
 	}
 
 }
