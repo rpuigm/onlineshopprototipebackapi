@@ -19,6 +19,9 @@ import { PersonaComponent } from './persona/persona.component';
 import { AltapersonaComponent } from './altapersona/altapersona.component';
 import { ProductoService } from './producto/producto.service';
 import { AltaproductoComponent } from './altaproducto/altaproducto.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductoItemComponent } from './producto-item/producto-item.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'/productosgrid', pathMatch: 'full'},
@@ -30,7 +33,9 @@ const routes: Routes = [
   {path:'producto', component: ProductoComponent},
   {path:'empleados', component: EmpleadosComponent},
   {path:'altapersona', component: AltapersonaComponent},
-  {path:'altaproducto', component: AltaproductoComponent}
+  {path:'altaproducto', component: AltaproductoComponent},
+  {path:'item/:id', component: ProductoItemComponent},
+  {path:'login', component: LoginComponent}
 ];
 
 @NgModule({
@@ -48,11 +53,14 @@ const routes: Routes = [
     EmpleadosComponent,
     PersonaComponent,
     AltapersonaComponent,
-    AltaproductoComponent
+    AltaproductoComponent,
+    ProductoItemComponent,
+    LoginComponent
 
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     RouterModule.forRoot(routes)
   ],

@@ -27,6 +27,8 @@ public class Categoria implements Serializable{
 	private Long id;
 	private String nombre;
 	private Long categoriaPadre;
+	private String descripcionCategoria;
+	
 	public Long getId() {
 		return id;
 	}
@@ -44,6 +46,12 @@ public class Categoria implements Serializable{
 	}
 	public void setCategoriaPadre(Long categoriaPadre) {
 		this.categoriaPadre = categoriaPadre;
+	}
+	public String getDescripcionCategoria() {
+		return descripcionCategoria;
+	}
+	public void setDescripcionCategoria(String descripcionCategoria) {
+		this.descripcionCategoria = descripcionCategoria;
 	}
 
 	
