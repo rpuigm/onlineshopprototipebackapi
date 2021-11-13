@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>net.ectemplate.app.clientes</groupId>
 	<artifactId>ectemplate-service-clientes</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.2.0-SNAPSHOT</version>
 	<name>ectemplate-servicio-clientes</name>
 	<description>Servicio de clientes</description>
 	<properties>

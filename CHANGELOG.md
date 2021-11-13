@@ -1,3 +1,11 @@
+## [0.2.0-alpha.1] (2021-10-30)
+
+### Added
+
+- #B005_F005: Alta de producto
+
+- #B008: Seguridad en backend con Spring Security OAuth2 Jwt
+
 ## [0.1.0-alpha.1] (2021-10-30)
 
 ### Added

@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>net.ectemplate.app.eureka</groupId>
 	<artifactId>ectemplate-servicio-clientes-1</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.2.0-SNAPSHOT</version>
 	<name>ectemplate-servicio-clientes-1</name>
 	<description>Servicio de clientes</description>
 	<properties>
