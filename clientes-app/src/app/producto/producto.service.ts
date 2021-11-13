@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Producto } from './producto.model';
@@ -22,12 +23,17 @@ export class ProductoService {
 
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
 
-  constructor(private http:HttpClient ) { }
+  constructor(private http:HttpClient, private router:Router ) { }
 
   getProductos(): Observable<Producto[]>{
     //return of(PRODUCTOS);
     return this.http.get(this.urlProductosLista).pipe(
-      map( response => response as Producto[])
+      map( response => response as Producto[]),
+      catchError(e => {
+        console.error(e.error.mensaje);
+        swal.fire('Error al obtener los productos', e.error.mensaje, 'error');
+        return throwError(e);
+      })
     )
   }
 
@@ -38,7 +44,13 @@ export class ProductoService {
   }
 
   getProductoById(id: number): Observable<Producto>{
-    return this.http.get<Producto>(`${this.urlEndPoint}/${id}`)
+    return this.http.get<Producto>(`${this.urlEndPoint}/${id}`).pipe(
+      catchError(e => {
+        console.error(e.error.mensaje);
+        swal.fire('Error al obtener los productos', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    )
 
   }
 
@@ -49,6 +61,11 @@ export class ProductoService {
     formData.append("descripcionImagen", descripcionImagen);
     return this.http.post(`${this.urlEndPoint}/imagen`, formData).pipe(
       map((response: any)=> response.producto as Producto),
+      catchError(e => {
+        console.error(e.error.mensaje);
+        swal.fire('No se pudo subir la foto', e.error.mensaje, 'error');
+        return throwError(e);
+      })
 
     );
   }
