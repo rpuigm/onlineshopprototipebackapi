@@ -1,4 +1,5 @@
 {
     "boot-java.change-detection.on": true,
-    "maven.terminal.useJavaHome": true
+    "maven.terminal.useJavaHome": true,
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

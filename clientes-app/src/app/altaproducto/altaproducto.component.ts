@@ -27,10 +27,12 @@ export class AltaproductoComponent implements OnInit {
     this.listaProductoEspecificaciones = new Array<ProductoEspecificaciones>();
     this.productoEspecificaciones = new ProductoEspecificaciones();
     this.productoCaracteristicas = new ProductoCaracteristicas();
+    this.producto.productoCaracteristicas=this.productoCaracteristicas;
 
   }
 
   agregarProducto(): void{
+    console.log(this.producto.productoCaracteristicas.descripcion);
     this.productoService.setProducto(this.producto).subscribe(
       response => this.router.navigate(['/item/'+ response.id])
     );
@@ -56,7 +58,8 @@ export class AltaproductoComponent implements OnInit {
   }
 
   setProductoCaracteristicasDescripcion(event: Event){
-    this.productoCaracteristicas.descripcion =(<HTMLInputElement>event.target).value;
+    this.producto.productoCaracteristicas.descripcion = (<HTMLInputElement>event.target).value;
+    console.log(this.producto.productoCaracteristicas.descripcion);
   }
 
   setProductoClaveEspecificacion(event: Event){
@@ -69,8 +72,8 @@ export class AltaproductoComponent implements OnInit {
 
   agregarEspecificacion():void {
     this.listaProductoEspecificaciones.push(this.productoEspecificaciones);
-    this.productoCaracteristicas.productoEspecificaciones= this.listaProductoEspecificaciones;
-    console.log(this.productoCaracteristicas.productoEspecificaciones.length);
+    this.producto.productoCaracteristicas.productoEspecificaciones= this.listaProductoEspecificaciones;
+    console.log(this.producto.productoCaracteristicas.productoEspecificaciones.length);
     this.producto.productoCaracteristicas = this.productoCaracteristicas;
     this.productoEspecificaciones= new ProductoEspecificaciones();
   }

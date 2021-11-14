@@ -23,7 +23,7 @@ public class ProductoCaracteristicas implements Serializable {
 	@Column(name="id_producto_caracteristicas")
 	private Long idProductoCaracteristicas;
 	
-	private String descripción;
+	private String descripcion;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Producto productos;
@@ -44,12 +44,12 @@ public class ProductoCaracteristicas implements Serializable {
 		this.idProductoCaracteristicas = idProductoCaracteristicas;
 	}
 
-	public String getDescripción() {
-		return descripción;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setDescripción(String descripción) {
-		this.descripción = descripción;
+	public void setDescripcion(String descripción) {
+		this.descripcion = descripción;
 	}
 
 	public List<ImagenProducto> getImagenesProducto() {

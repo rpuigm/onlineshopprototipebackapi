@@ -102,7 +102,7 @@ public class ProductoController {
 				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			
-			ProductoCaracteristicas productoCaracteristicas = new ProductoCaracteristicas();
+			ProductoCaracteristicas productoCaracteristicas =producto.getProductoCaracteristicas();
 			ImagenProducto imagenProducto = new ImagenProducto();
 			List<ImagenProducto> listaImagenProducto = new ArrayList<ImagenProducto>();
 			

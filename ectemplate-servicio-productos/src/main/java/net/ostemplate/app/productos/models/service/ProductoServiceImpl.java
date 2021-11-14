@@ -30,6 +30,7 @@ public class ProductoServiceImpl implements ProductoServiceI {
 	@Override
 	@Transactional
 	public Producto insertProducto(Producto producto) {
+		System.out.println("descripcion---" +producto.getProductoCaracteristicas().getDescripcion());
 		return productoRepository.save(producto);
 	}
 

@@ -28,6 +28,7 @@ export class ProductoItemComponent implements OnInit {
         if (id){
           this.productoService.getProductoById(id).subscribe(producto =>{
             this.producto = producto;
+            console.log(this.producto?.productoCaracteristicas.descripcion);
           });
         }
       });
@@ -50,7 +51,7 @@ export class ProductoItemComponent implements OnInit {
   }
 
   botonTerminar(): void {
-    this.router.navigate(['/productosgrid']);
+    this.router.navigate(["/detalleproducto/"+ this.producto.id]);
   }
 
 

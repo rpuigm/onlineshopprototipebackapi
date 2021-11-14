@@ -22,6 +22,7 @@ import { AltaproductoComponent } from './altaproducto/altaproducto.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductoItemComponent } from './producto-item/producto-item.component';
 import { LoginComponent } from './login/login.component';
+import { DetalleproductoComponent } from './detalleproducto/detalleproducto.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'/productosgrid', pathMatch: 'full'},
@@ -35,7 +36,8 @@ const routes: Routes = [
   {path:'altapersona', component: AltapersonaComponent},
   {path:'altaproducto', component: AltaproductoComponent},
   {path:'item/:id', component: ProductoItemComponent},
-  {path:'login', component: LoginComponent}
+  {path:'login', component: LoginComponent},
+  {path:'detalleproducto/:id', component: DetalleproductoComponent}
 ];
 
 @NgModule({
@@ -55,7 +57,8 @@ const routes: Routes = [
     AltapersonaComponent,
     AltaproductoComponent,
     ProductoItemComponent,
-    LoginComponent
+    LoginComponent,
+    DetalleproductoComponent
 
   ],
   imports: [
