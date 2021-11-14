@@ -37,7 +37,7 @@ const routes: Routes = [
   {path:'altaproducto', component: AltaproductoComponent},
   {path:'item/:id', component: ProductoItemComponent},
   {path:'login', component: LoginComponent},
-  {path:'detalleproducto', component: DetalleproductoComponent}
+  {path:'detalleproducto/:id', component: DetalleproductoComponent}
 ];
 
 @NgModule({
