@@ -1,13 +1,13 @@
-package net.ectemplate.app.compra;
+package net.ectemplate.app.compras;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EctemplateServiceCompraApplication {
+public class EctemplateServiceComprasApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EctemplateServiceCompraApplication.class, args);
+		SpringApplication.run(EctemplateServiceComprasApplication.class, args);
 	}
 
 }

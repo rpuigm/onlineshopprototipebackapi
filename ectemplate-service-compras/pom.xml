@@ -8,10 +8,10 @@
 		<version>2.5.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>net.ectemplate.app.compra</groupId>
-	<artifactId>etctemplate-service-compra</artifactId>
+	<groupId>net.ectemplate.app.compras</groupId>
+	<artifactId>etctemplate-service-compras</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ectemplate-service-compra</name>
+	<name>ectemplate-service-compras</name>
 	<description>Cloud Config for ecommerce </description>
 	<properties>
 		<java.version>11</java.version>
