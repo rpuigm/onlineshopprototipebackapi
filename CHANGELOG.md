@@ -1,3 +1,11 @@
+## [0.3.0-alpha.1] (2021-10-30)
+
+### Added
+
+- #F011: Se ha creado el alta de producto
+
+- #F010: Se ha mejorado el grid y se ha depurado algunos errores
+
 ## [0.2.0-alpha.1] (2021-10-30)
 
 ### Added
