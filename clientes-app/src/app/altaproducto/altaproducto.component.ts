@@ -58,7 +58,6 @@ export class AltaproductoComponent implements OnInit {
 
   setProductoCaracteristicasDescripcion(event: Event){
     this.producto.productoCaracteristicas.descripcion = (<HTMLInputElement>event.target).value;
-    console.log(this.producto.productoCaracteristicas.descripcion);
   }
 
   setProductoClaveEspecificacion(event: Event){
