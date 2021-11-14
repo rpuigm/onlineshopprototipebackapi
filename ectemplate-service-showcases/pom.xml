@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>net.ectemplate.app.showcases</groupId>
 	<artifactId>etctemplate-service-showcases</artifactId>
-	<version>0.2.0-SNAPSHOT</version>
+	<version>0.3.0-SNAPSHOT</version>
 	<name>ectemplate-service-showcases</name>
 	<description>Showcases for e-commerce products</description>
 	<properties>
