@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>net.ectemplate.app.zuul</groupId>
 	<artifactId>etctemplate-service-zuul-server</artifactId>
-	<version>0.2.0-SNAPSHOT</version>
+	<version>0.3.0-SNAPSHOT</version>
 	<name>ectemplate-service-zuul-server</name>
 	<description>Cloud Config for ecommerce </description>
 	<properties>
