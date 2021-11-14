@@ -32,6 +32,7 @@ export class AltaproductoComponent implements OnInit {
   }
 
   agregarProducto(): void{
+    console.log(this.producto.productoCaracteristicas.descripcion);
     this.productoService.setProducto(this.producto).subscribe(
       response => this.router.navigate(['/item/'+ response.id])
     );
@@ -58,6 +59,7 @@ export class AltaproductoComponent implements OnInit {
 
   setProductoCaracteristicasDescripcion(event: Event){
     this.producto.productoCaracteristicas.descripcion = (<HTMLInputElement>event.target).value;
+    console.log(this.producto.productoCaracteristicas.descripcion);
   }
 
   setProductoClaveEspecificacion(event: Event){

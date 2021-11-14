@@ -39,6 +39,7 @@ export class ProductoService {
 
   setProducto(producto: Producto): Observable<Producto> {
       console.log(producto.nombre);
+      console.log(producto.productoCaracteristicas.descripcion);
       return this.http.post<Producto>(this.urlProductoNuevo, producto, {headers: this.httpHeaders});
 
   }

@@ -26,7 +26,7 @@ export class ProductosgridComponent implements OnInit {
     this.productos.push(producto);
   }
 
-  buscarProductosPorNombre(): void {
+  buscarProductosPorNombre(event: Event): void {
   }
 
 }
