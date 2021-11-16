@@ -1,10 +1,9 @@
 <app-headerempleado></app-headerempleado>
-<div class="card bg-dark text-white">
+<div class="card bg-light text-secundary">
   <div class="card-header"></div>
   <div class="card-body">
     <div class="container">
       <div class="row">
-        <div class="col-sm">
           <div class="input-group mb-3">
             <div class="custom-file">
               <input
@@ -19,7 +18,7 @@
               >
             </div>
             <div class="col-sm-10">
-            <label>Descipcion de la Foto</label>
+              <label>Descipcion de la Foto</label>
               <input
                 type="text"
                 class="form-control"
@@ -28,52 +27,51 @@
               <div class="col-12"></div>
             </div>
             <div class="input-group-append">
-                  <button
-                    (click)="subirImagen()"
-                    class="btn btn-outline-secondary"
-                    type="button"
-                    id="inputGroupFileAddon04"
-                  >
-                    Subir
-                  </button>
-                </div>
-            <div class="input-group-append">
-                  <button
-                    (click)="botonTerminar()"
-                    class="btn btn-outline-secondary"
-                    type="button"
-                    id="inputGroupFileAddon04"
-                  >
-                    Terminar
-                  </button>
-                </div>
-            <div class="col-sm-3" *ngIf=producto?.productoCaracteristicas>
-              <div
-                *ngFor="
-                  let imagen of producto.productoCaracteristicas
-                    .imagenesProducto
-                "
+              <button
+                (click)="subirImagen()"
+                class="btn btn-outline-secondary"
+                type="button"
+                id="inputGroupFileAddon04"
               >
-                <p>{{ imagen.descripcionImagen }}</p>
-                <img
-                  src="http://localhost:8090/api/productos/producto/imagen/{{
-                    imagen.imagen
-                  }}"
-                  class="img-thumbnail rounded"
-
-                />
+                Subir
+              </button>
+            </div>
+            <div class="input-group-append">
+              <button
+                (click)="botonTerminar()"
+                class="btn btn-outline-secondary"
+                type="button"
+                id="inputGroupFileAddon04"
+              >
+                Terminar
+              </button>
+            </div>
+            <div class="row">
+              <div *ngIf="producto?.productoCaracteristicas">
+                <div
+                  *ngFor="
+                    let imagen of producto.productoCaracteristicas
+                      .imagenesProducto
+                  "
+                >
+                  <div class="col-3">
+                    <p>{{ imagen.descripcionImagen }}</p>
+                    <img
+                      src="http://localhost:8090/api/productos/producto/imagen/{{
+                        imagen.imagen
+                      }}"
+                      class="img-thumbnail rounded"
+                    />
+                  </div>
+                </div>
 
                 <div></div>
-
-
               </div>
-            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 
 <app-footer></app-footer>

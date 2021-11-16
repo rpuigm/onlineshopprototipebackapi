@@ -1,11 +1,9 @@
 package net.ectemplate.app.compras.repositories;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
 import net.ectemplate.app.compras.entities.Cesta;
 
-@Repository
-public interface ComprasRepository extends PagingAndSortingRepository<Cesta, Long> {
+public interface ComprasRepository extends CrudRepository<Cesta, Long> {
 
 }
