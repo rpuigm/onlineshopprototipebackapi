@@ -1,4 +1,10 @@
-## [0.3.0-alpha.1] (2021-10-30)
+## [0.4.0-alpha.1] (2021-11-20)
+
+### Added
+
+- #B013: Mejoramos la seguridad y movemos la base de datos de H2 a postgreSQL
+
+## [0.3.0-alpha.1] (2021-11-14)
 
 ### Added
 
