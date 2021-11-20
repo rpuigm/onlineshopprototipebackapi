@@ -8,9 +8,9 @@
 	<name>ectemplate</name>
 
 	<modules>
-		<module>ectemplate-servicio-clientes</module>
 		<module>ectemplate-servicio-productos</module>
 		<module>ectemplate-servicio-personas</module>
+		<module>ectemplate-servicio-compras</module>
 	</modules>
 	
 	<packaging>pom</packaging>
