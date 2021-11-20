@@ -1,5 +1,5 @@
-INSERT INTO usuarios (nombre, apellidos, edad, username, password) VALUES ('nombre1', 'apellidos1', 10, 'usuario1', '$2a$10$A2.LHsqhCnEHSluWPSSwD.MBKV3utM3aFrfStoYAnbIfl8pTM84PS');
-INSERT INTO usuarios (nombre, apellidos, edad, username, password) VALUES ('nombre2', 'apellidos2', 20, 'usuario2', '$2a$10$fn6ca7Wl8JVVaQQxOnuY.eEOkzNyZFeUSH8uRztCYtM2ycxCBnwM.');
+INSERT INTO usuarios (nombre, apellidos, edad, username, password) VALUES ('nombre1', 'apellidos1', 10, 'usuario1', '$2a$10$5dfOSR0v.wnEk8CHTtXQvudO.dM0/UIPSVFK71yZXojITFbR8Qfp.');
+INSERT INTO usuarios (nombre, apellidos, edad, username, password) VALUES ('nombre2', 'apellidos2', 20, 'usuario2', '$2a$10$ypLY0nLbod0nZAkEpofD.eEzXzGJmcnpx7nxQf7rWnZzBudyEavQC.');
 
 INSERT INTO roles (nombre) VALUES ('ROLE_USER');
 INSERT INTO roles (nombre) VALUES ('ROLE_ADMIN');
