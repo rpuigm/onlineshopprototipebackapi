@@ -1,5 +1,6 @@
+import { Usuario } from './../login/usuario.model';
+import { EmpleadoService } from './empleado.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { Empleado } from './empleado.model';
 
 @Component({
   selector: 'app-empleados',
@@ -8,10 +9,23 @@ import { Empleado } from './empleado.model';
 })
 export class EmpleadosComponent implements OnInit {
 
-  @Input() empleado: Empleado;
-  constructor() { }
+
+  usuario!: Usuario;
+
+  constructor(private empleadoService: EmpleadoService) {
+  }
 
   ngOnInit(): void {
+    this.empleadoService.obtenerUsuarioPorUsername().subscribe(
+      usu => this.usuario = usu
+    );
+  }
+
+  guaradarEmpleado(): void{
+    console.log('entra' + this.usuario)
+    this.empleadoService.guardarEmpleado(this.usuario);
+
+
   }
 
 }

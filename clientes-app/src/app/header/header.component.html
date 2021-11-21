@@ -30,6 +30,9 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/directivas">Cesta</a>
         </li>
+        <li *ngIf="tienePermisos('ROLE_ADMIN')" class="nav-item">
+          <a class="nav-link" routerLink="/empleados">Empleados</a>
+        </li>
       </ul>
 
 

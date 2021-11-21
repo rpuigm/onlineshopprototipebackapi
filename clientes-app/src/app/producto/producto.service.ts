@@ -30,7 +30,7 @@ export class ProductoService {
     private personaServices: PersonaServices
   ) {}
 
-  private agregarAuthorizationHeader() {
+  public agregarAuthorizationHeader() {
     let token = this.personaServices.token;
     if (token != null) {
       return this.httpHeaders.append('Authorization', 'Bearer ' + token);
@@ -109,6 +109,9 @@ export class ProductoService {
 
   private isNoAutorizado(e: { status: number }): boolean {
     if (e.status == 401) {
+      if (this.personaServices.isAuthenticated()) {
+        this.personaServices.logout();
+      }
       this.router.navigate(['/login']);
       return true;
     }

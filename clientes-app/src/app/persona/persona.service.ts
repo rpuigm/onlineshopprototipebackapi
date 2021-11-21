@@ -99,4 +99,11 @@ export class PersonaServices implements OnInit{
     sessionStorage.removeItem('usuario');
   }
 
+  hasRole(role: string): boolean {
+    if (this.usuario.roles.includes(role)) {
+      return true;
+    }
+    return false;
+  }
+
 }

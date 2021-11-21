@@ -45,5 +45,9 @@ export class HeaderComponent{
     return variable;
   }
 
+  tienePermisos(role: string): boolean{
+    return this.personaServices.hasRole(role);
+  }
+
 
 }
