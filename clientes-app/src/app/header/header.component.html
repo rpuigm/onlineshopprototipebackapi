@@ -40,10 +40,18 @@
       </form>
       <div class="col-1"></div>
       <ul class="navbar-nav navbar-right">
-      <li>
-          <a routerlink="login" class="btn btn-outline-primary">Acceder</a>
-        </li>
-      </ul>
+      <li *ngIf="!estaAuthenticado()"><a (click)="irALogin()" class="btn btn-outline-primary">Acceder</a></li>
+
+
+      <li *ngIf="estaAuthenticado()" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{getUsuario()}}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <li><a (click)="logout()" class="dropdown-item">Salir</a></li>
+
+          </ul>
+    </ul>
 
     </div>
   </div>

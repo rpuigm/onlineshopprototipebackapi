@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Producto } from './producto.model';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { catchError, map, switchAll } from 'rxjs/operators';
 import swal from 'sweetalert2';
 
@@ -40,7 +40,14 @@ export class ProductoService {
   setProducto(producto: Producto): Observable<Producto> {
       console.log(producto.nombre);
       console.log(producto.productoCaracteristicas.descripcion);
-      return this.http.post<Producto>(this.urlProductoNuevo, producto, {headers: this.httpHeaders});
+      return this.http.post<Producto>(this.urlProductoNuevo, producto, {headers: this.httpHeaders}).pipe(
+        catchError(e => {
+          swal.fire('Error al guardar los producto', e.error.mensaje, 'error');
+          this.isNoAutorizado(e)
+          console.error(e.error.mensaje);
+          return throwError(e);
+        })
+      )
 
   }
 
@@ -60,7 +67,7 @@ export class ProductoService {
     formData.append("archivo", archivo);
     formData.append("id", id);
     formData.append("descripcionImagen", descripcionImagen);
-    return this.http.post(`${this.urlEndPoint}/imagen`, formData).pipe(
+    return this.http.post(`${this.urlEndPoint}/imagen`, formData, {headers: this.httpHeaders}).pipe(
       map((response: any)=> response.producto as Producto),
       catchError(e => {
         console.error(e.error.mensaje);
@@ -70,4 +77,14 @@ export class ProductoService {
 
     );
   }
+
+  private isNoAutorizado(e: { status: number; }): boolean {
+    if (e.status == 401 || e.status == 403) {
+      this.router.navigate(['/login']);
+      return true;
+    }
+
+    return false;
+  }
+
 }
