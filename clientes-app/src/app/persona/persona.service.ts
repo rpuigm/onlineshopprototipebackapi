@@ -13,8 +13,11 @@ export class PersonaServices implements OnInit{
   private _usuario: Usuario;
   private _token: any;
   urlToken: string ="http://localhost:8090/api/security/oauth/token";
+  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private httpClient: HttpClient){}
+
+
 
   ngOnInit(): void {
     throw new Error("Method not implemented.");

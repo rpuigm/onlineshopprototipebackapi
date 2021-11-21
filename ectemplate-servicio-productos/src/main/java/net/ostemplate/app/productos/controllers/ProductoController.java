@@ -37,7 +37,6 @@ import net.ostemplate.app.productos.models.entity.Producto;
 import net.ostemplate.app.productos.models.entity.ProductoCaracteristicas;
 import net.ostemplate.app.productos.models.service.ProductoServiceI;
 
-//@CrossOrigin(origins= {"http://localhost:4200", "**"})
 @RestController
 public class ProductoController {
 	
