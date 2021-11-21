@@ -20,7 +20,7 @@ export class ProductoService {
     'http://localhost:8090/api/productos/lista';
   private urlProductoNuevo: string =
     'http://localhost:8090/api/productos/producto/nuevo';
-  private urlEndPoint: string = 'http://localhost:8090/api/productos/producto/';
+  private urlEndPoint: string = 'http://localhost:8090/api/productos/producto';
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -108,8 +108,13 @@ export class ProductoService {
   }
 
   private isNoAutorizado(e: { status: number }): boolean {
-    if (e.status == 401 || e.status == 403) {
+    if (e.status == 401) {
       this.router.navigate(['/login']);
+      return true;
+    }
+
+    if (e.status == 403) {
+      swal.fire('Error', 'Acceso Denegaod', 'warning')
       return true;
     }
 

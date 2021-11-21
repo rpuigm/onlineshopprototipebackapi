@@ -23,11 +23,11 @@ import org.springframework.web.filter.CorsFilter;
 @RefreshScope
 @Configuration
 @EnableResourceServer
-public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
+public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 	@Value("${config.security.oauth.jwt.key}")
 	private String jwtKey;
-	
+
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
 		resources.tokenStore(tokenStore());
@@ -36,12 +36,15 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/productos/lista").permitAll()
-		.antMatchers("/api/security/oauth/**").permitAll()
-		.antMatchers("api/productos/producto/**").hasRole("USER")
-		.anyRequest().authenticated()
-		.and().cors().configurationSource(corsConfigurationSource());
+				.antMatchers("/api/security/oauth/**").permitAll()
+				.antMatchers(HttpMethod.GET,"/api/productos/producto/**").permitAll()
+				.antMatchers("/api/productos/producto/nuevo").hasRole("ADMIN")
+				.antMatchers("/api/productos/producto/imagen").hasRole("ADMIN")
+				.anyRequest().authenticated()
+				.and().cors()
+				.configurationSource(corsConfigurationSource());
 	}
-	
+
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration corsConfig = new CorsConfiguration();
@@ -49,20 +52,21 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 		corsConfig.setAllowedMethods(Arrays.asList("POST", "GET", "PUT", "DELETE", "OPTIONS"));
 		corsConfig.setAllowCredentials(true);
 		corsConfig.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
-		
+
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", corsConfig);
-		
+
 		return source;
 	}
-	
+
 	@Bean
-	public FilterRegistrationBean<CorsFilter> corsFilter(){
-		FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<CorsFilter>(new CorsFilter(corsConfigurationSource()));
+	public FilterRegistrationBean<CorsFilter> corsFilter() {
+		FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<CorsFilter>(
+				new CorsFilter(corsConfigurationSource()));
 		bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
 		return bean;
 	}
-	
+
 	@Bean
 	public JwtTokenStore tokenStore() {
 		return new JwtTokenStore(accessTokenConverter());
@@ -74,6 +78,5 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 		tokenConverter.setSigningKey(jwtKey);
 		return tokenConverter;
 	}
-	
 
 }
