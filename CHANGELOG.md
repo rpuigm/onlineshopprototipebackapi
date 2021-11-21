@@ -1,3 +1,11 @@
+## [0.5.0-alpha.1] (2021-11-20)
+
+### Added
+
+- #F015: Terminado Login de empleado y Usuario, Frontend
+
+- #B015: Terminado Login de empleado y Usuario, Backend
+
 ## [0.4.0-alpha.1] (2021-11-20)
 
 ### Added

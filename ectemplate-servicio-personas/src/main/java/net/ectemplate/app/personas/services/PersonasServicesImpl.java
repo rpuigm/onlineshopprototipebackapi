@@ -21,4 +21,10 @@ public class PersonasServicesImpl implements PersonasServicesI{
 		return (List<Usuario>)personasRepository.findAll();
 	}
 
+	@Override
+	public Usuario actualizaUsuario(Usuario usuario) {
+		return personasRepository.save(usuario);
+	}
+
+	
 }
