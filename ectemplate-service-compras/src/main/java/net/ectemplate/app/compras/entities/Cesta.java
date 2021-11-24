@@ -22,7 +22,8 @@ public class Cesta implements Serializable{
 	@Column(name="id")
 	private Long id;
 	
-	private String username;
+	private Long idUsuario;
+	private boolean activa;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="fk_id_cesta")
@@ -36,19 +37,15 @@ public class Cesta implements Serializable{
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+	
+
+	public Long getIdUsuario() {
+		return idUsuario;
 	}
 
-
-
-
-	public void setUsername(String username) {
-		this.username = username;
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
 	}
-
-
-
 
 	public List<ProductoCantidad> getProductoCesta() {
 		return productoCesta;

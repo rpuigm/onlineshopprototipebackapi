@@ -1,3 +1,5 @@
+import { PersonaServices } from './../persona/persona.service';
+import { CestaService } from './../cesta/cesta.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Producto } from './producto.model';
@@ -13,7 +15,8 @@ export class ProductoComponent implements OnInit {
 
   imagenEscaparate: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private cestaService: CestaService
+    , private personaServices: PersonaServices) {
 
   }
 
@@ -31,6 +34,11 @@ export class ProductoComponent implements OnInit {
 
   irADetalleProducto(){
     this.router.navigate(['/detalleproducto/'+this.producto.id]);
+
+  }
+
+  agregarEnCesta(){
+    this.cestaService.agregarProductoACesta(this.personaServices.usuario.id, this.producto.id);
 
   }
 }

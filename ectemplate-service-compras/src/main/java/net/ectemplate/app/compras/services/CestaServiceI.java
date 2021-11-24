@@ -6,4 +6,10 @@ public interface CestaServiceI {
 	
 	Cesta guardaCesta(Cesta cesta);
 
+	Cesta incluirEnCesta(Long idUsuario, Long idProducto);
+
+	Cesta buscarCestaPorUsuarioId(Long idUsuario);
+
+	Cesta eliminarDeLaCesta(Long idUsuario, Long idProducto);
+
 }
