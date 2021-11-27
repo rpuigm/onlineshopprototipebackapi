@@ -3,6 +3,7 @@ import { CestaService } from './../cesta/cesta.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Producto } from './producto.model';
+import { Usuario } from '../login/usuario.model';
 
 @Component({
   selector: 'app-producto',
@@ -14,6 +15,8 @@ export class ProductoComponent implements OnInit {
   @Input() producto: Producto;
 
   imagenEscaparate: string;
+
+  private usuario: Usuario;
 
   constructor(private router: Router, private cestaService: CestaService
     , private personaServices: PersonaServices) {
@@ -38,7 +41,11 @@ export class ProductoComponent implements OnInit {
   }
 
   agregarEnCesta(){
+    console.log('cesta ' + this.personaServices.usuario.id)
+    console.log(this.personaServices.usuario.id)
     this.cestaService.agregarProductoACesta(this.personaServices.usuario.id, this.producto.id);
 
   }
+
+
 }

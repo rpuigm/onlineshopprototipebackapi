@@ -1,8 +1,8 @@
-package net.ectemplate.app.compras.repositories;
+package net.ostemplate.app.productos.models.dao;
 
 import org.springframework.data.repository.CrudRepository;
 
-import net.ectemplate.app.compras.entities.Cesta;
+import net.ostemplate.app.productos.models.entity.Cesta;
 
 public interface ComprasRepository extends CrudRepository<Cesta, Long> {
 	

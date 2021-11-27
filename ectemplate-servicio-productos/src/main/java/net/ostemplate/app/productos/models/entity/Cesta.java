@@ -1,4 +1,4 @@
-package net.ectemplate.app.compras.entities;
+package net.ostemplate.app.productos.models.entity;
 
 import java.io.Serializable;
 import java.util.List;

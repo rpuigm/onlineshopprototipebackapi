@@ -30,7 +30,7 @@ public class CestaServiceImplTest {
 
 	@Test
 	public void incluirEnCestaTest() {
-		Mockito.when(comprasRepository.findByidUsuarioAndActiva(Mockito.anyLong(), Mockito.anyBoolean()))
+		Mockito.when(comprasRepository.findByIdUsuarioAndActiva(Mockito.anyLong(), Mockito.anyBoolean()))
 				.thenReturn(mapToCesta());
 		Mockito.when(comprasRepository.save(Mockito.any(Cesta.class))).thenReturn(mapToCesta());
 		

@@ -1,8 +1,8 @@
-package net.ectemplate.app.compras.services;
+package net.ostemplate.app.productos.models.service;
 
 import java.util.List;
 
-import net.ectemplate.app.compras.entities.Cesta;
+import net.ostemplate.app.productos.models.entity.Cesta;
 
 public interface CestaServiceI {
 	
