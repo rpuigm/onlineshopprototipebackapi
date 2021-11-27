@@ -10,4 +10,6 @@ public interface PersonasServicesI {
 	
 	public Usuario actualizaUsuario (Usuario usuario);
 
+	Usuario altaCliente(Usuario usuario);
+
 }

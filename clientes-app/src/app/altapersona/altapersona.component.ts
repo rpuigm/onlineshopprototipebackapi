@@ -1,23 +1,47 @@
+import { EmpleadoService } from './../empleados/empleado.service';
+import { AltaPersonaService } from './altapersona.service';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { PersonaServices } from './../persona/persona.service';
 import { Component, OnInit } from '@angular/core';
-import { Persona } from '../persona/persona.model';
+import { Usuario } from '../login/usuario.model';
 
 @Component({
   selector: 'app-altapersona',
   templateUrl: './altapersona.component.html',
-  styleUrls: ['./altapersona.component.css']
+  styleUrls: ['./altapersona.component.css'],
 })
 export class AltapersonaComponent implements OnInit {
+  usuario: Usuario;
 
-
-  personas: Persona[] = [
-
-  ];
-
-  constructor() {
-   }
+  constructor(
+    private altaPersonaService: AltaPersonaService,
+    private router: Router,
+    private personaService: PersonaServices,
+    private empleadoService: EmpleadoService
+  ) {}
 
   ngOnInit(): void {
+    this.setUsuario(new Usuario())
+
   }
 
+  altaCliente(): void {
+      console.log('entra en alta')
+      this.altaPersonaService.altaCliente(this.usuario).subscribe((r) => {});
+      this.router.navigate(['login']);
 
+  }
+
+  getUsuario(): Usuario {
+    return this.usuario;
+  }
+
+  setUsuario(usuario: Usuario) {
+    this.usuario = usuario;
+  }
+
+  setUsuarioPass(event: Event) {
+    this.usuario.password = (<HTMLInputElement>event.target).value;
+  }
 }

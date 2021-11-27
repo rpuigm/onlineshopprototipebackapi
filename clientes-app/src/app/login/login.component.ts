@@ -27,6 +27,10 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  irARegistrar(){
+    this.router.navigate(['altapersona']);
+  }
+
   login(): void{
     console.log("usuario:"+this.usuario);
     if(this.usuario.username== null || this.usuario.password==null){

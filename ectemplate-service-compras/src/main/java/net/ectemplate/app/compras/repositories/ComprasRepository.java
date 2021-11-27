@@ -5,5 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import net.ectemplate.app.compras.entities.Cesta;
 
 public interface ComprasRepository extends CrudRepository<Cesta, Long> {
+	
+	Cesta findByidUsuarioAndActiva(Long idUsuario, boolean activa);
 
 }

@@ -45,7 +45,7 @@ export class PersonaServices implements OnInit{
     let payload = this.obtenerDatosToken(accessToken);
     this._usuario = new Usuario();
     this._usuario.nombre = payload.nombre;
-    this._usuario.apellido = payload.apellido;
+    this._usuario.apellidos = payload.apellido;
     this._usuario.username = payload.user_name;
     this._usuario.roles = payload.authorities;
     sessionStorage.setItem('usuario', JSON.stringify(this._usuario));

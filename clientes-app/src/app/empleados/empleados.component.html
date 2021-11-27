@@ -13,7 +13,7 @@
         type="text"
         class="form-control"
         placeholder="Nombre Usuario"
-        [(ngModel)]="usuario.username"
+        [(ngModel)]="getUsuario().username"
         name="username"
         id="username"
       />
@@ -24,7 +24,7 @@
         type="password"
         class="form-control"
         placeholder="Password"
-        [(ngModel)]="usuario.password"
+(input) = 'setUsuarioPass($event)'
         name="password"
         id="password"
       />
@@ -48,7 +48,7 @@
         type="text"
         class="form-control"
         placeholder="Apellidos"
-        [(ngModel)]="usuario.apellido"
+        [(ngModel)]="usuario.apellidos"
         name="apellido"
         id="apellido"
       />
