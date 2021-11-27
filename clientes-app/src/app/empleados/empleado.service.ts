@@ -1,10 +1,12 @@
+import { catchError } from 'rxjs/operators';
 import { PersonaServices } from './../persona/persona.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Injectable, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from '../login/usuario.model';
 import { ProductoService } from '../producto/producto.service';
+import swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +22,11 @@ export class EmpleadoService{
   constructor(private httpClient:HttpClient, private router: Router, private productoService: ProductoService, private personaServices: PersonaServices){}
 
 
-  guardarEmpleado(usuario: Usuario): Observable<Usuario>{
-    console.log(usuario)
-    return this.httpClient.put<Usuario>(this.urlUsuarioActualizar, usuario,
-    {headers: this.productoService.agregarAuthorizationHeader()})
+  guardarEmpleado(usuario: Usuario): Observable<any>{
+    console.log("pasa por aquí" + usuario.apellidos)
+    return this.httpClient.put<any>(this.urlUsuarioActualizar, usuario,
+     {headers: this.productoService.agregarAuthorizationHeader()})
+
   }
 
   obtenerUsuarioPorUsername(): Observable<Usuario>{

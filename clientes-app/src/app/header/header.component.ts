@@ -35,6 +35,9 @@ export class HeaderComponent{
     this.router.navigate(['login']);
   }
 
+
+
+
   getUsuario(){
     return this.personaServices.usuario.nombre;
   }

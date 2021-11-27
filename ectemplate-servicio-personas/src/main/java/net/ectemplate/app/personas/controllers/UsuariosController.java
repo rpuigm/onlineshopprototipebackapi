@@ -26,7 +26,7 @@ public class UsuariosController {
 	}
 
 	@PutMapping("/actualiza-usuario")
-	public Usuario actualizaUsuario(@RequestBody Usuario usuario, @RequestHeader (name="Authorization") String tocken) {
+	public Usuario actualizaUsuario(@RequestBody Usuario usuario) {
 		return personasServicesI.actualizaUsuario(usuario);
 	}
 
