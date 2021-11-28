@@ -66,7 +66,7 @@ export class ProductoComponent implements OnInit {
       }
 
       if (this.cesta.productoCantidad == null) {
-        this.listaProductoCantidad = new Array<ProductoCantidad>();
+        this.cesta.productoCantidad = new Array<ProductoCantidad>();
       } else {
         this.listaProductoCantidad = this.cesta.productoCantidad;
       }
@@ -75,12 +75,12 @@ export class ProductoComponent implements OnInit {
       productoCantidad.idProducto = this.producto.id;
       productoCantidad.cantidad = 1;
 
-      this.listaProductoCantidad.push(productoCantidad);
-      this.cesta.productoCantidad = new Array<ProductoCantidad>();
+
       this.cesta.productoCantidad.push(productoCantidad);
       console.log(this.cesta.productoCantidad.length);
       this.cestaService.incluirEnCesta(this.cesta).subscribe(
-        respuesta => this.cesta=respuesta
+        respuesta => {this.cesta=respuesta
+        this.router.navigate(['cesta'])}
       );
     });
   }
