@@ -28,27 +28,31 @@ export class CestaComponent implements OnInit {
   ngOnInit(): void {
     this.cesta = new Cesta();
 
-
-    this.setCesta()
-
+    this.setCesta();
   }
 
-  setCesta(){
+  setCesta() {
     this.cestaService
       .recuperarCesta(this.personaService.usuario.id)
       .subscribe((cesta) => {
         this.cesta = cesta;
         console.log('numero de productos' + cesta?.productoCantidad.length);
         this.productos = [];
-        this.cesta.productoCantidad.forEach((elemento) => {
+        for (var index in this.cesta.productoCantidad) {
+          console.log('for'+ this.cesta.productoCantidad[index].idProducto);
+          let indice= this.cesta.productoCantidad[index].idProducto;
           let item = new Producto();
-          item = this.recuperaProducto(elemento.idProducto)
-          console.log('item'+item.nombre)
-          this.productos.push(item);
-        });
+          this.productoService.getProductoById(indice).subscribe((producto) => {
+            item = producto;
+            this.productos.push(item)
+            console.log("itemnombre  "+item.nombre);
+          });
+
+
+        }
+
         console.log('tamaño' + this.productos.length);
       });
-
   }
 
   recuperaProducto(idProducto: number): Producto {
@@ -70,7 +74,5 @@ export class CestaComponent implements OnInit {
     return this.productos;
   }
 
-  getNombrePrimerProducto(): string{
-    return this.productos[1].nombre
-  }
+
 }

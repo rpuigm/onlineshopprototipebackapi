@@ -9,13 +9,13 @@
 <p></p>
 <div class="container">
   <h1>Cesta</h1>
-  <p>numero {{  getNombrePrimerProducto() }}</p>
+  <p>numero {{  cesta.id  }}</p>
   <div class="row" *ngFor="let e of getProductos()">
     <div class="col-1">
       <img src="../assets/images/christmas-tree.jpg" class="d-block w-100" />
     </div>
     <div class="col-8">
-      <p>{{ getNombrePrimerProducto() }}</p>
+      <p>{{ e.nombre }}</p>
     </div>
     <div class="col-2">
       <button class="btn btn-secondary btn-block" type="button">
