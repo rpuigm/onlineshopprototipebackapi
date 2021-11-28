@@ -12,7 +12,7 @@ import { Producto } from '../producto/producto.model';
   styleUrls: ['./cesta.component.css'],
 })
 export class CestaComponent implements OnInit {
-  cesta: Cesta;
+  cesta!: Cesta;
   producto!: Producto;
   productos!: Producto[];
 
@@ -27,6 +27,7 @@ export class CestaComponent implements OnInit {
 
   ngOnInit(): void {
     this.cesta = new Cesta();
+
 
     this.setCesta()
 

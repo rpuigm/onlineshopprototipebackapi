@@ -12,7 +12,6 @@ import { Producto } from '../producto/producto.model';
   styleUrls: ['./producto-cesta.component.css']
 })
 export class ProductoCestaComponent implements OnInit {
-
   @Input() elemento: string;
   @Input() producto: Producto;
 
@@ -40,5 +39,6 @@ export class ProductoCestaComponent implements OnInit {
         'http://localhost:8090/api/productos/producto/imagen/' +
         this.producto.productoCaracteristicas.imagenesProducto[0].imagen;
   }
+
 
 }
