@@ -6,6 +6,6 @@ import net.ostemplate.app.productos.models.entity.Cesta;
 
 public interface ComprasRepository extends CrudRepository<Cesta, Long> {
 	
-	Cesta findByIdUsuarioAndActiva(Long idUsuario, boolean activa);
+	Cesta findByIdUsuario(Long idUsuario);
 
 }

@@ -34,42 +34,21 @@ public class CestaServiceImpl implements CestaServiceI {
 	@Override
 	@Transactional
 	public Cesta buscarCestaPorUsuarioId(Long idUsuario) {
-		return comprasRepository.findByIdUsuarioAndActiva(idUsuario, true);
+		return comprasRepository.findByIdUsuario(idUsuario);
 	}
-
+	
 	@Override
 	@Transactional
-	public Cesta incluirEnCesta(Long idUsuario, Long idProducto) {
-		Cesta cesta = new Cesta();
-		List<ProductoCantidad> listaProductoCantidad = new ArrayList<ProductoCantidad>();
-		if (null == idUsuario) {
-			cesta = comprasRepository.findByIdUsuarioAndActiva(idUsuario, true);
-
-			listaProductoCantidad = cesta.getProductoCesta();
-
-			if (listaProductoCantidad != null) {
-				Optional<ProductoCantidad> productoCantidad = listaProductoCantidad.stream()
-						.filter(producto -> producto.getIdProducto() == idProducto).findAny().map(i -> incrementa(i));
-
-				if (productoCantidad.isEmpty())
-					listaProductoCantidad.add(mapToProductoCantidad(idProducto));
-
-			} else {
-				listaProductoCantidad.add(mapToProductoCantidad(idProducto));
-
-			}
-			listaProductoCantidad.add(mapToProductoCantidad(idProducto));
-		}
-
-		cesta.setProductoCesta(listaProductoCantidad);
-		return guardaCesta(cesta);
+	public Cesta actualizaCesta (Cesta cesta) {
+		return comprasRepository.save(cesta);
 	}
+
 
 	@Override
 	@Transactional
 	public Cesta eliminarDeLaCesta(Long idUsuario, Long idProducto) {
-		Cesta cesta = comprasRepository.findByIdUsuarioAndActiva(idUsuario, true);
-		List<ProductoCantidad> listaProductoCantidad = cesta.getProductoCesta();
+		Cesta cesta = comprasRepository.findByIdUsuario(idUsuario);
+		List<ProductoCantidad> listaProductoCantidad = cesta.getProductoCantidad();
 
 		if (listaProductoCantidad != null) {
 			listaProductoCantidad.stream().filter(producto -> producto.getIdProducto() == idProducto).findAny()

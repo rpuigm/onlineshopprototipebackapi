@@ -23,11 +23,10 @@ public class Cesta implements Serializable{
 	private Long id;
 	
 	private Long idUsuario;
-	private boolean activa;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="fk_id_cesta")
-	private List<ProductoCantidad> productoCesta;
+	private List<ProductoCantidad> productoCantidad;
 	
 	public Long getId() {
 		return id;
@@ -39,14 +38,7 @@ public class Cesta implements Serializable{
 
 	
 
-	public boolean isActiva() {
-		return activa;
-	}
-
-	public void setActiva(boolean activa) {
-		this.activa = activa;
-	}
-
+	
 	public Long getIdUsuario() {
 		return idUsuario;
 	}
@@ -55,15 +47,15 @@ public class Cesta implements Serializable{
 		this.idUsuario = idUsuario;
 	}
 
-	public List<ProductoCantidad> getProductoCesta() {
-		return productoCesta;
+	public List<ProductoCantidad> getProductoCantidad() {
+		return productoCantidad;
 	}
 
 
 
 
-	public void setProductoCesta(List<ProductoCantidad> productoCesta) {
-		this.productoCesta = productoCesta;
+	public void setProductoCesta(List<ProductoCantidad> productoCantidad) {
+		this.productoCantidad = productoCantidad;
 	}
 
 
