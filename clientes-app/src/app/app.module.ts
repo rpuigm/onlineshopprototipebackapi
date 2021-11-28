@@ -26,6 +26,7 @@ import { DetalleproductoComponent } from './detalleproducto/detalleproducto.comp
 import { CestaComponent } from './cesta/cesta.component';
 import { PedidoComponent } from './pedido/pedido.component';
 import { ProductoCestaComponent } from './producto-cesta/producto-cesta.component';
+import { DireccionPedidoComponent } from './direccion-pedido/direccion-pedido.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'/productosgrid', pathMatch: 'full'},
@@ -65,7 +66,8 @@ const routes: Routes = [
     DetalleproductoComponent,
     CestaComponent,
     PedidoComponent,
-    ProductoCestaComponent
+    ProductoCestaComponent,
+    DireccionPedidoComponent
 
   ],
   imports: [
