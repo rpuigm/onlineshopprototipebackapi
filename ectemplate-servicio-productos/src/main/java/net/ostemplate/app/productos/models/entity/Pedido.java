@@ -1,12 +1,15 @@
 package net.ostemplate.app.productos.models.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -24,10 +27,15 @@ public class Pedido implements Serializable{
 	private Long id;
 	
 	private Long idUsuario;
-	private Long idCesta;
 	private String estado;
 	private Double total;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="fk_idPedido_producto")
+	private List<ProductosPedido> listaProcutosPedido;
+    @OneToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name="fk_idPedido_direccion")
+    private DireccionPedido direccionPedido;
 	
 	public Long getId() {
 		return id;
@@ -42,14 +50,6 @@ public class Pedido implements Serializable{
 		this.idUsuario = idUsuario;
 	}
 	
-	@OneToOne
-	@JoinColumn(name="fk_id_pedido")
-	public Long getIdCesta() {
-		return idCesta;
-	}
-	public void setIdCesta(Long idCesta) {
-		this.idCesta = idCesta;
-	}
 	public String getEstado() {
 		return estado;
 	}
