@@ -1,15 +1,26 @@
+<app-header></app-header>
+
 <div class="container">
+  <div class="row">
+  <div class="col-12"><p> </p></div>
+  <div class="col-12"><p> </p></div>
+  <div class="col-12"><p> </p></div>
+  <div class="col-12"><p> </p></div>
+  <div class="col-12"><p> </p></div>
+  <div class="col-12"><p> </p></div>
+
+  </div>
 
   <div class="col-6">
     <div class="row">
       <div>
         <H2>PEDIDO</H2>
         <H3>Dirección:</H3>
-        <p>{{ pedido?.direccionPedido.via }}</p>
-        <p>{{ pedido?.direccionPedido.numero }}</p>
-        <p>{{ pedido?.direccionPedido.cp }}</p>
-        <p>{{ pedido?.direccionPedido.localidad }}</p>
-        <p>{{ pedido?.direccionPedido.pronvicia }}</p>
+        <p>Nombre Vía :{{ pedido?.direccionPedido.via }}</p>
+        <p>ID Pedido: {{ pedido?.direccionPedido.numero }}</p>
+        <p>CP: {{ pedido?.direccionPedido.cp }}</p>
+        <p>Localidad: {{ pedido?.direccionPedido.localidad }}</p>
+        <p>Provincia: {{ pedido?.direccionPedido.pronvicia }}</p>
         <H5>Articulos</H5>
         <div *ngIf="pedido?.listaProcutosPedido">
             <table class="table table-responsive">

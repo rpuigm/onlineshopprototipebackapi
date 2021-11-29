@@ -93,7 +93,7 @@ export class CestaComponent implements OnInit {
       let productoPedido = new ProductosPedido();
       productoPedido.nombre =
         this.productos.find(
-          (x) => x.id === this.cesta.productoCantidad[index].id
+          (x) => x.id === this.cesta.productoCantidad[index].idProducto
         )?.nombre || '';
       productoPedido.cantidad = Number(
         this.cesta.productoCantidad[index].cantidad

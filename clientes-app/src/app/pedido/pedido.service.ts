@@ -59,7 +59,7 @@ export class PedidoService {
   }
 
   getPedidosByIdusuario(idUsuario: number): Observable<Pedido[]> {
-    return this.http.get<Pedido[]>(`${this.urlRecuperaPedido}/${idUsuario}`, {
+    return this.http.get<Pedido[]>(`${this.urlRecuperaPedidoIdUsuario}/${idUsuario}`, {
       headers: this.productoService.agregarAuthorizationHeader()
     }).pipe(
       catchError((e) => {

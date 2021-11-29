@@ -42,8 +42,7 @@ export class PasarelaComponent implements OnInit {
       locale: 'auto',
       token: function (stripeToken: any) {
         console.log(stripeToken)
-        this.setEstadoPedidoPagado()
-        swal.fire("Pedido confirmado", "El pedido está confirmado y será enviado a su dirección", "success")
+
       }
     });
 
@@ -52,6 +51,9 @@ export class PasarelaComponent implements OnInit {
       description: 'Payment widgets',
       amount: amount * 100
     });
+    this.setEstadoPedidoPagado()
+    swal.fire("Pedido confirmado", "El pedido está confirmado y será enviado a su dirección", "success")
+    this.router.navigate(['/listapedidos'])
   }
 
   stripePaymentGateway() {
