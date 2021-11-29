@@ -1,3 +1,11 @@
+
+## [0.6.0-alpha.1] (2021-11-29)
+
+### Added
+
+- #F017 B017 Se finaliza el proceso de compra con pasarela de pago incluido a fata de retoques (algunas funciones)
+- #F016 B017 Se cierra el alta de usuarios y la modificación de cuentas usuario y administrador.
+
 ## [0.5.0-alpha.1] (2021-11-20)
 
 ### Added
