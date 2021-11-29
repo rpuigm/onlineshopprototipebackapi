@@ -109,14 +109,31 @@ export class CestaComponent implements OnInit {
   }
 
   eliminaElemnetoDeCesta(id: number) {
-    this.cesta.productoCantidad.splice(
-      this.cesta.productoCantidad.findIndex((x) => x.id === id),
-      1
-    );
+
+    if (this.cesta.productoCantidad.length==1){
+
+      this.cesta.productoCantidad = []
+
+    }else{
+      let nuevalistaProductoCantidad = new Array<ProductoCantidad>();
+      for (var index in this.cesta.productoCantidad) {
+        if(this.cesta.productoCantidad[index].idProducto != id){
+          console.log(id +'/'+ this.cesta.productoCantidad[index].id)
+          let productoPedidoEnLista = new ProductoCantidad();
+          productoPedidoEnLista.idProducto= this.cesta.productoCantidad[index].idProducto;
+          productoPedidoEnLista.cantidad= this.cesta.productoCantidad[index].cantidad;
+          nuevalistaProductoCantidad.push(productoPedidoEnLista)
+        }
+      }
+      this.cesta.productoCantidad=nuevalistaProductoCantidad
+    }
+
     console.log(this.cesta.productoCantidad.length)
+
     this.cestaService.incluirEnCesta(this.cesta).subscribe(
       respuesta => {this.cesta=respuesta
-      this.router.navigate(['cesta'])}
+      this.router.navigate(['/'])}
     );
+
   }
 }

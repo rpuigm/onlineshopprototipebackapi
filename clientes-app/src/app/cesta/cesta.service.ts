@@ -88,7 +88,7 @@ export class CestaService implements OnInit {
   }
 
   incluirEnCesta (cesta: Cesta): Observable<Cesta>{
-    console.log('llega' + cesta.productoCantidad[0].idProducto)
+    console.log('llega' + cesta.productoCantidad[0]?.idProducto)
     return this.httpClient
       .post<Cesta>(this.urlIncluye, cesta, {
         headers: this.productoService.agregarAuthorizationHeader(),
