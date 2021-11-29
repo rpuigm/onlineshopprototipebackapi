@@ -33,6 +33,7 @@ public class Pedido implements Serializable{
 	@OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="fk_idPedido_producto")
 	private List<ProductosPedido> listaProcutosPedido;
+	
     @OneToOne(cascade= CascadeType.ALL)
     @JoinColumn(name="fk_idPedido_direccion")
     private DireccionPedido direccionPedido;
@@ -61,6 +62,18 @@ public class Pedido implements Serializable{
 	}
 	public void setTotal(Double total) {
 		this.total = total;
+	}
+	public List<ProductosPedido> getListaProcutosPedido() {
+		return listaProcutosPedido;
+	}
+	public void setListaProcutosPedido(List<ProductosPedido> listaProcutosPedido) {
+		this.listaProcutosPedido = listaProcutosPedido;
+	}
+	public DireccionPedido getDireccionPedido() {
+		return direccionPedido;
+	}
+	public void setDireccionPedido(DireccionPedido direccionPedido) {
+		this.direccionPedido = direccionPedido;
 	}
 	
 	

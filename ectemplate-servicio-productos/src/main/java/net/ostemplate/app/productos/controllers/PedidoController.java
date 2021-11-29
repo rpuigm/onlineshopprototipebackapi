@@ -1,7 +1,6 @@
 package net.ostemplate.app.productos.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +24,8 @@ public class PedidoController {
 		
 	}
 	@GetMapping("/pedidos/recupera-pedido/{id}")
-	public Optional<Pedido> recuperaPedidoId(@PathVariable Long id) {
-		return pedidoServiceI.recuperaPedidoPorId(id);
+	public Pedido recuperaPedidoId(@PathVariable Long id) {
+		return pedidoServiceI.findById(id);
 		
 	}
 	

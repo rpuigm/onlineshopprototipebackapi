@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="productos-pedido")
+@Table(name="productos_pedidos")
 public class ProductosPedido implements Serializable{
 
 	/**
@@ -46,7 +46,6 @@ public class ProductosPedido implements Serializable{
 	public void setCantidad(String cantidad) {
 		this.cantidad = cantidad;
 	}
-	
 	
 	
 

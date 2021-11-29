@@ -16,7 +16,6 @@ export class DetalleproductoComponent implements OnInit {
   constructor(
     private productoService: ProductoService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
   ) {}
 
   ngOnInit(): void {

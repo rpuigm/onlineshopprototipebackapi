@@ -1,10 +1,13 @@
+import { ProductosPedido } from './../pedido/ProductosPedido';
 import { ProductoService } from './../producto/producto.service';
 import { PersonaServices } from './../persona/persona.service';
 import { CestaService } from './cesta.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Cesta } from './cesta.model';
 import { Producto } from '../producto/producto.model';
+import { Pedido } from '../pedido/pedido.model';
+import { PedidoService } from '../pedido/pedido.service';
 
 @Component({
   selector: 'app-cesta',
@@ -15,14 +18,17 @@ export class CestaComponent implements OnInit {
   cesta!: Cesta;
   producto!: Producto;
   productos!: Producto[];
+  pedido!: Pedido;
 
-  numero!: number;
+  total!: number;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private cestaService: CestaService,
     private personaService: PersonaServices,
-    private productoService: ProductoService
+    private productoService: ProductoService,
+    private pedidoService: PedidoService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -36,19 +42,21 @@ export class CestaComponent implements OnInit {
       .recuperarCesta(this.personaService.usuario.id)
       .subscribe((cesta) => {
         this.cesta = cesta;
+        this.total = 0;
         console.log('numero de productos' + cesta?.productoCantidad.length);
         this.productos = [];
         for (var index in this.cesta.productoCantidad) {
-          console.log('for'+ this.cesta.productoCantidad[index].idProducto);
-          let indice= this.cesta.productoCantidad[index].idProducto;
+          console.log('for' + this.cesta.productoCantidad[index].idProducto);
+          let indice = this.cesta.productoCantidad[index].idProducto;
           let item = new Producto();
           this.productoService.getProductoById(indice).subscribe((producto) => {
             item = producto;
-            this.productos.push(item)
-            console.log("itemnombre  "+item.nombre);
+            this.total =
+              this.total +
+              producto.precio * this.cesta.productoCantidad[index].cantidad;
+            this.productos.push(item);
+            console.log('itemnombre  ' + item.nombre);
           });
-
-
         }
 
         console.log('tamaño' + this.productos.length);
@@ -74,5 +82,28 @@ export class CestaComponent implements OnInit {
     return this.productos;
   }
 
+  tramitarPedido() {
+    this.pedido= new Pedido();
+    this.pedido.estado = "nuevo";
+    this.pedido.idUsuario = this.personaService.usuario.id;
+    this.pedido.total = this.total;
+    let lista = new Array<ProductosPedido>();
+    for (var index in this.cesta.productoCantidad) {
+      let productoPedido = new ProductosPedido();
+      productoPedido.nombre =
+        this.productos.find(
+          (x) => x.id === this.cesta.productoCantidad[index].id
+        )?.nombre || '';
+      productoPedido.cantidad = Number(
+        this.cesta.productoCantidad[index].cantidad
+      );
+      lista.push(productoPedido);
+    }
 
+    this.pedido.listaProcutosPedido = lista;
+    console.log(this.pedido.listaProcutosPedido.length);
+    this.pedidoService.setPedido(this.pedido).subscribe((respuesta) => {
+      this.router.navigate(['/direccion/' + respuesta.id]);
+    });
+  }
 }

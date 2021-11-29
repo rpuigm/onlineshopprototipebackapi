@@ -14,7 +14,7 @@
         type="text"
         class="form-control"
         placeholder="Nombre de la Vía"
-
+        (input) = "setVia($event)"
         name="via"
         id="via"
       />
@@ -25,44 +25,48 @@
         type="text"
         class="form-control"
         placeholder="numero"
+        (input) = "setNumero($event)"
         name="numero"
         id="numero"
-      />
-    </div>
+        />
+      </div>
 
-    <div class="col-md-4 mb-3">
-      <label>CP</label>
-      <input
+      <div class="col-md-4 mb-3">
+        <label>CP</label>
+        <input
         type="text"
         class="form-control"
         placeholder="CP"
-        name="cp"
-        id="cp"
-      />
-    </div>
+       (input) = "setCp($event)"
+       name="cp"
+       id="cp"
+       />
+      </div>
 
-    <div class="col-md-4 mb-3">
-      <label>Provincia</label>
-      <input
+      <div class="col-md-4 mb-3">
+        <label>Provincia</label>
+        <input
         type="text"
         class="form-control"
         placeholder="provincia"
+        (input) = "setProvincia($event)"
         name="provincia"
         id="provincia"
-      />
-    </div>
-    <div class="col-md-4 mb-3">
-      <label>Localidad</label>
-      <input
+        />
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Localidad</label>
+        <input
         type="text"
         class="form-control"
         placeholder="Localidad"
+        (input) = "setLocalidad($event)"
         name="localidad"
         id="localidad"
       />
     </div>
   </div>
-  <button  class="btn btn-primary" type="submit">
+  <button (click)="guardadPedidoConDireccion()"  class="btn btn-primary" type="submit">
     Pagar
   </button>
 </form>

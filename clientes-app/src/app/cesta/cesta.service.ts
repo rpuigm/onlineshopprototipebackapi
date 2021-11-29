@@ -21,7 +21,7 @@ export class CestaService implements OnInit {
   constructor(
     private httpClient: HttpClient,
     private personaServices: PersonaServices,
-    private productoService: ProductoService
+    private productoService: ProductoService,
   ) {}
 
   ngOnInit(): void {
@@ -101,5 +101,6 @@ export class CestaService implements OnInit {
         })
 
       );
+
   }
 }

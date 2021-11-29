@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="direccion-pedido")
+@Table(name="direccion_pedidos")
 public class DireccionPedido implements Serializable{
 
 	/**
@@ -32,12 +32,6 @@ public class DireccionPedido implements Serializable{
 	private Pedido pedido;
 	
 	
-	public Pedido getPedido() {
-		return pedido;
-	}
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
-	}
 	public Long getId() {
 		return id;
 	}
