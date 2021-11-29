@@ -28,14 +28,20 @@ public class CestaServiceImpl implements CestaServiceI {
 	
 	@Override
 	@Transactional
+	public List<Cesta> listaCestas(){
+		return (List<Cesta>) comprasRepository.findAll();
+	}
+	
+	@Override
+	@Transactional
 	public Cesta buscarCestaPorUsuarioId(Long idUsuario) {
-		return comprasRepository.findByidUsuarioAndActiva(idUsuario, true);
+		return comprasRepository.findByIdUsuarioAndActiva(idUsuario, true);
 	}
 
 	@Override
 	@Transactional
 	public Cesta incluirEnCesta(Long idUsuario, Long idProducto) {
-		Cesta cesta = comprasRepository.findByidUsuarioAndActiva(idUsuario, true);
+		Cesta cesta = comprasRepository.findByIdUsuarioAndActiva(idUsuario, true);
 		List<ProductoCantidad> listaProductoCantidad = cesta.getProductoCesta();
 		
 		if (listaProductoCantidad != null) {
@@ -61,7 +67,7 @@ public class CestaServiceImpl implements CestaServiceI {
 	@Override
 	@Transactional
 	public Cesta eliminarDeLaCesta (Long idUsuario, Long idProducto) {
-		Cesta cesta = comprasRepository.findByidUsuarioAndActiva(idUsuario, true);
+		Cesta cesta = comprasRepository.findByIdUsuarioAndActiva(idUsuario, true);
 		List<ProductoCantidad> listaProductoCantidad = cesta.getProductoCesta();
 		
 		if (listaProductoCantidad != null) {

@@ -1,5 +1,7 @@
 package net.ectemplate.app.compras.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +34,11 @@ public class CestaController {
 	public Cesta eliminaDeLaCesta(@RequestParam("idUsuario") Long idUsuario,
 			@RequestParam("idProducto") Long idProducto) {
 		return cestaServiceImpl.eliminarDeLaCesta(idUsuario, idProducto);
+	}
+	
+	@GetMapping("/listacestas")
+	public List<Cesta> listaCestas(){
+		return cestaServiceImpl.listaCestas();
 	}
 	
 }

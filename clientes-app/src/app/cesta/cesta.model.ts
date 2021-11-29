@@ -3,7 +3,6 @@ export class Cesta{
 
   id!: number;
   idUsuario!: number;
-  activa!: boolean;
   productoCantidad!: ProductoCantidad[];
 
 }

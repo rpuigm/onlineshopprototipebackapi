@@ -1,10 +1,31 @@
+<app-header></app-header>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
 <div class="container">
-  <div *ngFor="let productoCantidad from cesta.productoCantidad"
-  [productoCantidad]="productoCantidad" class="row">
-  <p>{{productoCantidad.idProducto}}</p>
-  <p>{{productoCantidad.cantidad}}</p>
+  <h1>Cesta</h1>
+  <p>numero {{  cesta.id  }}</p>
+  <div class="row" *ngFor="let e of getProductos()">
+    <div class="col-1">
+      <img src="../assets/images/christmas-tree.jpg" class="d-block w-100" />
+    </div>
+    <div class="col-8">
+      <p>{{ e.nombre }}</p>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-secondary btn-block" type="button">
+        Eliminar
+      </button>
+    </div>
   </div>
-
-
-
+  <div class="col-2">
+    <button (click)="tramitarPedido()" class="btn btn-secondary btn-block" type="button">
+      Tramitar pedido
+    </button>
+  </div>
 </div>

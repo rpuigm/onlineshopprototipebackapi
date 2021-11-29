@@ -1,6 +1,5 @@
 import { PersonaServices } from './../persona/persona.service';
 import { ProductoService } from './../producto/producto.service';
-import { Producto } from './../producto/producto.model';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import swal from 'sweetalert2'
@@ -34,8 +33,6 @@ export class HeaderComponent{
   irALogin(){
     this.router.navigate(['login']);
   }
-
-
 
 
   getUsuario(){

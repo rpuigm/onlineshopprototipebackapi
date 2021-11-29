@@ -6,6 +6,6 @@ import net.ectemplate.app.compras.entities.Cesta;
 
 public interface ComprasRepository extends CrudRepository<Cesta, Long> {
 	
-	Cesta findByidUsuarioAndActiva(Long idUsuario, boolean activa);
+	Cesta findByIdUsuarioAndActiva(Long idUsuario, boolean activa);
 
 }

@@ -1,5 +1,7 @@
 package net.ectemplate.app.compras.services;
 
+import java.util.List;
+
 import net.ectemplate.app.compras.entities.Cesta;
 
 public interface CestaServiceI {
@@ -11,5 +13,7 @@ public interface CestaServiceI {
 	Cesta buscarCestaPorUsuarioId(Long idUsuario);
 
 	Cesta eliminarDeLaCesta(Long idUsuario, Long idProducto);
+
+	List<Cesta> listaCestas();
 
 }
