@@ -3,6 +3,7 @@ package net.ostemplate.app.productos.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,6 +33,11 @@ public class PedidoController {
 	@PostMapping("/pedidos/actualiza-pedido")
 	public Pedido actualizaPedido (@RequestBody Pedido pedido) {
 		return pedidoServiceI.guardaPedido(pedido);
+	}
+	
+	@DeleteMapping("/pedidos/borra-pedido/{id}")
+	public void actualizaPedido (@PathVariable Long id) {
+		pedidoServiceI.borraPedido(id);
 	}
 
 }

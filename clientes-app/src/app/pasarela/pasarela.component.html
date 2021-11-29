@@ -38,5 +38,8 @@
   <div class="col-md-4 mb-3">
     <button (click)='checkout( [pedido?.total] )' class="btn btn-primary btn-block">Confirmar pedido por: {{ pedido?.total }}€</button>
   </div>
+  <div class="col-md-4 mb-3">
+    <button (click)='eliminaPedido()' class="btn btn-primary btn-block">Cancelar Pedido</button>
+  </div>
 
 </div>

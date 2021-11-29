@@ -20,6 +20,8 @@ export class PedidoService {
     'http://localhost:8090/api/productos/pedidos/recupera-pedido';
   private urlRecuperaPedidoIdUsuario: string =
     'http://localhost:8090/api/productos/pedidos/recupera-pedidos-usuario';
+  private urlEliminaPedido: string =
+    'http://localhost:8090/api/productos/pedidos/borra-pedido';
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -68,5 +70,17 @@ export class PedidoService {
     );
   }
 
+  eliminarPedido(id: number){
+    return this.http.delete(`${this.urlEliminaPedido}/${id}`, {
+      headers: this.productoService.agregarAuthorizationHeader()
+    }).pipe(
+      catchError((e) => {
+        console.error(e.error.mensaje);
+        swal.fire('Error al obtener los pedidos', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    );
+
+  }
 
 }

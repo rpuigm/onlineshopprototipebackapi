@@ -1,3 +1,4 @@
+import { ProductoCantidad } from './productoCantidad.model';
 import { ProductosPedido } from './../pedido/ProductosPedido';
 import { ProductoService } from './../producto/producto.service';
 import { PersonaServices } from './../persona/persona.service';
@@ -83,8 +84,8 @@ export class CestaComponent implements OnInit {
   }
 
   tramitarPedido() {
-    this.pedido= new Pedido();
-    this.pedido.estado = "nuevo";
+    this.pedido = new Pedido();
+    this.pedido.estado = 'nuevo';
     this.pedido.idUsuario = this.personaService.usuario.id;
     this.pedido.total = this.total;
     let lista = new Array<ProductosPedido>();
@@ -105,5 +106,17 @@ export class CestaComponent implements OnInit {
     this.pedidoService.setPedido(this.pedido).subscribe((respuesta) => {
       this.router.navigate(['/direccion/' + respuesta.id]);
     });
+  }
+
+  eliminaElemnetoDeCesta(id: number) {
+    this.cesta.productoCantidad.splice(
+      this.cesta.productoCantidad.findIndex((x) => x.id === id),
+      1
+    );
+    console.log(this.cesta.productoCantidad.length)
+    this.cestaService.incluirEnCesta(this.cesta).subscribe(
+      respuesta => {this.cesta=respuesta
+      this.router.navigate(['cesta'])}
+    );
   }
 }

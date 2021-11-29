@@ -1,5 +1,5 @@
 import { PedidoService } from './../pedido/pedido.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DireccionPedido } from '../direccion-pedido/direccion-pedido.model';
 import { Pedido } from '../pedido/pedido.model';
@@ -18,7 +18,8 @@ export class PasarelaComponent implements OnInit {
   strikeCheckout:any = null;
 
   constructor(private activatedRoute: ActivatedRoute,
-    private pedidoService: PedidoService) { }
+    private pedidoService: PedidoService,
+    private router: Router) { }
 
   ngOnInit() {
     this.stripePaymentGateway();
@@ -37,7 +38,7 @@ export class PasarelaComponent implements OnInit {
 
   checkout(amount: number) {
     const strikeCheckout = (<any>window).StripeCheckout.configure({
-      key: 'pk_test_51K19jpBS2gG7ym34MIHV7eVZ26NCetefYjlAYEZu2Gx1IA555fEVfoivTlftfypfaGidYLTPq3ScFsVMcfXJ6Yfo5gv00sfk75sN3',
+      key: 'pk_test_51K19jpBS2gG7ym34MIHV7eVZ26NCetefYjlAYEZu2Gx1IAfEVfoivTlftfypfaGidYLTPq3ScFsVMcfXJ6Yfo5gv00sfk75sN3',
       locale: 'auto',
       token: function (stripeToken: any) {
         console.log(stripeToken)
@@ -62,7 +63,7 @@ export class PasarelaComponent implements OnInit {
 
       scr.onload = () => {
         this.strikeCheckout = (<any>window).StripeCheckout.configure({
-          key: 'pk_test_51K19jpBS2gG7ym34MIHV7eVZ26NCetefYjlAYEZu2Gx1IA555fEVfoivTlftfypfaGidYLTPq3ScFsVMcfXJ6Yfo5gv00sfk75sN3',
+          key: 'pk_test_51K19jpBS2gG7ym34MIHV7eVZ26NCetefYjlAYEZu2Gx1IAfEVfoivTlftfypfaGidYLTPq3ScFsVMcfXJ6Yfo5gv00sfk75sN3',
           locale: 'auto',
           token: function (token: any) {
             console.log(token)
@@ -79,5 +80,12 @@ export class PasarelaComponent implements OnInit {
     this.pedido.estado='Pagado'
   }
 
+  eliminaPedido(){
+    this.pedidoService.eliminarPedido(this.pedido.id).subscribe(
+      () => {
+        this.router.navigate(['/cesta'])
+      }
+    )
+  }
 
 }

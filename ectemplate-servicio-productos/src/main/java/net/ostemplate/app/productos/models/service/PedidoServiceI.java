@@ -11,6 +11,8 @@ public interface PedidoServiceI {
 	Pedido guardaPedido(Pedido pedido);
 
 	Pedido findById(Long id);
+
+	void borraPedido(Long id);
 	
 
 }
