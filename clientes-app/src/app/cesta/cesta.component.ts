@@ -23,6 +23,8 @@ export class CestaComponent implements OnInit {
 
   total!: number;
 
+  imagenEscaparate: string;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private cestaService: CestaService,
@@ -55,6 +57,9 @@ export class CestaComponent implements OnInit {
             this.total =
               this.total +
               producto.precio * this.cesta.productoCantidad[index].cantidad;
+            producto.productoCaracteristicas.imagenesProducto[0].imagen =
+              'http://localhost:8090/api/productos/producto/imagen/' +
+              item.productoCaracteristicas?.imagenesProducto[0]?.imagen;
             this.productos.push(item);
             console.log('itemnombre  ' + item.nombre);
           });
@@ -63,6 +68,8 @@ export class CestaComponent implements OnInit {
         console.log('tamaño' + this.productos.length);
       });
   }
+
+
 
   recuperaProducto(idProducto: number): Producto {
     this.producto = new Producto();
@@ -109,31 +116,29 @@ export class CestaComponent implements OnInit {
   }
 
   eliminaElemnetoDeCesta(id: number) {
-
-    if (this.cesta.productoCantidad.length==1){
-
-      this.cesta.productoCantidad = []
-
-    }else{
+    if (this.cesta.productoCantidad.length == 1) {
+      this.cesta.productoCantidad = [];
+    } else {
       let nuevalistaProductoCantidad = new Array<ProductoCantidad>();
       for (var index in this.cesta.productoCantidad) {
-        if(this.cesta.productoCantidad[index].idProducto != id){
-          console.log(id +'/'+ this.cesta.productoCantidad[index].id)
+        if (this.cesta.productoCantidad[index].idProducto != id) {
+          console.log(id + '/' + this.cesta.productoCantidad[index].id);
           let productoPedidoEnLista = new ProductoCantidad();
-          productoPedidoEnLista.idProducto= this.cesta.productoCantidad[index].idProducto;
-          productoPedidoEnLista.cantidad= this.cesta.productoCantidad[index].cantidad;
-          nuevalistaProductoCantidad.push(productoPedidoEnLista)
+          productoPedidoEnLista.idProducto =
+            this.cesta.productoCantidad[index].idProducto;
+          productoPedidoEnLista.cantidad =
+            this.cesta.productoCantidad[index].cantidad;
+          nuevalistaProductoCantidad.push(productoPedidoEnLista);
         }
       }
-      this.cesta.productoCantidad=nuevalistaProductoCantidad
+      this.cesta.productoCantidad = nuevalistaProductoCantidad;
     }
 
-    console.log(this.cesta.productoCantidad.length)
+    console.log(this.cesta.productoCantidad.length);
 
-    this.cestaService.incluirEnCesta(this.cesta).subscribe(
-      respuesta => {this.cesta=respuesta
-      this.router.navigate(['/'])}
-    );
-
+    this.cestaService.incluirEnCesta(this.cesta).subscribe((respuesta) => {
+      this.cesta = respuesta;
+      this.router.navigate(['/']);
+    });
   }
 }

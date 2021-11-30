@@ -17,4 +17,7 @@ public interface CestaServiceI {
 
 	Cesta actualizaCesta(Cesta cesta);
 
+
+	void eliminaCesta(Cesta cesta);
+
 }

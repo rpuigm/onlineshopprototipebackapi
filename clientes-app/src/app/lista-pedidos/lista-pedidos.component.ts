@@ -19,11 +19,11 @@ export class ListaPedidosComponent implements OnInit {
     private personaService: PersonaServices) { }
 
   ngOnInit(): void {
-
+    this.pedidos= new Array<Pedido>();
     this.activatedRoute.paramMap.subscribe((params) => {
         this.pedidoService.getPedidosByIdusuario(this.personaService.usuario.id).subscribe((respuesta) => {
           this.pedidos = respuesta;
-          console.log(respuesta.length)
+          console.log(this.pedidos.length)
         });
 
     });

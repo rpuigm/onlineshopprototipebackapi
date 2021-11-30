@@ -7,24 +7,63 @@
 <p></p>
 <p></p>
 <p></p>
+<h1>Cesta</h1>
 <div class="container">
-  <h1>Cesta</h1>
-  <p>numero {{  cesta.id  }}</p>
-  <div class="row" *ngFor="let e of getProductos()">
-    <div class="col-1">
-      <img src="../assets/images/christmas-tree.jpg" class="d-block w-100" />
-    </div>
-    <div class="col-8">
-      <p>{{ e.nombre }}</p>
-    </div>
-    <div class="col-2">
-      <button (click)='eliminaElemnetoDeCesta( [e.id] )' class="btn btn-secondary btn-block" type="button">
-        Eliminar
-      </button>
+  <div class="row">
+    <div class="card col-12" *ngFor="let e of getProductos()">
+      {{getProductos().lenght}}
+      <div class="row">
+        <div class="col-1">
+          <img
+            src="{{ e?.productoCaracteristicas?.imagenesProducto[0]?.imagen }}"
+            class="d-block w-100"
+            alt="Imagen del Producto"
+          />
+        </div>
+        <div class="col-4">
+          <H3>{{ e.nombre }}</H3>
+          <p>{{ e.productoCaracteristicas.descripcion }}</p>
+        </div>
+        <div class="col-4">
+          <H5>Especificaciones</H5>
+          <div *ngIf="e?.productoCaracteristicas">
+              <table class="table table-responsive">
+                <thead>
+                  <tr>
+                    <th class="col-2">Espicificación</th>
+                    <th class="col-10">Descripción</th>
+                  </tr>
+                </thead>
+                <tbody
+                  *ngFor="
+                    let especificacion of e?.productoCaracteristicas
+                      .productoEspecificaciones">
+                  <tr>
+                    <td>{{ especificacion.claveEspecificacion }}</td>
+                    <td>{{ especificacion.descripcionEspecificacion }}</td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+        <div class="col-2">
+          <button
+            (click)="eliminaElemnetoDeCesta([e.id])"
+            class="btn btn-secondary btn-block"
+            type="button"
+          >
+            Eliminar
+          </button>
+        </div>
+      </div>
     </div>
   </div>
   <div class="col-2">
-    <button (click)="tramitarPedido()" class="btn btn-secondary btn-block" type="button">
+    <button
+      (click)="tramitarPedido()"
+      class="btn btn-secondary btn-block"
+      type="button"
+    >
       Tramitar pedido
     </button>
   </div>
