@@ -38,6 +38,7 @@ public class Producto implements Serializable {
     @JoinColumn(name="fk_idProductoCaracteristicas")
 	private ProductoCaracteristicas productoCaracteristicas;
     
+    
     @PrePersist
     public void prePersist() {
     	createAt= new Date();
