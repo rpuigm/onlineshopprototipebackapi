@@ -1,3 +1,8 @@
+## [0.7.0-alpha.1] (2021-12-02)
+
+### Fixed
+
+- #Se han arreglado los esquemas en base de datos.
 
 ## [0.6.0-alpha.1] (2021-11-29)
 
