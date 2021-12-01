@@ -40,6 +40,12 @@ public class CestaServiceImpl implements CestaServiceI {
 	public Cesta actualizaCesta (Cesta cesta) {
 		return comprasRepository.save(cesta);
 	}
+	
+	@Override
+	@Transactional
+	public void eliminaCesta (Cesta cesta) {
+		comprasRepository.delete(cesta);
+	}
 
 
 	@Override

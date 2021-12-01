@@ -42,20 +42,16 @@ public class PersonasServicesImpl implements PersonasServicesI {
 	@Override
 	@Transactional
 	public Usuario altaCliente(Usuario usuario) {
-		Usuario usuarioAnt = personasRepository.findByUsername(usuario.getUsername());
-		if (null!=usuarioAnt) {
-			actualizaUsuario(usuario);
-		} else {
 
 			Role role = new Role();
-			role.setId(2L);
+			role.setId(1L);
 			role.setNombre("ROLE_USER");
 			List<Role> listaRoles = new ArrayList<Role>();
 			listaRoles.add(role);
 			usuario.setRoles(listaRoles);
 			usuario.setPassword(bCryp.encode(usuario.getPassword()));
 			usuario = personasRepository.save(usuario);
-		}
+//		}
 		return usuario;
 
 	}

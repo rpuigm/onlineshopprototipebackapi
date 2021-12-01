@@ -2,13 +2,11 @@ package net.ostemplate.app.productos.models.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,21 +21,6 @@ public class ProductoCantidad implements Serializable{
 	private Long idProducto;
 	private Long cantidad;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	private Cesta cesta;
-	
-	
-	
-	public Cesta getCesta() {
-		return cesta;
-	}
-
-
-	public void setCesta(Cesta cesta) {
-		this.cesta = cesta;
-	}
-
-
 	public Long getId() {
 		return id;
 	}

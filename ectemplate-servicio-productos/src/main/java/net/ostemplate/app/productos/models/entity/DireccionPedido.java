@@ -2,12 +2,10 @@ package net.ostemplate.app.productos.models.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -28,8 +26,6 @@ public class DireccionPedido implements Serializable{
 	private String pronvicia;
 	private String localidad;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private Pedido pedido;
 	
 	
 	public Long getId() {

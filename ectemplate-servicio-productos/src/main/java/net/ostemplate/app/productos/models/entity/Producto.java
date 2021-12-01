@@ -2,14 +2,18 @@ package net.ostemplate.app.productos.models.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
@@ -37,6 +41,14 @@ public class Producto implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="fk_idProductoCaracteristicas")
 	private ProductoCaracteristicas productoCaracteristicas;
+    
+    @OneToMany
+    @JoinColumn(
+    		name="idProducto",
+    		foreignKey = @ForeignKey(name="id_producto", value=ConstraintMode.CONSTRAINT))
+    private List<ProductoCantidad> productoCantidad;
+    
+    
     
     @PrePersist
     public void prePersist() {

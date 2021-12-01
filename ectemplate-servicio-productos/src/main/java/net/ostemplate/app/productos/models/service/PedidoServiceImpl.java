@@ -34,6 +34,11 @@ public class PedidoServiceImpl implements PedidoServiceI {
 		return pedidoRepository.save(pedido);
 	}
 	
+	@Override
+	@Transactional 
+	public void borraPedido (Long id){
+		pedidoRepository.deleteById(id);
+	}
 	
 
 }

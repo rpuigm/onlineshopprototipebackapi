@@ -1,3 +1,4 @@
+import { ProductoCantidad } from './productoCantidad.model';
 import { ProductosPedido } from './../pedido/ProductosPedido';
 import { ProductoService } from './../producto/producto.service';
 import { PersonaServices } from './../persona/persona.service';
@@ -21,6 +22,8 @@ export class CestaComponent implements OnInit {
   pedido!: Pedido;
 
   total!: number;
+
+  imagenEscaparate: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -54,6 +57,9 @@ export class CestaComponent implements OnInit {
             this.total =
               this.total +
               producto.precio * this.cesta.productoCantidad[index].cantidad;
+            producto.productoCaracteristicas.imagenesProducto[0].imagen =
+              'http://localhost:8090/api/productos/producto/imagen/' +
+              item.productoCaracteristicas?.imagenesProducto[0]?.imagen;
             this.productos.push(item);
             console.log('itemnombre  ' + item.nombre);
           });
@@ -62,6 +68,8 @@ export class CestaComponent implements OnInit {
         console.log('tamaño' + this.productos.length);
       });
   }
+
+
 
   recuperaProducto(idProducto: number): Producto {
     this.producto = new Producto();
@@ -83,8 +91,8 @@ export class CestaComponent implements OnInit {
   }
 
   tramitarPedido() {
-    this.pedido= new Pedido();
-    this.pedido.estado = "nuevo";
+    this.pedido = new Pedido();
+    this.pedido.estado = 'nuevo';
     this.pedido.idUsuario = this.personaService.usuario.id;
     this.pedido.total = this.total;
     let lista = new Array<ProductosPedido>();
@@ -92,7 +100,7 @@ export class CestaComponent implements OnInit {
       let productoPedido = new ProductosPedido();
       productoPedido.nombre =
         this.productos.find(
-          (x) => x.id === this.cesta.productoCantidad[index].id
+          (x) => x.id === this.cesta.productoCantidad[index].idProducto
         )?.nombre || '';
       productoPedido.cantidad = Number(
         this.cesta.productoCantidad[index].cantidad
@@ -104,6 +112,33 @@ export class CestaComponent implements OnInit {
     console.log(this.pedido.listaProcutosPedido.length);
     this.pedidoService.setPedido(this.pedido).subscribe((respuesta) => {
       this.router.navigate(['/direccion/' + respuesta.id]);
+    });
+  }
+
+  eliminaElemnetoDeCesta(id: number) {
+    if (this.cesta.productoCantidad.length == 1) {
+      this.cesta.productoCantidad = [];
+    } else {
+      let nuevalistaProductoCantidad = new Array<ProductoCantidad>();
+      for (var index in this.cesta.productoCantidad) {
+        if (this.cesta.productoCantidad[index].idProducto != id) {
+          console.log(id + '/' + this.cesta.productoCantidad[index].id);
+          let productoPedidoEnLista = new ProductoCantidad();
+          productoPedidoEnLista.idProducto =
+            this.cesta.productoCantidad[index].idProducto;
+          productoPedidoEnLista.cantidad =
+            this.cesta.productoCantidad[index].cantidad;
+          nuevalistaProductoCantidad.push(productoPedidoEnLista);
+        }
+      }
+      this.cesta.productoCantidad = nuevalistaProductoCantidad;
+    }
+
+    console.log(this.cesta.productoCantidad.length);
+
+    this.cestaService.incluirEnCesta(this.cesta).subscribe((respuesta) => {
+      this.cesta = respuesta;
+      this.router.navigate(['/']);
     });
   }
 }

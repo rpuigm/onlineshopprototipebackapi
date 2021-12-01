@@ -1,42 +1,51 @@
+<app-header></app-header>
 <div class="container">
-
-  <div class="col-6">
-    <div class="row">
-      <div *ngFor="
-      let pedido of pedidos">>
-        <H2>PEDIDO</H2>
-        <H3>Dirección:</H3>
-        <p>{{ pedido?.direccionPedido.via }}</p>
-        <p>{{ pedido?.direccionPedido.numero }}</p>
-        <p>{{ pedido?.direccionPedido.cp }}</p>
-        <p>{{ pedido?.direccionPedido.localidad }}</p>
-        <p>{{ pedido?.direccionPedido.pronvicia }}</p>
-        <H5>Articulos</H5>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <div class="col-12">
+    <div class="row card" *ngFor="let pedido of pedidos">
+      <H4>PEDIDO: {{ pedido.id }}</H4>
+      <div class="col-6">
+        <H5>Dirección:</H5>
+        <p>
+          {{ pedido?.direccionPedido?.via }},
+          {{ pedido?.direccionPedido?.numero }},
+          {{ pedido?.direccionPedido?.cp }},
+          {{ pedido?.direccionPedido?.localidad }},
+          {{ pedido?.direccionPedido?.pronvicia }}
+        </p>
+      </div>
+      <div class="col-6">
+        <H5>Articulos: </H5>
         <div *ngIf="pedido?.listaProcutosPedido">
-            <table class="table table-responsive">
-              <thead>
-                <tr>
-                  <th class="col-2">Nombre</th>
-                  <th class="col-10">Cantidad</th>
-                </tr>
-              </thead>
-              <tbody
-                *ngFor="
-                  let detalle of pedido?.listaProcutosPedido">
-                <tr>
-                  <td>{{ detalle.nombre }}</td>
-                  <td>{{ detalle.cantidad }}</td>
-                </tr>
-              </tbody>
-            </table>
+          <table class="table table-responsive">
+            <thead>
+              <tr>
+                <th class="col-2">Nombre</th>
+                <th class="col-10">Cantidad</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let detalle of pedido?.listaProcutosPedido">
+              <tr>
+                <td>{{ detalle.nombre }}</td>
+                <td>{{ detalle.cantidad }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <H4>Estado:</H4>
-        <p>{{ pedido?.estado }}</p>
-        <H4>Importe:</H4>
-        <p>{{ pedido?.total }}</p>
+      </div>
+      <div class="col-6">
+      <H5>Estado:</H5>
+      <p>{{ pedido?.estado }}</p>
+      </div>
+      <div class="col-6">
+      <H5>Importe:</H5>
+      <p>{{ pedido?.total }}</p>
       </div>
     </div>
   </div>
-
-
 </div>

@@ -17,6 +17,8 @@ export class CestaService implements OnInit {
     'http://localhost:8090/api/productos/cesta/recupera-cesta';
   private urlIncluye: string =
     'http://localhost:8090/api/productos/cesta/actualiza-cesta';
+  private urlElimina: string =
+    'http://localhost:8090/api/productos/cesta/elimina-cesta';
 
   constructor(
     private httpClient: HttpClient,
@@ -88,7 +90,7 @@ export class CestaService implements OnInit {
   }
 
   incluirEnCesta (cesta: Cesta): Observable<Cesta>{
-    console.log('llega' + cesta.productoCantidad[0].idProducto)
+    console.log('llega' + cesta.productoCantidad[0]?.idProducto)
     return this.httpClient
       .post<Cesta>(this.urlIncluye, cesta, {
         headers: this.productoService.agregarAuthorizationHeader(),
@@ -102,5 +104,19 @@ export class CestaService implements OnInit {
 
       );
 
+  }
+
+  eliminarCesta(cesta: Cesta) {
+    this.httpClient
+      .delete<Cesta>(this.urlElimina, {
+        headers: this.productoService.agregarAuthorizationHeader(),
+      })
+      .pipe(
+        catchError((e) => {
+          console.error(e.error.mensaje);
+          swal.fire('No hay elementos en la cesta', e.error.mensaje, 'info');
+          return throwError(e);
+        })
+      );
   }
 }
