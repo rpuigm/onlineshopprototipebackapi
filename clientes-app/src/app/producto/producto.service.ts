@@ -24,6 +24,8 @@ export class ProductoService {
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
+  private filtro: string;
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -122,5 +124,10 @@ export class ProductoService {
     }
 
     return false;
+  }
+
+  setFiltro(filtro: string){
+
+    this.filtro = filtro
   }
 }
