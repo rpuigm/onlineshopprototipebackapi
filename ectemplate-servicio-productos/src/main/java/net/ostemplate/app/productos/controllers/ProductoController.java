@@ -63,7 +63,7 @@ public class ProductoController {
 	}
 	
 	@DeleteMapping("/producto/borrar/{id}")
-	public void borrarProducto (@RequestBody Long id) {
+	public void borrarProducto (@PathVariable Long id) {
 		productoService.borrarProducto(id);
 	}
 	

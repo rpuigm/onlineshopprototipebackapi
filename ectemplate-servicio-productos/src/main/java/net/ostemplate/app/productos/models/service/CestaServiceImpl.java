@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import net.ostemplate.app.productos.models.dao.ComprasRepository;
+import net.ostemplate.app.productos.models.dao.ProductoCantidadRepository;
 import net.ostemplate.app.productos.models.entity.Cesta;
 import net.ostemplate.app.productos.models.entity.ProductoCantidad;
 
@@ -16,6 +17,9 @@ public class CestaServiceImpl implements CestaServiceI {
 
 	@Autowired
 	private ComprasRepository comprasRepository;
+	
+	@Autowired
+	private ProductoCantidadRepository productoCantidadRepository;
 
 	@Override
 	@Transactional
@@ -65,6 +69,12 @@ public class CestaServiceImpl implements CestaServiceI {
 		cesta.setProductoCesta(listaProductoCantidad);
 		return guardaCesta(cesta);
 
+	}
+	@Override
+	@Transactional
+	public void eliminarUnProductoDeLasCestas(Long idProducto) {
+		productoCantidadRepository.deleteAllByIdProducto(idProducto);
+		
 	}
 
 	private ProductoCantidad incrementa(ProductoCantidad productoCantidad) {

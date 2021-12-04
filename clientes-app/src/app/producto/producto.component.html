@@ -4,7 +4,8 @@
         <img
           (click)="irADetalleProducto()"
           src="{{ imagenEscaparate }}"
-          class="d-block w-100"
+          class="d-block w-100  img-fluid img-thumbnail"
+
         />
       </div>
 
@@ -33,7 +34,7 @@
         <div class="buy mt-3" *ngIf="tienePermisos('ROLE_USER')">
           <button
             (click)="agregarEnCesta()"
-            class="btn btn-primary btn-block"
+            class="btn btn-secondary btn-block"
             type="button"
           >
             Añadir a la Cesta

@@ -17,7 +17,8 @@ export class DetalleproductoComponent implements OnInit {
   constructor(
     private productoService: ProductoService,
     private activatedRoute: ActivatedRoute,
-    private personaService: PersonaServices
+    private personaService: PersonaServices,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -45,5 +46,11 @@ export class DetalleproductoComponent implements OnInit {
 
   tienePermisos(role: string): boolean {
     return this.personaService.hasRole(role);
+  }
+
+  EliminarProducto(){
+    return this.productoService.eliminarProducto(this.producto.id).subscribe(
+      (x) =>{this.router.navigate(['productosgrid'])}
+    );
   }
 }

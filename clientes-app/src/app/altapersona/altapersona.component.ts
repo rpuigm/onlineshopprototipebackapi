@@ -17,8 +17,6 @@ export class AltapersonaComponent implements OnInit {
   constructor(
     private altaPersonaService: AltaPersonaService,
     private router: Router,
-    private personaService: PersonaServices,
-    private empleadoService: EmpleadoService
   ) {}
 
   ngOnInit(): void {

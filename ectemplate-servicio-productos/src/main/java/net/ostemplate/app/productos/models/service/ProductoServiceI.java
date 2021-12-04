@@ -51,6 +51,8 @@ public interface ProductoServiceI {
 	 * @return producto
 	 */
 	public Producto modificarProducto(Producto producto);
+
+	void borrarUnProducto(Producto producto);
 	
 	
 }

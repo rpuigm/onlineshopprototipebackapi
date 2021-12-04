@@ -20,4 +20,7 @@ public interface CestaServiceI {
 
 	void eliminaCesta(Cesta cesta);
 
+
+	void eliminarUnProductoDeLasCestas(Long idProducto);
+
 }

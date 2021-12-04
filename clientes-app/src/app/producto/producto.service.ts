@@ -21,6 +21,7 @@ export class ProductoService {
   private urlProductoNuevo: string =
     'http://localhost:8090/api/productos/producto/nuevo';
   private urlEndPoint: string = 'http://localhost:8090/api/productos/producto';
+  private urlEliminarProducto: string = 'http://localhost:8090/api/productos/producto/borrar';
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -129,5 +130,21 @@ export class ProductoService {
   setFiltro(filtro: string){
 
     this.filtro = filtro
+  }
+
+  eliminarProducto(id: number): Observable<Producto>{
+
+     return this.http
+      .delete<Producto>(`${this.urlEliminarProducto}/${id}`, {
+        headers: this.agregarAuthorizationHeader()
+      })
+      .pipe(
+        catchError((e) => {
+          console.error(e.error.mensaje);
+          swal.fire('No se pudo borra el producto', e.error.mensaje, 'error');
+          return throwError(e);
+        })
+      );
+
   }
 }
