@@ -15,6 +15,8 @@ public interface PedidoServiceI {
 	void borraPedido(Long id);
 
 	List<Pedido> recuperaPedidosPorEstado(String estado);
+
+	List<Pedido> recuperaPedidos();
 	
 
 }

@@ -50,4 +50,7 @@ export class HeaderComponent{
   }
 
 
+  setNombreTienda(event: Event){
+    this.title;
+  }
 }

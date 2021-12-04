@@ -45,5 +45,11 @@ public class PedidoController {
 		return pedidoServiceI.recuperaPedidosPorEstado(estado);
 		
 	}
+	
+	@GetMapping("/pedidos/lista")
+	public List<Pedido> recuperaPedidos() {
+		return pedidoServiceI.recuperaPedidos();
+		
+	}
 
 }
