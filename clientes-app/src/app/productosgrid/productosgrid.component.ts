@@ -19,14 +19,20 @@ export class ProductosgridComponent implements OnInit {
     this.productoService.getProductos().subscribe(
       productos => this.productos= productos
     )
-
+    if(this.productoService.getFiltro!=null){
+      this.buscarProductosPorNombre()
+    }
   }
 
   agregarProducto(producto: Producto){
     this.productos.push(producto);
   }
 
-  buscarProductosPorNombre(event: Event): void {
+  buscarProductosPorNombre(): void {
+    this.productoService.getFiltro;
+    this.productos= this.productos.filter(x=>x.nombre === '%{{this.productoService.getFiltro}}%')
   }
+
+
 
 }

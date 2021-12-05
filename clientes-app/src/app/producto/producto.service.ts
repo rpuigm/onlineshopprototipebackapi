@@ -21,11 +21,14 @@ export class ProductoService {
   private urlProductoNuevo: string =
     'http://localhost:8090/api/productos/producto/nuevo';
   private urlEndPoint: string = 'http://localhost:8090/api/productos/producto';
-  private urlEliminarProducto: string = 'http://localhost:8090/api/productos/producto/borrar';
+  private urlEliminarProducto: string =
+    'http://localhost:8090/api/productos/producto/borrar';
+  private urlEliminarImagen: string =
+    'http://localhost:8090/api/productos/producto/borrar-imagen';
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-  private filtro: string;
+  busqueda: string;
 
   constructor(
     private http: HttpClient,
@@ -110,6 +113,7 @@ export class ProductoService {
       );
   }
 
+
   private isNoAutorizado(e: { status: number }): boolean {
     if (e.status == 401) {
       if (this.personaServices.isAuthenticated()) {
@@ -120,23 +124,25 @@ export class ProductoService {
     }
 
     if (e.status == 403) {
-      swal.fire('Error', 'Acceso Denegaod', 'warning')
+      swal.fire('Error', 'Acceso Denegaod', 'warning');
       return true;
     }
 
     return false;
   }
 
-  setFiltro(filtro: string){
-
-    this.filtro = filtro
+  setFiltro(busqueda: string) {
+    this.busqueda = busqueda;
   }
 
-  eliminarProducto(id: number): Observable<Producto>{
+  getFiltro(busqueda: string) {
+    return this.busqueda;
+  }
 
-     return this.http
+  eliminarProducto(id: number): Observable<Producto> {
+    return this.http
       .delete<Producto>(`${this.urlEliminarProducto}/${id}`, {
-        headers: this.agregarAuthorizationHeader()
+        headers: this.agregarAuthorizationHeader(),
       })
       .pipe(
         catchError((e) => {
@@ -145,6 +151,19 @@ export class ProductoService {
           return throwError(e);
         })
       );
-
+  }
+  eliminarImagen(imagen: string): Observable<Producto> {
+    console.log(this.urlEliminarImagen+'/'+imagen)
+    return this.http
+      .delete<Producto>(`${this.urlEliminarImagen}/${imagen}`, {
+        headers: this.agregarAuthorizationHeader(),
+      })
+      .pipe(
+        catchError((e) => {
+          console.error(e.error.mensaje);
+          swal.fire('No se pudo borra el producto', e.error.mensaje, 'error');
+          return throwError(e);
+        })
+      );
   }
 }

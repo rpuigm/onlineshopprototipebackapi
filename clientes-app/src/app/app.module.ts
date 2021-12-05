@@ -30,6 +30,7 @@ import { DireccionPedidoComponent } from './direccion-pedido/direccion-pedido.co
 import { PasarelaComponent } from './pasarela/pasarela.component';
 import { ListaPedidosComponent } from './lista-pedidos/lista-pedidos.component';
 import { DespachoComponent } from './despacho/despacho.component';
+import { ConfiguracionComponent } from './configuracion/configuracion.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'/productosgrid', pathMatch: 'full'},
@@ -77,7 +78,8 @@ const routes: Routes = [
     DireccionPedidoComponent,
     PasarelaComponent,
     ListaPedidosComponent,
-    DespachoComponent
+    DespachoComponent,
+    ConfiguracionComponent
 
   ],
   imports: [

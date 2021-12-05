@@ -55,5 +55,12 @@ export class ProductoItemComponent implements OnInit {
   }
 
 
+  eliminaImagen(imagen: string){
+    this.productoService.eliminarImagen(imagen).subscribe(producto => {
+      this.producto = producto;
+    });
+  }
+
+
 
 }

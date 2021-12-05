@@ -1,6 +1,6 @@
 import { PersonaServices } from './../persona/persona.service';
 import { ProductoService } from './../producto/producto.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import swal from 'sweetalert2'
 
@@ -10,9 +10,14 @@ import swal from 'sweetalert2'
 })
 
 
-export class HeaderComponent{
+export class HeaderComponent implements OnChanges{
 
   constructor(private personaServices: PersonaServices, private productoService: ProductoService, private router: Router){}
+
+
+  ngOnChanges(changes: SimpleChanges): void {
+    throw new Error('Method not implemented.');
+  }
 
 
   logout(): void {
@@ -24,11 +29,9 @@ export class HeaderComponent{
 
   title: string = 'CHRISTMASZON'
 
-  busqueda!: string;
+  busqueda: string;
 
-  bontonBuscar(): void{
 
-  }
 
   irALogin(){
     this.router.navigate(['login']);
@@ -53,4 +56,9 @@ export class HeaderComponent{
   setNombreTienda(event: Event){
     this.title;
   }
+
+  buscar(){
+    this.productoService.setFiltro(this.busqueda)
+  }
+
 }

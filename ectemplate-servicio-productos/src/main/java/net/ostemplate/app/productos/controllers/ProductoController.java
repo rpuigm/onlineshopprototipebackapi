@@ -1,5 +1,6 @@
 package net.ostemplate.app.productos.controllers;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
@@ -20,7 +21,6 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,6 +35,7 @@ import org.springframework.web.multipart.MultipartFile;
 import net.ostemplate.app.productos.models.entity.ImagenProducto;
 import net.ostemplate.app.productos.models.entity.Producto;
 import net.ostemplate.app.productos.models.entity.ProductoCaracteristicas;
+import net.ostemplate.app.productos.models.service.ImagenProductoI;
 import net.ostemplate.app.productos.models.service.ProductoServiceI;
 
 @RestController
@@ -44,6 +45,9 @@ public class ProductoController {
 	
 	@Autowired
 	private ProductoServiceI productoService;
+	
+	@Autowired
+	private ImagenProductoI imagenProductoI;
 	
 	@GetMapping("/lista")
 	public List<Producto> listar(){
@@ -124,6 +128,13 @@ public class ProductoController {
 		}
 		
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+		
+	}
+	
+	
+	@DeleteMapping("producto/borrar-imagen/{imagen}")
+	public void eliminarImagen(@PathVariable("imagen")String imagen) {
+		imagenProductoI.borrarImagen(imagen);
 		
 	}
 	
