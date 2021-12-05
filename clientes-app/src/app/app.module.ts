@@ -29,6 +29,8 @@ import { ProductoCestaComponent } from './producto-cesta/producto-cesta.componen
 import { DireccionPedidoComponent } from './direccion-pedido/direccion-pedido.component';
 import { PasarelaComponent } from './pasarela/pasarela.component';
 import { ListaPedidosComponent } from './lista-pedidos/lista-pedidos.component';
+import { DespachoComponent } from './despacho/despacho.component';
+import { ConfiguracionComponent } from './configuracion/configuracion.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'/productosgrid', pathMatch: 'full'},
@@ -47,7 +49,9 @@ const routes: Routes = [
   {path:'cesta', component: CestaComponent},
   {path:'direccion/:id', component: DireccionPedidoComponent},
   {path:'pasarela/:id', component: PasarelaComponent},
-  {path:'listapedidos', component: ListaPedidosComponent}
+  {path:'listapedidos', component: ListaPedidosComponent},
+  {path:'despacho', component: DespachoComponent},
+  {path:'configuracion', component: ConfiguracionComponent}
 ];
 
 @NgModule({
@@ -74,7 +78,9 @@ const routes: Routes = [
     ProductoCestaComponent,
     DireccionPedidoComponent,
     PasarelaComponent,
-    ListaPedidosComponent
+    ListaPedidosComponent,
+    DespachoComponent,
+    ConfiguracionComponent
 
   ],
   imports: [

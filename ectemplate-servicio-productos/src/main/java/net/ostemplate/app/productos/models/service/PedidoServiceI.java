@@ -13,6 +13,10 @@ public interface PedidoServiceI {
 	Pedido findById(Long id);
 
 	void borraPedido(Long id);
+
+	List<Pedido> recuperaPedidosPorEstado(String estado);
+
+	List<Pedido> recuperaPedidos();
 	
 
 }

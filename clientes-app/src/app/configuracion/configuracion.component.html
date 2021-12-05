@@ -1,0 +1,23 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row card"></div>
+  <form>
+    <div class="form-group row">
+      <label>Nombre</label>
+      <div class="col-7">
+        <input
+          type="text"
+          class="form-control "
+          (input)="setNombreTienda($event)"
+        />
+      </div>
+    </div>
+    <input
+              (click)="setNombre()"
+              type="submit"
+              class="btn btn-lg btn-primary btn-block m-3"
+              value="Guardar"
+            />
+  </form>
+
+</div>

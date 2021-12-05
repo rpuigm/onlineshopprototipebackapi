@@ -40,5 +40,17 @@ public class PedidoServiceImpl implements PedidoServiceI {
 		pedidoRepository.deleteById(id);
 	}
 	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Pedido> recuperaPedidosPorEstado(String estado){
+		return pedidoRepository.findByEstado(estado);
+		
+	}
+	@Override
+	@Transactional(readOnly = true)
+	public List<Pedido> recuperaPedidos(){
+		return (List<Pedido>) pedidoRepository.findAll();
+		
+	}
 
 }

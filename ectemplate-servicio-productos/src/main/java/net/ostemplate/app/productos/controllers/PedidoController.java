@@ -39,5 +39,17 @@ public class PedidoController {
 	public void actualizaPedido (@PathVariable Long id) {
 		pedidoServiceI.borraPedido(id);
 	}
+	
+	@GetMapping("/pedidos/pedidos-estado/{estado}")
+	public List<Pedido> recuperaPedidoId(@PathVariable String estado) {
+		return pedidoServiceI.recuperaPedidosPorEstado(estado);
+		
+	}
+	
+	@GetMapping("/pedidos/lista")
+	public List<Pedido> recuperaPedidos() {
+		return pedidoServiceI.recuperaPedidos();
+		
+	}
 
 }

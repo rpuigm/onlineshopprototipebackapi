@@ -19,14 +19,13 @@ export class ProductosgridComponent implements OnInit {
     this.productoService.getProductos().subscribe(
       productos => this.productos= productos
     )
-
   }
 
   agregarProducto(producto: Producto){
     this.productos.push(producto);
   }
 
-  buscarProductosPorNombre(event: Event): void {
-  }
+
+
 
 }

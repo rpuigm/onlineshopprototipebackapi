@@ -1,64 +1,83 @@
 <app-header></app-header>
 <div class="container">
-  <div class="row col-12">
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-  </div>
-
-  <div class="row">
-    <div class="col-1" *ngIf="producto?.productoCaracteristicas">
-      <div
-        class="row"
-        *ngFor="let imagen of producto.productoCaracteristicas.imagenesProducto"
-      >
-        <img (click)="cambiarImagen($event)"
-          src="http://localhost:8090/api/productos/producto/imagen/{{
-            imagen.imagen
-          }}"
-          class="img-fluid img-thumbnail"
-          alt=""
-        />
-      </div>
-    </div>
-    <div class="col-5">
+  <div class="card">
+    <div class="card-body">
       <div class="row">
-        <img
-          src="{{ imagenPrincipal }}"
-          class="img-fluid img-thumbnail"
-          alt=""
-        />
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="row">
-        <div>
-          <H2>{{ producto?.nombre }}</H2>
-          <p>{{ producto?.productoCaracteristicas.descripcion }}</p>
-          <H5>Especificaciones</H5>
-          <div *ngIf="producto?.productoCaracteristicas">
-              <table class="table table-responsive">
-                <thead>
-                  <tr>
-                    <th class="col-2">Espicificación</th>
-                    <th class="col-10">Descripción</th>
-                  </tr>
-                </thead>
-                <tbody
-                  *ngFor="
-                    let especificacion of producto?.productoCaracteristicas
-                      .productoEspecificaciones">
-                  <tr>
-                    <td>{{ especificacion.claveEspecificacion }}</td>
-                    <td>{{ especificacion.descripcionEspecificacion }}</td>
-                  </tr>
-                </tbody>
-              </table>
+        <div class="col-1" *ngIf="producto?.productoCaracteristicas">
+          <div
+            class="row"
+            *ngFor="
+              let imagen of producto.productoCaracteristicas.imagenesProducto
+            "
+          >
+            <img
+              (click)="cambiarImagen($event)"
+              src="http://localhost:8090/api/productos/producto/imagen/{{
+                imagen.imagen
+              }}"
+              class="img-fluid img-thumbnail"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="col-5">
+          <div class="row">
+            <img
+              src="{{ imagenPrincipal }}"
+              class="img-fluid img-thumbnail"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div>
+              <H2>{{ producto?.nombre }}</H2>
+              <p>{{ producto?.productoCaracteristicas.descripcion }}</p>
+              <H5>Especificaciones</H5>
+              <div *ngIf="producto?.productoCaracteristicas">
+                <table class="table table-responsive">
+                  <thead>
+                    <tr>
+                      <th class="col-2">Espicificación</th>
+                      <th class="col-10">Descripción</th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    *ngFor="
+                      let especificacion of producto?.productoCaracteristicas
+                        .productoEspecificaciones
+                    "
+                  >
+                    <tr>
+                      <td>{{ especificacion.claveEspecificacion }}</td>
+                      <td>{{ especificacion.descripcionEspecificacion }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="buy mt-3" *ngIf="tienePermisos('ROLE_USER')">
+                  <button
+                    (click)="agregarEnCesta()"
+                    class="btn btn-secondary btn-block"
+                    type="button"
+                  >
+                    Añadir a la Cesta
+                  </button>
+                </div>
+                <div class="buy mt-3" *ngIf="tienePermisos('ROLE_ADMIN')">
+                  <button
+                    (click)="EliminarProducto()"
+                    class="btn btn-secondary btn-block"
+                    type="button"
+                  >
+                    Eliminar Producto
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<app-footer></app-footer>

@@ -3,6 +3,7 @@ import { PedidoService } from './../pedido/pedido.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Pedido } from '../pedido/pedido.model';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-lista-pedidos',
@@ -20,6 +21,7 @@ export class ListaPedidosComponent implements OnInit {
 
   ngOnInit(): void {
     this.pedidos= new Array<Pedido>();
+
     this.activatedRoute.paramMap.subscribe((params) => {
         this.pedidoService.getPedidosByIdusuario(this.personaService.usuario.id).subscribe((respuesta) => {
           this.pedidos = respuesta;
@@ -28,5 +30,7 @@ export class ListaPedidosComponent implements OnInit {
 
     });
   }
+
+
 
 }

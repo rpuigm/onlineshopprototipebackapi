@@ -20,6 +20,8 @@ export class PedidoService {
     'http://localhost:8090/api/productos/pedidos/recupera-pedido';
   private urlRecuperaPedidoIdUsuario: string =
     'http://localhost:8090/api/productos/pedidos/recupera-pedidos-usuario';
+  private urlRecuperaPedidos: string =
+    'http://localhost:8090/api/productos/pedidos/lista';
   private urlEliminaPedido: string =
     'http://localhost:8090/api/productos/pedidos/borra-pedido';
 
@@ -60,6 +62,18 @@ export class PedidoService {
 
   getPedidosByIdusuario(idUsuario: number): Observable<Pedido[]> {
     return this.http.get<Pedido[]>(`${this.urlRecuperaPedidoIdUsuario}/${idUsuario}`, {
+      headers: this.productoService.agregarAuthorizationHeader()
+    }).pipe(
+      catchError((e) => {
+        console.error(e.error.mensaje);
+        swal.fire('Error al obtener los pedidos', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    );
+  }
+
+  getPedidos(): Observable<Pedido[]> {
+    return this.http.get<Pedido[]>(`${this.urlRecuperaPedidos}`, {
       headers: this.productoService.agregarAuthorizationHeader()
     }).pipe(
       catchError((e) => {

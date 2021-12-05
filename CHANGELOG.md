@@ -1,3 +1,13 @@
+## [0.8.0-alpha.1] (2021-12-05)
+
+### Fixed
+
+- #Se puede modificar el nombre de la tienda.
+- #Se puede eliminar imagen
+- #Se puede eliminar producto
+- #Se puede despachar pedido
+- #Se ha mejorado el aspecto visual
+
 ## [0.7.0-alpha.1] (2021-12-02)
 
 ### Fixed

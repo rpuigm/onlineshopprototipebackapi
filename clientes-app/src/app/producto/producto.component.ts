@@ -75,13 +75,16 @@ export class ProductoComponent implements OnInit {
       productoCantidad.idProducto = this.producto.id;
       productoCantidad.cantidad = 1;
 
-
       this.cesta.productoCantidad.push(productoCantidad);
       console.log(this.cesta.productoCantidad.length);
-      this.cestaService.incluirEnCesta(this.cesta).subscribe(
-        respuesta => {this.cesta=respuesta
-        this.router.navigate(['cesta'])}
-      );
+      this.cestaService.incluirEnCesta(this.cesta).subscribe((respuesta) => {
+        this.cesta = respuesta;
+        this.router.navigate(['cesta']);
+      });
     });
+  }
+
+  tienePermisos(role: string): boolean {
+    return this.personaServices.hasRole(role);
   }
 }

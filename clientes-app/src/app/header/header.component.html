@@ -1,6 +1,6 @@
 <nav class="nav-tabs navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">{{ title }}</a>
+    <a class="navbar-brand" font-family="lobster">{{ tienda?.nombreTienda }}</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -42,16 +42,12 @@
                 >Alta Producto</a
               >
             </li>
-            <li><a class="dropdown-item">Configuracion Tienda</a></li>
-            <li><a class="dropdown-item">Pedidos</a></li>
+            <li><a routerLink="/configuracion" class="dropdown-item">Configuracion Tienda</a></li>
+            <li><a routerLink="/despacho" class="dropdown-item">Pedidos</a></li>
           </ul>
         </li>
       </ul>
 
-      <form class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Buscar" />
-        <i class="form-control-feedback glyphicon glyphicon-user"></i>
-      </form>
 
       <div class="col-1"></div>
       <ul class="navbar-nav navbar-right">

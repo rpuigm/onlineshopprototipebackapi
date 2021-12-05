@@ -1,8 +1,9 @@
 import { PersonaServices } from './../persona/persona.service';
 import { ProductoService } from './../producto/producto.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import swal from 'sweetalert2'
+import { Tienda } from '../configuracion/tienda.model';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +11,21 @@ import swal from 'sweetalert2'
 })
 
 
-export class HeaderComponent{
+export class HeaderComponent implements OnInit{
 
-  constructor(private personaServices: PersonaServices, private productoService: ProductoService, private router: Router){}
+  constructor(private personaServices: PersonaServices,
+    private productoService: ProductoService,
+    private router: Router,
+    ){}
+
+  ngOnInit(): void {
+    this.tienda=new Tienda()
+    this.productoService.getNombreTienda().subscribe(
+      (r)=>{this.tienda=r}
+    )
+  }
+
+
 
 
   logout(): void {
@@ -22,13 +35,13 @@ export class HeaderComponent{
     this.router.navigate(['/login']);
   }
 
-  title: string = 'CHRISTMASZON'
+  title: string ;
 
-  busqueda!: string;
+  busqueda: string;
 
-  bontonBuscar(): void{
+  tienda: Tienda;
 
-  }
+
 
   irALogin(){
     this.router.navigate(['login']);
@@ -49,5 +62,20 @@ export class HeaderComponent{
     return this.personaServices.hasRole(role);
   }
 
+
+  setNombreTienda(event: Event){
+    this.title;
+  }
+
+  buscar(){
+    this.productoService.setFiltro(this.busqueda)
+  }
+
+  getNombreTienda(){
+    this.tienda=new Tienda();
+    this.productoService.getNombreTienda().subscribe(
+      res => this.tienda=res
+    )
+  }
 
 }

@@ -6,6 +6,7 @@ import { Producto } from './producto.model';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { catchError, map, switchAll } from 'rxjs/operators';
 import swal from 'sweetalert2';
+import { Tienda } from '../configuracion/tienda.model';
 
 @Injectable({ providedIn: 'root' })
 export class ServiceNameService {
@@ -21,8 +22,20 @@ export class ProductoService {
   private urlProductoNuevo: string =
     'http://localhost:8090/api/productos/producto/nuevo';
   private urlEndPoint: string = 'http://localhost:8090/api/productos/producto';
+  private urlEliminarProducto: string =
+    'http://localhost:8090/api/productos/producto/borrar';
+  private urlEliminarImagen: string =
+    'http://localhost:8090/api/productos/producto/borrar-imagen';
+  private urlCambiarNombre: string =
+    'http://localhost:8090/api/productos/tienda/cambia-tienda';
+  private urlNombre: string =
+    'http://localhost:8090/api/productos/tienda/nombre';
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+  busqueda: string;
+
+
 
   constructor(
     private http: HttpClient,
@@ -107,6 +120,7 @@ export class ProductoService {
       );
   }
 
+
   private isNoAutorizado(e: { status: number }): boolean {
     if (e.status == 401) {
       if (this.personaServices.isAuthenticated()) {
@@ -117,10 +131,74 @@ export class ProductoService {
     }
 
     if (e.status == 403) {
-      swal.fire('Error', 'Acceso Denegaod', 'warning')
+      swal.fire('Error', 'Acceso Denegaod', 'warning');
       return true;
     }
 
     return false;
+  }
+
+  setFiltro(busqueda: string) {
+    this.busqueda = busqueda;
+  }
+
+  getFiltro(busqueda: string) {
+    return this.busqueda;
+  }
+
+  eliminarProducto(id: number): Observable<Producto> {
+    return this.http
+      .delete<Producto>(`${this.urlEliminarProducto}/${id}`, {
+        headers: this.agregarAuthorizationHeader(),
+      })
+      .pipe(
+        catchError((e) => {
+          console.error(e.error.mensaje);
+          swal.fire('No se pudo borra el producto', e.error.mensaje, 'error');
+          return throwError(e);
+        })
+      );
+  }
+  eliminarImagen(imagen: string): Observable<Producto> {
+    console.log(this.urlEliminarImagen+'/'+imagen)
+    return this.http
+      .delete<Producto>(`${this.urlEliminarImagen}/${imagen}`, {
+        headers: this.agregarAuthorizationHeader(),
+      })
+      .pipe(
+        catchError((e) => {
+          console.error(e.error.mensaje);
+          swal.fire('No se pudo borra el producto', e.error.mensaje, 'error');
+          return throwError(e);
+        })
+      );
+  }
+
+  setNombreTienda(tienda: Tienda): Observable<Tienda>{
+    return this.http
+      .post<Tienda>(this.urlCambiarNombre, tienda, {
+        headers: this.agregarAuthorizationHeader(),
+      })
+      .pipe(
+        catchError((e) => {
+          swal.fire('Error al guardar el nombre de la tienda', e.error.mensaje, 'error');
+          this.isNoAutorizado(e);
+          console.error(e.error.mensaje);
+          return throwError(e);
+        })
+      );
+
+
+
+  }
+  getNombreTienda(): Observable<Tienda>{
+    return this.http
+      .get<Tienda>(`${this.urlNombre}`, {
+        headers: this.httpHeaders,
+      })
+      .pipe(
+
+      );
+
   }
 }

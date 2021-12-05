@@ -46,7 +46,15 @@
       <H5>Importe:</H5>
       <p>{{ pedido?.total }}</p>
       </div>
-
+      <div class="buy mt-3" *ngIf="pedido?.estado == 'Pagado'">
+        <button
+          (click)="setEstadoPedidoPagado([pedido.id])"
+          class="btn btn-primary btn-block"
+          type="button"
+        >
+          Despachado
+        </button>
+      </div>
     </div>
   </div>
 </div>

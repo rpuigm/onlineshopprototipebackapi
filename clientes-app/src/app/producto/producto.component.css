@@ -2,6 +2,13 @@
   border: 1px solid #eee
 }
 
+.foto {
+  object-fit: cover;
+  width: 35vw;
+  height: 200px;
+}
+
+
 .p-details {
   padding: 10px;
   border-radius: 0px;
