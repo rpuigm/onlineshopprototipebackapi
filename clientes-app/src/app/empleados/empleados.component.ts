@@ -1,3 +1,4 @@
+import { PersonaServices } from './../persona/persona.service';
 import swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { Usuario } from './../login/usuario.model';
@@ -14,7 +15,8 @@ export class EmpleadosComponent implements OnInit {
 
   usuario: Usuario;
 
-  constructor(private empleadoService: EmpleadoService, private router:Router) {
+  constructor(private empleadoService: EmpleadoService, private router:Router,
+    private personaService: PersonaServices) {
   }
 
   ngOnInit(): void {
@@ -27,12 +29,16 @@ export class EmpleadosComponent implements OnInit {
   guaradarEmpleado(): void{
     console.log('entra' + this.usuario)
     this.empleadoService.guardarEmpleado(this.usuario).subscribe(
-      response => {this.usuario = response}
-    );
-    swal.fire("Guardado!!", "Se han guardado los cambios", "success")
+      response => {this.usuario = response
 
+                  }
+    );
+    this.personaService.logout();
+    swal.fire("Guardado!!", "Se han guardado los cambios y hemos cerrado la sesión por seguridad", "success")
+    this.router.navigate(['/login']);
 
   }
+
 
   getUsuario(): Usuario{
     return this.usuario;

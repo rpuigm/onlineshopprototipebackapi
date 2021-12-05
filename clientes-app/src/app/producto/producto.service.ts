@@ -194,14 +194,10 @@ export class ProductoService {
   getNombreTienda(): Observable<Tienda>{
     return this.http
       .get<Tienda>(`${this.urlNombre}`, {
-        headers: this.agregarAuthorizationHeader(),
+        headers: this.httpHeaders,
       })
       .pipe(
-        catchError((e) => {
-          console.error(e.error.mensaje);
-          swal.fire('La tienda aún no tiene nombre', e.error.mensaje, 'error');
-          return throwError(e);
-        })
+
       );
 
   }
