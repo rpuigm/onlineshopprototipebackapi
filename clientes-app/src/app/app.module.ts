@@ -50,7 +50,8 @@ const routes: Routes = [
   {path:'direccion/:id', component: DireccionPedidoComponent},
   {path:'pasarela/:id', component: PasarelaComponent},
   {path:'listapedidos', component: ListaPedidosComponent},
-  {path:'despacho', component: DespachoComponent}
+  {path:'despacho', component: DespachoComponent},
+  {path:'configuracion', component: ConfiguracionComponent}
 ];
 
 @NgModule({

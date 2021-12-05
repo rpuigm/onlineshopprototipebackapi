@@ -3,6 +3,7 @@ import { ProductoService } from './../producto/producto.service';
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import swal from 'sweetalert2'
+import { Tienda } from '../configuracion/tienda.model';
 
 @Component({
   selector: 'app-header',
@@ -10,14 +11,21 @@ import swal from 'sweetalert2'
 })
 
 
-export class HeaderComponent implements OnChanges{
+export class HeaderComponent implements OnInit{
 
-  constructor(private personaServices: PersonaServices, private productoService: ProductoService, private router: Router){}
+  constructor(private personaServices: PersonaServices,
+    private productoService: ProductoService,
+    private router: Router,
+    ){}
 
-
-  ngOnChanges(changes: SimpleChanges): void {
-    throw new Error('Method not implemented.');
+  ngOnInit(): void {
+    this.tienda=new Tienda()
+    this.productoService.getNombreTienda().subscribe(
+      (r)=>{this.tienda=r}
+    )
   }
+
+
 
 
   logout(): void {
@@ -27,9 +35,11 @@ export class HeaderComponent implements OnChanges{
     this.router.navigate(['/login']);
   }
 
-  title: string = 'CHRISTMASZON'
+  title: string ;
 
   busqueda: string;
+
+  tienda: Tienda;
 
 
 
@@ -59,6 +69,13 @@ export class HeaderComponent implements OnChanges{
 
   buscar(){
     this.productoService.setFiltro(this.busqueda)
+  }
+
+  getNombreTienda(){
+    this.tienda=new Tienda();
+    this.productoService.getNombreTienda().subscribe(
+      res => this.tienda=res
+    )
   }
 
 }

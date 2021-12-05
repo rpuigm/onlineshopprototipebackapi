@@ -6,6 +6,7 @@ import { Producto } from './producto.model';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { catchError, map, switchAll } from 'rxjs/operators';
 import swal from 'sweetalert2';
+import { Tienda } from '../configuracion/tienda.model';
 
 @Injectable({ providedIn: 'root' })
 export class ServiceNameService {
@@ -25,10 +26,16 @@ export class ProductoService {
     'http://localhost:8090/api/productos/producto/borrar';
   private urlEliminarImagen: string =
     'http://localhost:8090/api/productos/producto/borrar-imagen';
+  private urlCambiarNombre: string =
+    'http://localhost:8090/api/productos/tienda/cambia-tienda';
+  private urlNombre: string =
+    'http://localhost:8090/api/productos/tienda/nombre';
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   busqueda: string;
+
+
 
   constructor(
     private http: HttpClient,
@@ -165,5 +172,37 @@ export class ProductoService {
           return throwError(e);
         })
       );
+  }
+
+  setNombreTienda(tienda: Tienda): Observable<Tienda>{
+    return this.http
+      .post<Tienda>(this.urlCambiarNombre, tienda, {
+        headers: this.agregarAuthorizationHeader(),
+      })
+      .pipe(
+        catchError((e) => {
+          swal.fire('Error al guardar el nombre de la tienda', e.error.mensaje, 'error');
+          this.isNoAutorizado(e);
+          console.error(e.error.mensaje);
+          return throwError(e);
+        })
+      );
+
+
+
+  }
+  getNombreTienda(): Observable<Tienda>{
+    return this.http
+      .get<Tienda>(`${this.urlNombre}`, {
+        headers: this.agregarAuthorizationHeader(),
+      })
+      .pipe(
+        catchError((e) => {
+          console.error(e.error.mensaje);
+          swal.fire('La tienda aún no tiene nombre', e.error.mensaje, 'error');
+          return throwError(e);
+        })
+      );
+
   }
 }
