@@ -13,17 +13,10 @@
                 type="text"
                 class="form-control"
                 placeholder="Nombre de la Vía"
-                [(ngModel)]="pedido.direccionPedido.via"
+                (input)="setVia($event)"
                 name="via"
                 id="via"
-                #via="ngModel"
-                required
               />
-              <div class="alert alert-danger" *ngIf="via.invalid && (via.dirty || via.touched)">
-                <div *ngIf="via.errors.required">
-                  Nombre de la vía requerido
-                </div>
-              </div>
             </div>
             <div class="col-4 mb-3">
               <label>Numero</label>
@@ -74,7 +67,7 @@
           </div>
           <button
             (click)="guardadPedidoConDireccion()"
-            class="btn btn-primary"
+            class="btn btn-secondary"
             type="submit"
             [disabled]="!pedidoForm.form.valid"
           >

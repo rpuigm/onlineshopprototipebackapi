@@ -2,17 +2,11 @@
 
 <div class="container">
   <div class="row">
-  <div class="col-12"><p> </p></div>
-  <div class="col-12"><p> </p></div>
-  <div class="col-12"><p> </p></div>
-  <div class="col-12"><p> </p></div>
-  <div class="col-12"><p> </p></div>
-  <div class="col-12"><p> </p></div>
-
-  </div>
-
-  <div class="col-6">
-    <div class="row card">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8 card border-primary">
+      <div class="card-header text-center">Pago del pedido</div>
+      <div class="card-body">
+    <div class="row ">
       <div>
         <H2>PEDIDO</H2>
         <H3>Dirección:</H3>
@@ -42,15 +36,14 @@
         </div>
       </div>
     </div>
-  </div>
 
   <h2 class="mb-5">Total a pagar</h2>
 
-  <div class="col-md-4 mb-3">
-    <button (click)='checkout( [pedido?.total] )' class="btn btn-primary btn-block">Confirmar pedido por: {{ pedido?.total }}€</button>
+  <div class="col-md-4 mb-3" *ngIf="token==null">
+    <button (click)='checkout( [pedido?.total] )' class="btn btn-secondary btn-block">Confirmar pedido por: {{ pedido?.total }}€</button>
   </div>
-  <div class="col-md-4 mb-3">
-    <button (click)='eliminaPedido()' class="btn btn-primary btn-block">Cancelar Pedido</button>
+  <div class="col-md-4 mb-3" *ngIf="token==null">
+    <button (click)='eliminaPedido()' class="btn btn-secondary btn-block">Cancelar Pedido</button>
   </div>
 
 </div>
