@@ -5,7 +5,7 @@
     <div class="col-sm-4 card border-primary">
       <div class="card-header text-center">Cuenta</div>
       <div class="card-body">
-        <form>
+        <form #CuentaForm="ngForm">
           <div class="form-row">
             <div class="col-12 col-sm-10 mb-3">
               <label>Username</label>
@@ -16,7 +16,14 @@
                 [(ngModel)]="getUsuario().username"
                 name="username"
                 id="username"
+                #username="ngModel"
+                required
               />
+              <div class="alert alert-danger" *ngIf="username.invalid && (username.dirty || username.touched)">
+                <div *ngIf="username.errors.required">
+                  Username es requerido
+                </div>
+              </div>
             </div>
             <div class="col-12 col-sm-10 mb-3">
               <label>Contraseña</label>
@@ -39,7 +46,14 @@
                 [(ngModel)]="usuario.nombre"
                 name="nombre"
                 id="nombre"
+                #nombre="ngModel"
+                required
               />
+              <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <div *ngIf="nombre.errors.required">
+                  Nombre es requerido
+                </div>
+              </div>
             </div>
 
             <div class="col-12 col-sm-10 mb-3">
@@ -69,6 +83,7 @@
             (click)="guaradarEmpleado()"
             class="btn btn-secondary"
             type="submit"
+            [disabled]="!CuentaForm.form.valid"
           >
             Guardar
           </button>
