@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
   templateUrl: './producto-item.component.html',
   styleUrls: ['./producto-item.component.css']
 })
-export class ProductoItemComponent implements OnInit, OnChanges {
+export class ProductoItemComponent implements OnInit {
 
   private imagenSeleccionada: File;
   private descripcionImagen: string;
@@ -21,12 +21,7 @@ export class ProductoItemComponent implements OnInit, OnChanges {
   constructor(private productoService: ProductoService,
     private activatedRoute: ActivatedRoute, private router: Router) { }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.productoService.getProductoById(this.producto.id).subscribe(producto =>{
-            this.producto = producto;
-            console.log(this.producto?.productoCaracteristicas.descripcion);
-          });
-  }
+
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(params =>
@@ -63,9 +58,10 @@ export class ProductoItemComponent implements OnInit, OnChanges {
 
 
   eliminaImagen(imagen: string){
-    this.productoService.eliminarImagen(imagen).subscribe(producto => {
-      this.producto = producto;
-    });
+    this.productoService.eliminarImagen(imagen).subscribe(() => { });
+    this.producto.productoCaracteristicas.imagenesProducto = this.producto.productoCaracteristicas.imagenesProducto.filter(x => x.imagen != imagen);
+
+
   }
 
 

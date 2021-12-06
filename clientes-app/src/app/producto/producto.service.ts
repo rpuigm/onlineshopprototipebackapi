@@ -159,10 +159,10 @@ export class ProductoService {
         })
       );
   }
-  eliminarImagen(imagen: string): Observable<Producto> {
+  eliminarImagen(imagen: string): Observable<any> {
     console.log(this.urlEliminarImagen+'/'+imagen)
     return this.http
-      .delete<Producto>(`${this.urlEliminarImagen}/${imagen}`, {
+      .delete<any>(`${this.urlEliminarImagen}/${imagen}`, {
         headers: this.agregarAuthorizationHeader(),
       })
       .pipe(
