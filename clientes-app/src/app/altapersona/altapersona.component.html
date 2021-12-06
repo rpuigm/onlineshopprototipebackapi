@@ -1,76 +1,108 @@
 <app-header></app-header>
 <div class="container">
-  <p></p>
-  <p></p>
-  <p></p>
-  <p></p>
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 card border-primary">
+      <div class="card-header text-center">Cuenta</div>
+      <div class="card-body">
+        <form class="p-3" #altaPersonaForm="ngForm">
+          <div class="form-row">
+            <div class="col-12 col-sm-10 mb-3">
+              <label>Username</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Nombre Usuario"
+                [(ngModel)]="getUsuario().username"
+                name="username"
+                id="username"
+                #username="ngModel"
+                required
+              />
+              <div
+                class="alert alert-danger"
+                *ngIf="username.invalid && (username.dirty || username.touched)"
+              >
+                <div *ngIf="username.errors.required">
+                  Username es requerido
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-10 mb-3">
+              <label>Contraseña</label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Password"
+                [(ngModel)]="usuario.password"
+                name="password"
+                id="password"
+                #password="ngModel"
+                required
+              />
+              <div
+                class="alert alert-danger"
+                *ngIf="password.invalid && (password.dirty || password.touched)"
+              >
+                <div *ngIf="password.errors.required">
+                  Password es requerido
+                </div>
+              </div>
+            </div>
 
-  <div class="row card ">
-    <div class="col-0 col-sm-4"></div>
-    <div class="card-body ">
-    <form class="p-3">
-      <div class="form-row">
-        <div class="col-md-4 mb-3">
-          <label>Username</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Nombre Usuario"
-            [(ngModel)]="getUsuario().username"
-            name="username"
-            id="username"
-          />
-        </div>
-        <div class="col-md-4 mb-3">
-          <label>Contraseña</label>
-          <input
-            type="password"
-            class="form-control"
-            placeholder="Password"
-            (input)="setUsuarioPass($event)"
-            name="password"
-            id="password"
-          />
-        </div>
+            <div class="col-12 col-sm-10 mb-3">
+              <label>Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Nombre"
+                [(ngModel)]="usuario.nombre"
+                name="nombre"
+                id="nombre"
+                #nombre="ngModel"
+                required
+              />
+              <div
+                class="alert alert-danger"
+                *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+              >
+                <div *ngIf="nombre.errors.required">Nombre es requerido</div>
+              </div>
+            </div>
 
-        <div class="col-md-4 mb-3">
-          <label>Nombre</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Nombre"
-            [(ngModel)]="usuario.nombre"
-            name="nombre"
-            id="nombre"
-          />
-        </div>
-
-        <div class="col-md-4 mb-3">
-          <label>Apellidos</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Apellidos"
-            [(ngModel)]="usuario.apellidos"
-            name="apellido"
-            id="apellido"
-          />
-        </div>
-        <div class="col-md-4 mb-3">
-          <label>Edad</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Edad"
-            [(ngModel)]="usuario.edad"
-            name="edad"
-            id="edad"
-          />
-        </div>
+            <div class="col-12 col-sm-10 mb-3">
+              <label>Apellidos</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Apellidos"
+                [(ngModel)]="usuario.apellidos"
+                name="apellido"
+                id="apellido"
+              />
+            </div>
+            <div class="col-2 mb-3">
+              <label>Edad</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Edad"
+                [(ngModel)]="usuario.edad"
+                name="edad"
+                id="edad"
+              />
+            </div>
+          </div>
+          <button
+            (click)="altaCliente()"
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="!altaPersonaForm.form.valid"
+          >
+            Guardar
+          </button>
+        </form>
       </div>
-      <button (click)="altaCliente()" class="btn btn-primary" type="submit">
-        Guardar
-      </button>
-    </form>
+    </div>
   </div>
 </div>
