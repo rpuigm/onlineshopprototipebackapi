@@ -1,7 +1,7 @@
 import { map } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductoService } from './../producto/producto.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Producto } from '../producto/producto.model';
 import { ThrowStmt } from '@angular/compiler';
 import Swal from 'sweetalert2';
@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
   templateUrl: './producto-item.component.html',
   styleUrls: ['./producto-item.component.css']
 })
-export class ProductoItemComponent implements OnInit {
+export class ProductoItemComponent implements OnInit, OnChanges {
 
   private imagenSeleccionada: File;
   private descripcionImagen: string;
@@ -20,6 +20,13 @@ export class ProductoItemComponent implements OnInit {
 
   constructor(private productoService: ProductoService,
     private activatedRoute: ActivatedRoute, private router: Router) { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.productoService.getProductoById(this.producto.id).subscribe(producto =>{
+            this.producto = producto;
+            console.log(this.producto?.productoCaracteristicas.descripcion);
+          });
+  }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(params =>
