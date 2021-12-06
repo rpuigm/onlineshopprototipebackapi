@@ -1,7 +1,7 @@
 import { map } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductoService } from './../producto/producto.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Producto } from '../producto/producto.model';
 import { ThrowStmt } from '@angular/compiler';
 import Swal from 'sweetalert2';
@@ -20,6 +20,8 @@ export class ProductoItemComponent implements OnInit {
 
   constructor(private productoService: ProductoService,
     private activatedRoute: ActivatedRoute, private router: Router) { }
+
+
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(params =>
@@ -56,9 +58,10 @@ export class ProductoItemComponent implements OnInit {
 
 
   eliminaImagen(imagen: string){
-    this.productoService.eliminarImagen(imagen).subscribe(producto => {
-      this.producto = producto;
-    });
+    this.productoService.eliminarImagen(imagen).subscribe(() => { });
+    this.producto.productoCaracteristicas.imagenesProducto = this.producto.productoCaracteristicas.imagenesProducto.filter(x => x.imagen != imagen);
+
+
   }
 
 

@@ -137,8 +137,9 @@ export class CestaComponent implements OnInit {
     console.log(this.cesta.productoCantidad.length);
 
     this.cestaService.incluirEnCesta(this.cesta).subscribe((respuesta) => {
+      this.cesta= new Cesta();
       this.cesta = respuesta;
-      this.router.navigate(['/']);
+      this.setCesta();
     });
   }
 }

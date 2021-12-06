@@ -21,11 +21,11 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="/listapedidos">Mis Pedidos</a>
+          <a *ngIf="tienePermisos('ROLE_USER')" class="nav-link" href="/listapedidos">Mis Pedidos</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/cesta">Mi Cesta</a>
+          <a *ngIf="tienePermisos('ROLE_USER')" class="nav-link" routerLink="/cesta">Mi Cesta</a>
         </li>
         <li *ngIf="tienePermisos('ROLE_ADMIN')" class="nav-item">
           <a

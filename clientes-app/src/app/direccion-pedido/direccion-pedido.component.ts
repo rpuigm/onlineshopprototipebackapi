@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductoService } from '../producto/producto.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pedido } from '../pedido/pedido.model';
+import swal from 'sweetalert2'
 
 @Component({
   selector: 'app-direccion-pedido',
@@ -53,10 +54,23 @@ export class DireccionPedidoComponent implements OnInit {
   }
 
   guardadPedidoConDireccion(){
+    if (
+      this.direccionPedido.via == null ||
+      this.direccionPedido.numero == null ||
+      this.direccionPedido.cp == null ||
+      this.direccionPedido.pronvicia == null
+    ) {
+      swal.fire(
+        'Faltan datos',
+        'Todos los campos son obligatorios',
+        'error'
+      );
+    } else {
     this.pedido.direccionPedido = this.direccionPedido
     this.pedidoService.setPedido(this.pedido).subscribe((respuesta) => {
       this.router.navigate(['/pasarela/' + respuesta.id]);
     });
+  }
 
   }
 }

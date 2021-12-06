@@ -1,12 +1,13 @@
+import { Pedido } from './../pedido/pedido.model';
 import { PersonaServices } from './../persona/persona.service';
 import { CestaService } from './../cesta/cesta.service';
 import { PedidoService } from './../pedido/pedido.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, Input, OnDestroy } from '@angular/core';
 import { DireccionPedido } from '../direccion-pedido/direccion-pedido.model';
-import { Pedido } from '../pedido/pedido.model';
 import swal from 'sweetalert2';
 import { Cesta } from '../cesta/cesta.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-pasarela',
@@ -16,6 +17,8 @@ import { Cesta } from '../cesta/cesta.model';
 export class PasarelaComponent implements OnInit {
   direccionPedido!: DireccionPedido;
   pedido!: Pedido;
+
+  @Input() token: any;
 
   strikeCheckout: any = null;
 
@@ -27,7 +30,10 @@ export class PasarelaComponent implements OnInit {
     private personaService: PersonaServices
   ) {}
 
+
+
   ngOnInit() {
+
     this.pedido= new Pedido();
     this.stripePaymentGateway();
     this.direccionPedido = new DireccionPedido();
@@ -46,10 +52,18 @@ export class PasarelaComponent implements OnInit {
     const strikeCheckout = (<any>window).StripeCheckout.configure({
       key: 'pk_test_51K19jpBS2gG7ym34MIHV7eVZ26NCetefYjlAYEZu2Gx1IAfEVfoivTlftfypfaGidYLTPq3ScFsVMcfXJ6Yfo5gv00sfk75sN3',
       locale: 'auto',
-      token: function (stripeToken: any) {
-        console.log(stripeToken);
-      },
-    });
+      token: (token: any) => {
+        this.token = `token : ${token.id}`;
+        this.pedido.estado = 'Pagado';
+        this.pedidoService.setPedido(this.pedido).subscribe(
+          (res) =>{swal.fire("Pago Confirmado", "El pago ha sido recibido", "success")}
+        );
+      }
+
+    }
+
+    );
+
 
 
     strikeCheckout.open({
@@ -58,8 +72,7 @@ export class PasarelaComponent implements OnInit {
       amount: amount * 100,
     });
 
-    this.setEstadoPedidoPagado();
-    this.router.navigate(['/listapedidos']);
+
 
   }
 
@@ -70,6 +83,7 @@ export class PasarelaComponent implements OnInit {
       scr.type = 'text/javascript';
       scr.src = 'https://checkout.stripe.com/checkout.js';
 
+
       scr.onload = () => {
         this.strikeCheckout = (<any>window).StripeCheckout.configure({
           key: 'pk_test_51K19jpBS2gG7ym34MIHV7eVZ26NCetefYjlAYEZu2Gx1IAfEVfoivTlftfypfaGidYLTPq3ScFsVMcfXJ6Yfo5gv00sfk75sN3',
@@ -77,20 +91,18 @@ export class PasarelaComponent implements OnInit {
           token: function (token: any) {
             console.log(token);
             alert('Payment via stripe successfull!');
+
           },
         });
       };
 
       window.document.body.appendChild(scr);
     }
+
+
   }
 
-  setEstadoPedidoPagado() {
-    this.pedido.estado = 'Pagado';
-    this.pedidoService.setPedido(this.pedido).subscribe(
-      (res) =>{}
-    );
-  }
+
 
   eliminaPedido() {
     this.pedidoService.eliminarPedido(this.pedido.id).subscribe(() => {
@@ -107,4 +119,8 @@ export class PasarelaComponent implements OnInit {
     this.cestaService.eliminarCesta(cesta)
 
   }
+
+
 }
+
+

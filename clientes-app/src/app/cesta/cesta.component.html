@@ -7,10 +7,10 @@
 <p></p>
 <p></p>
 <p></p>
-<h1>Cesta</h1>
 <div class="container">
   <div class="row">
-    <div class="card col-12" *ngFor="let e of getProductos()">
+    <div class="card-header text-center">Productos en la Cesta</div>
+    <div class="card col-12 p-2 border-primary" *ngFor="let e of getProductos()">
       {{getProductos().lenght}}
       <div class="row">
         <div class="col-1">
@@ -23,6 +23,7 @@
         <div class="col-4">
           <H3>{{ e.nombre }}</H3>
           <p>{{ e.productoCaracteristicas.descripcion }}</p>
+          <p>{{ e.precio }}€</p>
         </div>
         <div class="col-4">
           <H5>Especificaciones</H5>
@@ -61,7 +62,7 @@
   <div class="col-2">
     <button
       (click)="tramitarPedido()"
-      class="btn btn-secondary btn-block"
+      class="btn btn-secondary btn-block m-3"
       type="button"
     >
       Tramitar pedido
