@@ -1,6 +1,14 @@
-## [0.8.0-alpha.1] (2021-12-05)
+## [1.0.0-release.1] (2021-12-06)
 
 ### Fixed
+
+- #Se han arreglado los errores encontrados en los procesos
+- #Se ha mejorado la apariencia visual
+
+
+## [0.8.0-alpha.1] (2021-12-05)
+
+### Added
 
 - #Se puede modificar el nombre de la tienda.
 - #Se puede eliminar imagen
