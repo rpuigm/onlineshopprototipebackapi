@@ -1,71 +1,79 @@
 <app-header></app-header>
-<div class="row">
-  <p></p>
-  <p></p>
-  <p></p>
-  <p></p>
-</div>
-<form>
-  <div class="form-row">
-    <div class="col-md-4 mb-3">
-      <label>Username</label>
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Nombre Usuario"
-        [(ngModel)]="getUsuario().username"
-        name="username"
-        id="username"
-      />
-    </div>
-    <div class="col-md-4 mb-3">
-      <label>Contraseña</label>
-      <input
-        type="password"
-        class="form-control"
-        placeholder="Password"
-(input) = 'setUsuarioPass($event)'
-        name="password"
-        id="password"
-      />
-    </div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 card border-primary">
+      <div class="card-header text-center">Cuenta</div>
+      <div class="card-body">
+        <form>
+          <div class="form-row">
+            <div class="col-12 col-sm-10 mb-3">
+              <label>Username</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Nombre Usuario"
+                [(ngModel)]="getUsuario().username"
+                name="username"
+                id="username"
+              />
+            </div>
+            <div class="col-12 col-sm-10 mb-3">
+              <label>Contraseña</label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Password"
+                (input)="setUsuarioPass($event)"
+                name="password"
+                id="password"
+              />
+            </div>
 
-    <div class="col-md-4 mb-3">
-      <label>Nombre</label>
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Nombre"
-        [(ngModel)]="usuario.nombre"
-        name="nombre"
-        id="nombre"
-      />
-    </div>
+            <div class="col-12 col-sm-10 mb-3">
+              <label>Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Nombre"
+                [(ngModel)]="usuario.nombre"
+                name="nombre"
+                id="nombre"
+              />
+            </div>
 
-    <div class="col-md-4 mb-3">
-      <label>Apellidos</label>
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Apellidos"
-        [(ngModel)]="usuario.apellidos"
-        name="apellido"
-        id="apellido"
-      />
-    </div>
-    <div class="col-md-4 mb-3">
-      <label>Edad</label>
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Edad"
-        [(ngModel)]="usuario.edad"
-        name="edad"
-        id="edad"
-      />
+            <div class="col-12 col-sm-10 mb-3">
+              <label>Apellidos</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Apellidos"
+                [(ngModel)]="usuario.apellidos"
+                name="apellido"
+                id="apellido"
+              />
+            </div>
+            <div class="col-2 mb-3">
+              <label>Edad</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Edad"
+                [(ngModel)]="usuario.edad"
+                name="edad"
+                id="edad"
+              />
+            </div>
+          </div>
+          <button
+            (click)="guaradarEmpleado()"
+            class="btn btn-secondary"
+            type="submit"
+          >
+            Guardar
+          </button>
+        </form>
+      </div>
     </div>
   </div>
-  <button (click)="guaradarEmpleado()" class="btn btn-primary" type="submit">
-    Guardar
-  </button>
-</form>
+</div>
