@@ -1,72 +1,87 @@
 <app-header></app-header>
-<div class="row">
-  <p></p>
-  <p></p>
-  <p></p>
-  <p></p>
-</div>
-<form>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 card border-primary">
+      <div class="card-header text-center">Dirección del pedido</div>
+      <div class="card-body">
+        <form #pedidoForm="ngForm">
+          <div class="form-row">
+            <div class="col-12 col-sm-10 mb-3">
+              <label>Via</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Nombre de la Vía"
+                [(ngModel)]="pedido.direccionPedido.via"
+                name="via"
+                id="via"
+                #via="ngModel"
+                required
+              />
+              <div class="alert alert-danger" *ngIf="via.invalid && (via.dirty || via.touched)">
+                <div *ngIf="via.errors.required">
+                  Nombre de la vía requerido
+                </div>
+              </div>
+            </div>
+            <div class="col-4 mb-3">
+              <label>Numero</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="numero"
+                (input)="setNumero($event)"
+                name="numero"
+                id="numero"
+              />
+            </div>
 
-  <div class="form-row">
-    <div class="col-md-4 mb-3">
-      <label>Via</label>
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Nombre de la Vía"
-        (input) = "setVia($event)"
-        name="via"
-        id="via"
-      />
-    </div>
-    <div class="col-md-4 mb-3">
-      <label>Numero</label>
-      <input
-        type="text"
-        class="form-control"
-        placeholder="numero"
-        (input) = "setNumero($event)"
-        name="numero"
-        id="numero"
-        />
-      </div>
+            <div class="col-6 mb-3">
+              <label>CP</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="CP"
+                (input)="setCp($event)"
+                name="cp"
+                id="cp"
+              />
+            </div>
 
-      <div class="col-md-4 mb-3">
-        <label>CP</label>
-        <input
-        type="text"
-        class="form-control"
-        placeholder="CP"
-       (input) = "setCp($event)"
-       name="cp"
-       id="cp"
-       />
+            <div class="col-12 col-sm-10 mb-3">
+              <label>Provincia</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="provincia"
+                (input)="setProvincia($event)"
+                name="provincia"
+                id="provincia"
+              />
+            </div>
+            <div class="col-12 col-sm-10 mb-3">
+              <label>Localidad</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Localidad"
+                (input)="setLocalidad($event)"
+                name="localidad"
+                id="localidad"
+              />
+            </div>
+          </div>
+          <button
+            (click)="guardadPedidoConDireccion()"
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="!pedidoForm.form.valid"
+          >
+            Pagar
+          </button>
+        </form>
       </div>
-
-      <div class="col-md-4 mb-3">
-        <label>Provincia</label>
-        <input
-        type="text"
-        class="form-control"
-        placeholder="provincia"
-        (input) = "setProvincia($event)"
-        name="provincia"
-        id="provincia"
-        />
-      </div>
-      <div class="col-md-4 mb-3">
-        <label>Localidad</label>
-        <input
-        type="text"
-        class="form-control"
-        placeholder="Localidad"
-        (input) = "setLocalidad($event)"
-        name="localidad"
-        id="localidad"
-      />
     </div>
   </div>
-  <button (click)="guardadPedidoConDireccion()"  class="btn btn-primary" type="submit">
-    Pagar
-  </button>
-</form>
+</div>
