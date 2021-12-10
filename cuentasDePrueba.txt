@@ -1,0 +1,15 @@
+Número	Marca	CVC	Fecha
+4242424242424242	Visa	Cualquier 3 dígitos	Cualquier fecha futura
+4000056655665556	Tarjeta de débito Visa)	Cualquier 3 dígitos	Cualquier fecha futura
+5555555555554444	Tarjeta MasterCard	Cualquier 3 dígitos	Cualquier fecha futura
+2223003122003222	Mastercard (serie 2)	Cualquier 3 dígitos	Cualquier fecha futura
+5200828282828210	Débito Mastercard)	Cualquier 3 dígitos	Cualquier fecha futura
+5105105105105100	Mastercard (prepago)	Cualquier 3 dígitos	Cualquier fecha futura
+378282246310005	American Express	Cualesquiera 4 dígitos	Cualquier fecha futura
+371449635398431	American Express	Cualesquiera 4 dígitos	Cualquier fecha futura
+6011111111111117	Descubrir	Cualquier 3 dígitos	Cualquier fecha futura
+6011000990139424	Descubrir	Cualquier 3 dígitos	Cualquier fecha futura
+3056930009020004	Diners Club	Cualquier 3 dígitos	Cualquier fecha futura
+36227206271667	Diners Club (tarjeta de 14 dígitos)	Cualquier 3 dígitos	Cualquier fecha futura
+3566002020360505	JCB	Cualquier 3 dígitos	Cualquier fecha futura
+6200000000000005	UnionPay	Cualquier 3 dígitos	Cualquier fecha futura

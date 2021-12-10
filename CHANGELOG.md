@@ -1,3 +1,9 @@
+## [1.0.1-release.1] (2021-12-09)
+
+### Fixed
+
+- #Se corrige una validación del alta de producto y una ruta de seguridad
+
 ## [1.0.0-release.1] (2021-12-06)
 
 ### Fixed
