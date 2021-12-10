@@ -33,12 +33,9 @@ export class AltaproductoComponent implements OnInit {
 
   agregarProducto(): void {
     if (
-      this.producto.nombre.length == 0 ||
-      this.producto.nombre.length == null ||
-      this.producto.categoria.length == 0 ||
-      this.producto.categoria.length == null ||
-      this.producto.precio == null ||
-      this.producto.precio == 0
+      this.producto.nombre == null ||
+      this.producto.categoria == null ||
+      this.producto.precio == null
     ) {
       swal.fire(
         'Faltan datos',
