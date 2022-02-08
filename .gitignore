@@ -44,3 +44,7 @@ hs_err_pid*
 *.sublime-workspace
 ectemplate-servicio-productos/uploads/
 edicionDemo_assets/
+
+# Temp Files
+
+RemoteSystemsTempFiles/
