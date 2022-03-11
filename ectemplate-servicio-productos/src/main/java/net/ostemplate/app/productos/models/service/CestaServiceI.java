@@ -3,6 +3,7 @@ package net.ostemplate.app.productos.models.service;
 import java.util.List;
 
 import net.ostemplate.app.productos.models.entity.Cesta;
+import net.ostemplate.app.productos.models.entity.CestaDTO;
 
 public interface CestaServiceI {
 	
@@ -15,7 +16,7 @@ public interface CestaServiceI {
 
 	List<Cesta> listaCestas();
 
-	Cesta actualizaCesta(Cesta cesta);
+	Cesta actualizaCesta(CestaDTO cesta);
 
 
 	void eliminaCesta(Cesta cesta);

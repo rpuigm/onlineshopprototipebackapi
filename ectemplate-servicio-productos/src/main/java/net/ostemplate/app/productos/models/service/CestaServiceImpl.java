@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import net.ostemplate.app.productos.models.dao.ComprasRepository;
 import net.ostemplate.app.productos.models.dao.ProductoCantidadRepository;
 import net.ostemplate.app.productos.models.entity.Cesta;
+import net.ostemplate.app.productos.models.entity.CestaDTO;
 import net.ostemplate.app.productos.models.entity.ProductoCantidad;
 
 @Service
@@ -41,7 +42,8 @@ public class CestaServiceImpl implements CestaServiceI {
 	
 	@Override
 	@Transactional
-	public Cesta actualizaCesta (Cesta cesta) {
+	public Cesta actualizaCesta (CestaDTO cestaDTO) {
+		Cesta cesta =(Cesta) cestaDTO;
 		return comprasRepository.save(cesta);
 	}
 	

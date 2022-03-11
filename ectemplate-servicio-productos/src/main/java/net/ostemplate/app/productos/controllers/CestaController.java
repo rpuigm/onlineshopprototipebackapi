@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.ostemplate.app.productos.models.entity.Cesta;
+import net.ostemplate.app.productos.models.entity.CestaDTO;
 import net.ostemplate.app.productos.models.service.CestaServiceImpl;
-import net.ostemplate.app.productos.models.service.ImagenProductoI;
 
 @RestController
 public class CestaController {
@@ -30,7 +30,7 @@ public class CestaController {
 	
 	
 	@PostMapping("/cesta/actualiza-cesta")
-	public Cesta actualizaCesta(@RequestBody Cesta cesta) {
+	public Cesta actualizaCesta(@RequestBody CestaDTO cesta) {
 		System.out.println("numero productos en cesta"+cesta.getProductoCantidad().size());
 		return cestaServiceImpl.actualizaCesta(cesta);
 	}
@@ -41,7 +41,7 @@ public class CestaController {
 	}
 	
 	@DeleteMapping("/cesta/elimina-cesta")
-	public void recuperaCestaPorIdUsuario (@RequestBody Cesta cesta) {
+	public void recuperaCestaPorIdUsuario (@RequestBody CestaDTO cesta) {
 		cestaServiceImpl.eliminaCesta(cesta);
 	}
 	
