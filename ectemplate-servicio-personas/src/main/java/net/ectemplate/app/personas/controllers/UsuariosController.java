@@ -30,13 +30,13 @@ public class UsuariosController {
 	}
 
 	@PutMapping("/actualiza-cliente")
-	public Usuario actualizaCliente(@RequestBody Usuario usuario) {
+	public Usuario actualizaCliente(@RequestBody UsuarioDTO usuario) {
 		return personasServicesI.altaCliente(usuario);
 
 	}
 
 	@PostMapping("/crea-cliente")
-	public Usuario altaCliente(@RequestBody Usuario usuario) {
+	public Usuario altaCliente(@RequestBody UsuarioDTO usuario) {
 		return personasServicesI.altaCliente(usuario);
 
 	}

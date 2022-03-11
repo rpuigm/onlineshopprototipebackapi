@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import net.ectemplate.app.personas.dao.UsuariosRepository;
+import net.ectemplate.app.personas.dto.UsuarioDTO;
 import net.ectemplate.app.personas.entities.Role;
 import net.ectemplate.app.personas.entities.Usuario;
 
@@ -31,7 +32,7 @@ public class PersonasServicesImpl implements PersonasServicesI {
 
 	@Override
 	@Transactional
-	public Usuario actualizaUsuario(Usuario usuario) {
+	public Usuario actualizaUsuario(UsuarioDTO usuario) {
 		Optional<Usuario> usuarioAnt = personasRepository.findById(usuario.getId());
 		if (!usuario.getPassword().equals(usuarioAnt.get().getPassword()))
 			usuario.setPassword(bCryp.encode(usuario.getPassword()));
@@ -41,7 +42,7 @@ public class PersonasServicesImpl implements PersonasServicesI {
 
 	@Override
 	@Transactional
-	public Usuario altaCliente(Usuario usuario) {
+	public Usuario altaCliente(UsuarioDTO usuario) {
 
 			Role role = new Role();
 			role.setId(1L);
