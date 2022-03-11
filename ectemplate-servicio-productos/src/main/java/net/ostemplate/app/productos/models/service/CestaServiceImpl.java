@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +19,17 @@ public class CestaServiceImpl implements CestaServiceI {
 
 	@Autowired
 	private ComprasRepository comprasRepository;
-	
+
 	@Autowired
 	private ProductoCantidadRepository productoCantidadRepository;
+
+	@Override
+	@Transactional
+	public Cesta guardaCesta(CestaDTO cestaDTO) {
+		Cesta cesta = new Cesta();
+		BeanUtils.copyProperties(cestaDTO, cesta);
+		return comprasRepository.save(cesta);
+	}
 
 	@Override
 	@Transactional
@@ -39,20 +48,22 @@ public class CestaServiceImpl implements CestaServiceI {
 	public Cesta buscarCestaPorUsuarioId(Long idUsuario) {
 		return comprasRepository.findByIdUsuario(idUsuario);
 	}
-	
+
 	@Override
 	@Transactional
-	public Cesta actualizaCesta (CestaDTO cestaDTO) {
-		Cesta cesta =(Cesta) cestaDTO;
+	public Cesta actualizaCesta(CestaDTO cestaDTO) {
+		Cesta cesta = new Cesta();
+		BeanUtils.copyProperties(cestaDTO, cesta);
 		return comprasRepository.save(cesta);
 	}
-	
+
 	@Override
 	@Transactional
-	public void eliminaCesta (Cesta cesta) {
+	public void eliminaCesta(CestaDTO cestaDTO) {
+		Cesta cesta = new Cesta();
+		BeanUtils.copyProperties(cestaDTO, cesta);
 		comprasRepository.delete(cesta);
 	}
-
 
 	@Override
 	@Transactional
@@ -72,27 +83,16 @@ public class CestaServiceImpl implements CestaServiceI {
 		return guardaCesta(cesta);
 
 	}
+
 	@Override
 	@Transactional
 	public void eliminarUnProductoDeLasCestas(Long idProducto) {
 		productoCantidadRepository.deleteAllByIdProducto(idProducto);
-		
-	}
 
-	private ProductoCantidad incrementa(ProductoCantidad productoCantidad) {
-		productoCantidad.setCantidad(productoCantidad.getCantidad() + 1L);
-		return productoCantidad;
 	}
 
 	private ProductoCantidad disminuye(ProductoCantidad productoCantidad) {
 		productoCantidad.setCantidad(productoCantidad.getCantidad() - 1L);
-		return productoCantidad;
-	}
-
-	private ProductoCantidad mapToProductoCantidad(Long idProducto) {
-		ProductoCantidad productoCantidad = new ProductoCantidad();
-		productoCantidad.setCantidad(1L);
-		productoCantidad.setIdProducto(idProducto);
 		return productoCantidad;
 	}
 

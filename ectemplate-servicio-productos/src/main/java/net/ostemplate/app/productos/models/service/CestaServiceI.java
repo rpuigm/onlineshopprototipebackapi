@@ -7,8 +7,9 @@ import net.ostemplate.app.productos.models.entity.CestaDTO;
 
 public interface CestaServiceI {
 	
+	Cesta guardaCesta(CestaDTO cestaDTO);
+	
 	Cesta guardaCesta(Cesta cesta);
-
 
 	Cesta buscarCestaPorUsuarioId(Long idUsuario);
 
@@ -16,10 +17,10 @@ public interface CestaServiceI {
 
 	List<Cesta> listaCestas();
 
-	Cesta actualizaCesta(CestaDTO cesta);
+	Cesta actualizaCesta(CestaDTO cestaDTO);
 
 
-	void eliminaCesta(Cesta cesta);
+	void eliminaCesta(CestaDTO cestaDTO);
 
 
 	void eliminarUnProductoDeLasCestas(Long idProducto);

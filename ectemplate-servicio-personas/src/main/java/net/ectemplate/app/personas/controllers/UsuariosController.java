@@ -25,19 +25,19 @@ public class UsuariosController {
 	}
 
 	@PutMapping("/actualiza-usuario")
-	public Usuario actualizaUsuario(@RequestBody UsuarioDTO usuario) {
-		return personasServicesI.actualizaUsuario(usuario);
+	public Usuario actualizaUsuario(@RequestBody UsuarioDTO usuarioDTO) {
+		return personasServicesI.actualizaUsuario(usuarioDTO);
 	}
 
 	@PutMapping("/actualiza-cliente")
-	public Usuario actualizaCliente(@RequestBody UsuarioDTO usuario) {
-		return personasServicesI.altaCliente(usuario);
+	public Usuario actualizaCliente(@RequestBody UsuarioDTO usuarioDTO) {
+		return personasServicesI.altaCliente(usuarioDTO);
 
 	}
 
 	@PostMapping("/crea-cliente")
-	public Usuario altaCliente(@RequestBody UsuarioDTO usuario) {
-		return personasServicesI.altaCliente(usuario);
+	public Usuario altaCliente(@RequestBody UsuarioDTO usuarioDTO) {
+		return personasServicesI.altaCliente(usuarioDTO);
 
 	}
 

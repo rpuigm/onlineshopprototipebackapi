@@ -9,8 +9,8 @@ public interface PersonasServicesI {
 	
 	public List<Usuario> findAll();
 	
-	public Usuario actualizaUsuario (UsuarioDTO usuario);
+	public Usuario actualizaUsuario (UsuarioDTO usuarioDTO);
 
-	Usuario altaCliente(UsuarioDTO usuario);
+	Usuario altaCliente(UsuarioDTO usuarioDTO);
 
 }

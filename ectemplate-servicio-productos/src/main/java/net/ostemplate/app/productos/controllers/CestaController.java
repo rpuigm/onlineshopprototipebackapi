@@ -30,9 +30,8 @@ public class CestaController {
 	
 	
 	@PostMapping("/cesta/actualiza-cesta")
-	public Cesta actualizaCesta(@RequestBody CestaDTO cesta) {
-		System.out.println("numero productos en cesta"+cesta.getProductoCantidad().size());
-		return cestaServiceImpl.actualizaCesta(cesta);
+	public Cesta actualizaCesta(@RequestBody CestaDTO cestaDTO) {
+		return cestaServiceImpl.actualizaCesta(cestaDTO);
 	}
 	
 	@GetMapping("/cesta/listacestas")
@@ -41,8 +40,8 @@ public class CestaController {
 	}
 	
 	@DeleteMapping("/cesta/elimina-cesta")
-	public void recuperaCestaPorIdUsuario (@RequestBody CestaDTO cesta) {
-		cestaServiceImpl.eliminaCesta(cesta);
+	public void recuperaCestaPorIdUsuario (@RequestBody CestaDTO cestaDTO) {
+		cestaServiceImpl.eliminaCesta(cestaDTO);
 	}
 	
 }
