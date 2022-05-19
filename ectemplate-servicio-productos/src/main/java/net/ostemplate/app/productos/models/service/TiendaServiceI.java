@@ -1,14 +1,14 @@
 package net.ostemplate.app.productos.models.service;
 
-import net.ostemplate.app.productos.models.entity.Tienda;
+import net.ostemplate.app.productos.models.entity.TiendaEntity;
 
 public interface TiendaServiceI {
 
 
 	String actualizaTienda(String nombreTienda);
 
-	Tienda getNombreDeTienda();
+	TiendaEntity getNombreDeTienda();
 
-	Tienda guardaTienda(Tienda tienda);
+	TiendaEntity guardaTienda(TiendaEntity tiendaEntity);
 
 }
