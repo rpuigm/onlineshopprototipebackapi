@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import net.ostemplate.app.productos.models.dao.TiendaRepository;
-import net.ostemplate.app.productos.models.entity.Tienda;
+import net.ostemplate.app.productos.models.entity.TiendaEntity;
 
 @Service
 public class TiendaServiceImpl implements TiendaServiceI {
@@ -17,23 +17,23 @@ public class TiendaServiceImpl implements TiendaServiceI {
 	@Override
 	@Transactional
 	public String actualizaTienda(String nombreTienda) {
-		Tienda tienda = new Tienda();
-		tienda.setId(1L);
-		tienda.setNombreTienda(nombreTienda);
-		tienda = tiendaRepository.save(tienda);
-		return tienda.getNombreTienda();
+		TiendaEntity tiendaEntity = new TiendaEntity();
+		tiendaEntity.setId(1L);
+		tiendaEntity.setNombreTienda(nombreTienda);
+		tiendaEntity = tiendaRepository.save(tiendaEntity);
+		return tiendaEntity.getNombreTienda();
 
 	}
 	@Override
 	@Transactional
-	public Tienda guardaTienda(Tienda tienda) {
-		return tiendaRepository.save(tienda);
+	public TiendaEntity guardaTienda(TiendaEntity tiendaEntity) {
+		return tiendaRepository.save(tiendaEntity);
 		
 	}
 
 	@Override
 	@Transactional
-	public Tienda getNombreDeTienda() {
+	public TiendaEntity getNombreDeTienda() {
 		return tiendaRepository.findById(1L).orElse(null);
 	}
 

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.ostemplate.app.productos.models.entity.Tienda;
+import net.ostemplate.app.productos.models.entity.TiendaEntity;
 import net.ostemplate.app.productos.models.service.TiendaServiceI;
 
 @RestController
@@ -28,7 +29,10 @@ public class TiendaController {
 	
 	@PostMapping("/tienda/cambia-tienda")
 	public Tienda cambiaNombre(@RequestBody Tienda tienda) {
-		return tiendaServiceI.guardaTienda(tienda);
+		TiendaEntity tiendaEntity = new TiendaEntity();
+		tiendaEntity.setId(tienda.getId());
+		tiendaEntity.setNombreTienda(tienda.getNombreTienda());
+		return tiendaServiceI.guardaTienda(tiendaEntity);
 	}
 
 }
