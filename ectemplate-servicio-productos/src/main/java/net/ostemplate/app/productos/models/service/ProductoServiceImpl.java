@@ -44,7 +44,7 @@ public class ProductoServiceImpl implements ProductoServiceI {
 	@Override
 	@Transactional
 	public void borrarProducto(Long id) {
-		if (!productoCantidadRepository.findAllByIdProducto(id).equals(null))
+		if (productoCantidadRepository.findAllByIdProducto(id)!=null)
 			cestaServiceI.eliminarUnProductoDeLasCestas(id);
 		productoRepository.deleteById(id);
 	}
@@ -72,7 +72,7 @@ public class ProductoServiceImpl implements ProductoServiceI {
 	@Override
 	@Transactional
 	public void borrarUnProducto(ProductoEntity productoEntity) {
-		if (!(productoCantidadRepository.findAllByIdProducto(productoEntity.getId())==null))
+		if (productoCantidadRepository.findAllByIdProducto(productoEntity.getId())!=null)
 			cestaServiceI.eliminarUnProductoDeLasCestas(productoEntity.getId());
 		productoRepository.delete(productoEntity);
 
