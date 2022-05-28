@@ -10,7 +10,6 @@
 	<modules>
 		<module>ectemplate-servicio-productos</module>
 		<module>ectemplate-servicio-personas</module>
-		<module>ectemplate-service-compras</module>
 	</modules>
 	
 	<packaging>pom</packaging>
