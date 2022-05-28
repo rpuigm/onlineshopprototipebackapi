@@ -3,7 +3,6 @@ package net.ostemplate.app.productos.services;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -15,8 +14,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import net.ostemplate.app.productos.models.dao.ProductoRepository;
 import net.ostemplate.app.productos.models.entity.ImagenProducto;
-import net.ostemplate.app.productos.models.entity.Producto;
 import net.ostemplate.app.productos.models.entity.ProductoCaracteristicas;
+import net.ostemplate.app.productos.models.entity.ProductoEntity;
 import net.ostemplate.app.productos.models.entity.ProductoEspecificaciones;
 import net.ostemplate.app.productos.models.service.ProductoServiceImpl;
 
@@ -31,7 +30,7 @@ public class ProductoServiceImplTest {
 	
 	@Test
 	public void insertarProductoTest() throws ParseException {
-		Mockito.when(proRepository.save(Mockito.any(Producto.class))).thenReturn(mapToProducto());
+		Mockito.when(proRepository.save(Mockito.any(ProductoEntity.class))).thenReturn(mapToProducto());
 		productoServiceImpl.insertProducto(mapToProducto());
 	}
 	
@@ -42,8 +41,8 @@ public class ProductoServiceImplTest {
 		
 	}
 	
-	private List<Producto> mapToListaProducto() throws ParseException{
-		List<Producto> listaProductos = new ArrayList<Producto>();
+	private List<ProductoEntity> mapToListaProducto() throws ParseException{
+		List<ProductoEntity> listaProductos = new ArrayList<ProductoEntity>();
 		listaProductos.add(mapToProducto());
 		listaProductos.add(mapToProducto());
 		listaProductos.add(mapToProducto());
@@ -51,15 +50,15 @@ public class ProductoServiceImplTest {
 		
 	}
 	
-	private Producto mapToProducto() throws ParseException {
+	private ProductoEntity mapToProducto() throws ParseException {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
-		Producto producto = new Producto();
-		producto.setCategoria("categoria");
-		producto.setId(1L);
-		producto.setCategoria("nombre");
-		producto.setCreateAt(simpleDateFormat.parse("10/10/2021"));
-		producto.setProductoCaracteristicas(mapToProductoCaracteristicas());
-		return producto;
+		ProductoEntity productoEntity = new ProductoEntity();
+		productoEntity.setCategoria("categoria");
+		productoEntity.setId(1L);
+		productoEntity.setCreateAt(simpleDateFormat.parse("10/10/2021"));
+		productoEntity.setProductoCaracteristicas(mapToProductoCaracteristicas());
+		productoEntity.setCategoria("categoria");
+		return productoEntity;
 		
 	}
 	
