@@ -3,6 +3,7 @@ package net.ostemplate.app.productos.models.service;
 import java.util.List;
 
 import net.ostemplate.app.productos.models.entity.Producto;
+import net.ostemplate.app.productos.models.entity.ProductoEntity;
 
 public interface ProductoServiceI {
 
@@ -10,7 +11,7 @@ public interface ProductoServiceI {
 	 * Devuelve la lista de todos los productos
 	 * @return List<Producto>
 	 */
-	public List<Producto> findAll();
+	public List<ProductoEntity> findAll();
 	
 	/**
 	 * Devuelve un producto por su identificador
@@ -23,7 +24,7 @@ public interface ProductoServiceI {
 	 * Guarda un nuevo producto
 	 * @param producto
 	 */
-	public Producto insertProducto(Producto producto);
+	public Producto insertProducto(ProductoEntity productoEntity);
 	
 	/**
 	 * Borra un producto por su identificador
@@ -36,23 +37,23 @@ public interface ProductoServiceI {
 	 * @param nombre
 	 * @return List<Producto>
 	 */
-	public List<Producto> buscarPorNombre(String nombre);
+	public List<ProductoEntity> buscarPorNombre(String nombre);
 	
 	/**
 	 * Devuelve una lista de productos cuyo nombre contiene una cadena
 	 * @param nombre
 	 * @return
 	 */
-	public List<Producto> buscarPorContieneEnNombre(String nombre);
+	public List<ProductoEntity> buscarPorContieneEnNombre(String nombre);
 	
 	/**
 	 * Devuelve el producto modificado
 	 * @param producto
 	 * @return producto
 	 */
-	public Producto modificarProducto(Producto producto);
+	public Producto modificarProducto(ProductoEntity productoEntity);
 
-	void borrarUnProducto(Producto producto);
+	void borrarUnProducto(ProductoEntity productoEntity);
 	
 	
 }

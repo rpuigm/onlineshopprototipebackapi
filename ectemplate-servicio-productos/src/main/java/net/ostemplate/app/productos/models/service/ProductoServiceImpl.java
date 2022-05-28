@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import net.ostemplate.app.productos.models.dao.ProductoCantidadRepository;
 import net.ostemplate.app.productos.models.dao.ProductoRepository;
 import net.ostemplate.app.productos.models.entity.Producto;
+import net.ostemplate.app.productos.models.entity.ProductoEntity;
 
 @Service
 public class ProductoServiceImpl implements ProductoServiceI {
@@ -24,8 +25,8 @@ public class ProductoServiceImpl implements ProductoServiceI {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Producto> findAll() {
-		return (List<Producto>) productoRepository.findAll();
+	public List<ProductoEntity> findAll() {
+		return (List<ProductoEntity>) productoRepository.findAll();
 	}
 
 	@Override
@@ -36,9 +37,9 @@ public class ProductoServiceImpl implements ProductoServiceI {
 
 	@Override
 	@Transactional
-	public Producto insertProducto(Producto producto) {
-		System.out.println("descripcion---" + producto.getProductoCaracteristicas().getDescripcion());
-		return productoRepository.save(producto);
+	public Producto insertProducto(ProductoEntity productoEntity) {
+		System.out.println("descripcion---" + productoEntity.getProductoCaracteristicas().getDescripcion());
+		return productoRepository.save(productoEntity);
 	}
 
 	@Override
@@ -51,30 +52,30 @@ public class ProductoServiceImpl implements ProductoServiceI {
 
 	@Override
 	@Transactional
-	public List<Producto> buscarPorNombre(String nombre) {
+	public List<ProductoEntity> buscarPorNombre(String nombre) {
 		return productoRepository.findByNombre(nombre);
 	}
 
 	@Override
 	@Transactional
-	public List<Producto> buscarPorContieneEnNombre(String nombre) {
+	public List<ProductoEntity> buscarPorContieneEnNombre(String nombre) {
 		return productoRepository.findByNombreLike("%" + nombre + "%");
 	}
 
 	@Override
 	@Transactional
-	public Producto modificarProducto(Producto producto) {
-		if (productoRepository.existsById(producto.getId()))
-			return productoRepository.save(producto);
-		return producto;
+	public Producto modificarProducto(ProductoEntity productoEntity) {
+		if (productoRepository.existsById(productoEntity.getId()))
+			return productoRepository.save(productoEntity);
+		return productoEntity;
 	}
 
 	@Override
 	@Transactional
-	public void borrarUnProducto(Producto producto) {
-		if (!productoCantidadRepository.findAllByIdProducto(producto.getId()).equals(null))
-			cestaServiceI.eliminarUnProductoDeLasCestas(producto.getId());
-		productoRepository.delete(producto);
+	public void borrarUnProducto(ProductoEntity productoEntity) {
+		if (!productoCantidadRepository.findAllByIdProducto(productoEntity.getId()).equals(null))
+			cestaServiceI.eliminarUnProductoDeLasCestas(productoEntity.getId());
+		productoRepository.delete(productoEntity);
 
 	}
 

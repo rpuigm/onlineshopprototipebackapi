@@ -12,16 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import net.ostemplate.app.productos.models.entity.Cesta;
 import net.ostemplate.app.productos.models.service.CestaServiceImpl;
-import net.ostemplate.app.productos.models.service.ImagenProductoI;
 
 @RestController
 public class CestaController {
 
 	@Autowired
 	private CestaServiceImpl cestaServiceImpl;
-	
-
-
 	
 	@GetMapping("/cesta/recupera-cesta/{idUsuario}")
 	public Cesta recuperaCestaPorIdUsuario (@PathVariable Long idUsuario) {

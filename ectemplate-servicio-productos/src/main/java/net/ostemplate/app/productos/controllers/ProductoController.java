@@ -1,6 +1,5 @@
 package net.ostemplate.app.productos.controllers;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
@@ -32,9 +31,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import net.ostemplate.app.productos.mappers.ProductoMapper;
 import net.ostemplate.app.productos.models.entity.ImagenProducto;
 import net.ostemplate.app.productos.models.entity.Producto;
 import net.ostemplate.app.productos.models.entity.ProductoCaracteristicas;
+import net.ostemplate.app.productos.models.entity.ProductoEntity;
 import net.ostemplate.app.productos.models.service.ImagenProductoI;
 import net.ostemplate.app.productos.models.service.ProductoServiceI;
 
@@ -50,7 +51,7 @@ public class ProductoController {
 	private ImagenProductoI imagenProductoI;
 	
 	@GetMapping("/lista")
-	public List<Producto> listar(){
+	public List<ProductoEntity> listar(){
 		return productoService.findAll();
 
 	}
@@ -63,7 +64,9 @@ public class ProductoController {
 	@PostMapping(value="/producto/nuevo")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Producto insertarProducto (@RequestBody Producto producto) {
-		return productoService.insertProducto(producto);
+		return productoService
+				.insertProducto(ProductoMapper
+								.mapToProductoEntityByProducto(producto));
 	}
 	
 	@DeleteMapping("/producto/borrar/{id}")
@@ -72,18 +75,19 @@ public class ProductoController {
 	}
 	
 	@GetMapping("/producto/nombre/{nombre}")
-	public List<Producto> buscarProductoPorNombre(@PathVariable String nombre){
+	public List<ProductoEntity> buscarProductoPorNombre(@PathVariable String nombre){
 		return productoService.buscarPorNombre(nombre);
 	}
 	
 	@GetMapping("/producto/contiene/{nombre}")
-	public List<Producto> buscarProductoPorContieneNombre(@PathVariable String nombre){
+	public List<ProductoEntity> buscarProductoPorContieneNombre(@PathVariable String nombre){
 		return productoService.buscarPorNombre(nombre);
 	}
 	
 	@PutMapping("/producto/modificar")
 	public Producto modificarProducto (@RequestBody Producto producto) {
-		return productoService.modificarProducto(producto);
+		return productoService.modificarProducto(ProductoMapper
+				.mapToProductoEntityByProducto(producto));
 	}
 	
 	@PostMapping("/producto/imagen")
@@ -120,7 +124,8 @@ public class ProductoController {
 			productoCaracteristicas.setImagenesProducto(listaImagenProducto);
 			producto.setProductoCaracteristicas(productoCaracteristicas);
 			
-			productoService.modificarProducto(producto);
+			productoService.modificarProducto(ProductoMapper
+					.mapToProductoEntityByProducto(producto));
 			
 			response.put("producto", producto);
 			response.put("mensaje", "Se ha subido la imagen: "+ nombreArchivo);

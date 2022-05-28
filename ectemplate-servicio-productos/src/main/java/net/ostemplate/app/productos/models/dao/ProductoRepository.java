@@ -4,17 +4,16 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import net.ostemplate.app.productos.models.entity.Producto;
+import net.ostemplate.app.productos.models.entity.ProductoEntity;
 
-
-public interface ProductoRepository extends CrudRepository<Producto, Long>{
+public interface ProductoRepository extends CrudRepository<ProductoEntity, Long>{
 	
 	/**
 	 * Devuelve una lista de productos por nombre
 	 * @param nombre
 	 * @return List<Producto>
 	 */
-	List<Producto> findByNombre (String nombre);
+	List<ProductoEntity> findByNombre (String nombre);
 	
-	List<Producto> findByNombreLike (String nombre);
+	List<ProductoEntity> findByNombreLike (String nombre);
 }
