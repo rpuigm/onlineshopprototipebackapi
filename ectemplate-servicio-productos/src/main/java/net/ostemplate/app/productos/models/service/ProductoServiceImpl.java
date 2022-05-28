@@ -73,7 +73,7 @@ public class ProductoServiceImpl implements ProductoServiceI {
 	@Override
 	@Transactional
 	public void borrarUnProducto(ProductoEntity productoEntity) {
-		if (!productoCantidadRepository.findAllByIdProducto(productoEntity.getId()).equals(null))
+		if (!(productoCantidadRepository.findAllByIdProducto(productoEntity.getId())==null))
 			cestaServiceI.eliminarUnProductoDeLasCestas(productoEntity.getId());
 		productoRepository.delete(productoEntity);
 
