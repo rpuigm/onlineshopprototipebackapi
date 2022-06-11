@@ -8,7 +8,7 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
-<h1 align="center"><img src="https://pixabay.com/illustrations/maintenance-under-construction-2422173/"/></h1>
+<h1 align="center"><img src="https://cdn.pixabay.com/photo/2017/06/20/08/12/maintenance-2422173_1280.png"/></h1>
 
 ### E-COMMERCE WEB TEMPLATE
 
