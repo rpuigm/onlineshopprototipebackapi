@@ -20,12 +20,14 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
+@Data
 @MappedSuperclass
 public class Producto implements Serializable {
 
@@ -57,62 +59,6 @@ public class Producto implements Serializable {
     	createAt= new Date();
     }
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public Double getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(Double precio) {
-		this.precio = precio;
-	}
-
-	public Date getCreateAt() {
-		return createAt;
-	}
-
-	public String getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
-
-	public Double getValoracion() {
-		return valoracion;
-	}
-
-	public void setValoracion(Double valoracion) {
-		this.valoracion = valoracion;
-	}
-
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
-	}
-
-	
-	public ProductoCaracteristicas getProductoCaracteristicas() {
-		return productoCaracteristicas;
-	}
-
-	public void setProductoCaracteristicas(ProductoCaracteristicas productoCaracteristicas) {
-		this.productoCaracteristicas = productoCaracteristicas;
-	}
 
 	/**
 	 * 
