@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.jeasy.random.EasyRandom;
-import org.junit.Assert;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -15,10 +13,6 @@ import net.ostemplate.app.productos.models.entity.CestaEntity;
 @ExtendWith(MockitoExtension.class)
 public class CestaMapperTest {
 	
-	@Test
-	public void mapToListCestaFromListCestaEntityTest() {
-		Assert.assertEquals(listCestaDummy(), CestaMapper.mapToListCestaFromListCestaEntity(listCestaEntityDummy()));
-	}
 	
 	private Cesta cestaDummy() {
 		EasyRandom easyRandom = new EasyRandom();
