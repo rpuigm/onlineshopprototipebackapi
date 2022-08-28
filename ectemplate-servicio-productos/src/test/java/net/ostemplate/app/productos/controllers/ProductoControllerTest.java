@@ -24,11 +24,12 @@ public class ProductoControllerTest {
 
 	@Mock
 	ProductoServiceI productoServiceI;
-
+	
 	@Test
-	@Disabled
 	public void subidaImagen() {
 		Mockito.when(productoServiceI.findById(Mockito.anyLong())).thenReturn(mapToProductoDummy());
+		
+		
 		productoController.subidaImagen(multiparteFile, 1L, "descripcion");
 
 	}
