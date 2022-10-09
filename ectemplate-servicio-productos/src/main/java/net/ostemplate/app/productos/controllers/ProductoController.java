@@ -2,7 +2,6 @@ package net.ostemplate.app.productos.controllers;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -36,6 +35,7 @@ import net.ostemplate.app.productos.models.entity.ImagenProducto;
 import net.ostemplate.app.productos.models.entity.Producto;
 import net.ostemplate.app.productos.models.entity.ProductoCaracteristicas;
 import net.ostemplate.app.productos.models.entity.ProductoEntity;
+import net.ostemplate.app.productos.models.service.FileService;
 import net.ostemplate.app.productos.models.service.ImagenProductoI;
 import net.ostemplate.app.productos.models.service.ProductoServiceI;
 
@@ -49,6 +49,9 @@ public class ProductoController {
 
 	@Autowired
 	private ImagenProductoI imagenProductoI;
+	
+	@Autowired
+	private FileService fileService;
 
 	@GetMapping("/lista")
 	public List<ProductoEntity> listar() {
@@ -104,7 +107,8 @@ public class ProductoController {
 			Path rutaArchivo = Paths.get("uploads").resolve(nombreArchivo).toAbsolutePath();
 			log.info(rutaArchivo.toString());
 			try {
-				Files.copy(archivo.getInputStream(), rutaArchivo);
+				if (fileService.copyFile(archivo.getInputStream(), rutaArchivo)<=0)
+					throw new IOException();
 			} catch (IOException e) {
 				response.put("mensaje", "Error al subir la imagen" + nombreArchivo);
 				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
