@@ -10,8 +10,13 @@
 	<modules>
 		<module>ectemplate-servicio-productos</module>
 		<module>ectemplate-servicio-personas</module>
+		<module>ectemplate-service-config-server</module>
+		<module>ectemplate-servicio-gateway</module>
+		<module>ectemplate-servicio-eureka-server</module>
+		<module>ectemplate-service-oauth</module>
+		<module>ectemplate-service-zuul-server</module>
 	</modules>
-	
+
 	<packaging>pom</packaging>
 	
   	<properties>
