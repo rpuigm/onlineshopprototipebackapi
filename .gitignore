@@ -48,3 +48,5 @@ edicionDemo_assets/
 # Temp Files
 
 RemoteSystemsTempFiles/
+ectemplate.iml
+*.iml

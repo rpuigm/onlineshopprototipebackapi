@@ -13,6 +13,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name="productos_caracteristicas")
 public class ProductoCaracteristicas implements Serializable {

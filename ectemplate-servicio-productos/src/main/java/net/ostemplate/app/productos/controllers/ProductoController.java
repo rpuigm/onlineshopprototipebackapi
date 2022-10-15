@@ -2,7 +2,6 @@ package net.ostemplate.app.productos.controllers;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -36,60 +35,61 @@ import net.ostemplate.app.productos.models.entity.ImagenProducto;
 import net.ostemplate.app.productos.models.entity.Producto;
 import net.ostemplate.app.productos.models.entity.ProductoCaracteristicas;
 import net.ostemplate.app.productos.models.entity.ProductoEntity;
+import net.ostemplate.app.productos.models.service.FileService;
 import net.ostemplate.app.productos.models.service.ImagenProductoI;
 import net.ostemplate.app.productos.models.service.ProductoServiceI;
 
 @RestController
 public class ProductoController {
-	
+
 	private final Logger log = LoggerFactory.getLogger(ProductoController.class);
-	
+
 	@Autowired
 	private ProductoServiceI productoService;
-	
+
 	@Autowired
 	private ImagenProductoI imagenProductoI;
 	
+	@Autowired
+	private FileService fileService;
+
 	@GetMapping("/lista")
-	public List<ProductoEntity> listar(){
+	public List<ProductoEntity> listar() {
 		return productoService.findAll();
 
 	}
-	
+
 	@GetMapping("/producto/{id}")
 	public Producto detalle(@PathVariable Long id) {
 		return productoService.findById(id);
 	}
-	
-	@PostMapping(value="/producto/nuevo")
+
+	@PostMapping(value = "/producto/nuevo")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Producto insertarProducto (@RequestBody Producto producto) {
-		return productoService
-				.insertProducto(ProductoMapper
-								.mapToProductoEntityByProducto(producto));
+	public Producto insertarProducto(@RequestBody Producto producto) {
+		return productoService.insertProducto(ProductoMapper.mapToProductoEntityByProducto(producto));
 	}
-	
+
 	@DeleteMapping("/producto/borrar/{id}")
-	public void borrarProducto (@PathVariable Long id) {
+	public void borrarProducto(@PathVariable Long id) {
 		productoService.borrarProducto(id);
 	}
-	
+
 	@GetMapping("/producto/nombre/{nombre}")
-	public List<ProductoEntity> buscarProductoPorNombre(@PathVariable String nombre){
+	public List<ProductoEntity> buscarProductoPorNombre(@PathVariable String nombre) {
 		return productoService.buscarPorNombre(nombre);
 	}
-	
+
 	@GetMapping("/producto/contiene/{nombre}")
-	public List<ProductoEntity> buscarProductoPorContieneNombre(@PathVariable String nombre){
+	public List<ProductoEntity> buscarProductoPorContieneNombre(@PathVariable String nombre) {
 		return productoService.buscarPorNombre(nombre);
 	}
-	
+
 	@PutMapping("/producto/modificar")
-	public Producto modificarProducto (@RequestBody Producto producto) {
-		return productoService.modificarProducto(ProductoMapper
-				.mapToProductoEntityByProducto(producto));
+	public Producto modificarProducto(@RequestBody Producto producto) {
+		return productoService.modificarProducto(ProductoMapper.mapToProductoEntityByProducto(producto));
 	}
-	
+
 	@PostMapping("/producto/imagen")
 	public ResponseEntity<?> subidaImagen (@RequestParam ("archivo") MultipartFile archivo, @RequestParam("id") Long id
 			,@RequestParam("descripcionImagen") String descripcionImagen){
@@ -98,11 +98,17 @@ public class ProductoController {
 		Producto producto = productoService.findById(id);
 		
 		if (!archivo.isEmpty()) {
-			String nombreArchivo = UUID.randomUUID().toString() + "_" + archivo.getOriginalFilename().replace(" ", "");
+			
+			String nombreArchivo = UUID.randomUUID().toString() + "_";
+					
+			if(archivo.getOriginalFilename()!=null) 
+					nombreArchivo+=archivo.getOriginalFilename().replace(" ", "");
+			
 			Path rutaArchivo = Paths.get("uploads").resolve(nombreArchivo).toAbsolutePath();
 			log.info(rutaArchivo.toString());
 			try {
-				Files.copy(archivo.getInputStream(), rutaArchivo);
+				if (fileService.copyFile(archivo.getInputStream(), rutaArchivo)<=0)
+					throw new IOException();
 			} catch (IOException e) {
 				response.put("mensaje", "Error al subir la imagen" + nombreArchivo);
 				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -135,16 +141,15 @@ public class ProductoController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 		
 	}
-	
-	
+
 	@DeleteMapping("producto/borrar-imagen/{imagen}")
-	public void eliminarImagen(@PathVariable("imagen")String imagen) {
+	public void eliminarImagen(@PathVariable("imagen") String imagen) {
 		imagenProductoI.borrarImagen(imagen);
-		
+
 	}
-	
+
 	@GetMapping("/producto/imagen/{nombreFoto:.+}")
-	public ResponseEntity<Resource> verFoto (@PathVariable String nombreFoto){
+	public ResponseEntity<Resource> verFoto(@PathVariable String nombreFoto) {
 		Path rutaArchivo = Paths.get("uploads").resolve(nombreFoto).toAbsolutePath();
 		UrlResource recurso = null;
 		log.info(rutaArchivo.toString());
@@ -154,15 +159,15 @@ public class ProductoController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		if(!recurso.exists() && recurso.isReadable())
-			throw new RuntimeException("Error - no se puedo cargar la  imagen: "+ nombreFoto);
-		
+
+		if (!recurso.exists() && recurso.isReadable())
+			throw new RuntimeException("Error - no se puedo cargar la  imagen: " + nombreFoto);
+
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + recurso.getFilename() + "\"");
-		
-		return new ResponseEntity<Resource>(recurso,httpHeaders, HttpStatus.OK);
-		
+
+		return new ResponseEntity<Resource>(recurso, httpHeaders, HttpStatus.OK);
+
 	}
 
 }
