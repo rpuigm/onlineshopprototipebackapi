@@ -50,3 +50,6 @@ edicionDemo_assets/
 RemoteSystemsTempFiles/
 ectemplate.iml
 *.iml
+dependency-check-report.html
+dependency-check-report.json
+.jpb/persistence-units.xml
