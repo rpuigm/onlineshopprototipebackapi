@@ -1,0 +1,9 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: net.ectemplate.LogbackInsight
+displayName: Find Logback Usage
+recipeList:
+  - org.openrewrite.maven.search.DependencyInsight:
+      groupIdPattern: ch.qos.logback
+      artifactIdPattern: "*"
+      scope: compile

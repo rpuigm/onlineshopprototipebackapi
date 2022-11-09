@@ -23,11 +23,11 @@ public class ProductoMapper {
 		productoEntity.setValoracion(producto.getValoracion());
 		return productoEntity;
 	}
-	
+
 	public ProductoEntity mapToProduto(Producto producto) {
-		
+
 		return (ProductoEntity) ProductoEntity.builder().build();
-		
+
 	}
 
 }

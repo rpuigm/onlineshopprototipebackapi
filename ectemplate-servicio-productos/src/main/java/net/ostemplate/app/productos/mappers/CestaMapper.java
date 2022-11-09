@@ -19,32 +19,32 @@ public class CestaMapper {
 		return cesta;
 
 	}
-	
+
 	public CestaEntity mapToCestaEntityFromCesta(Cesta cesta) {
 		CestaEntity cestaEntity = new CestaEntity();
 		cestaEntity.setId(cesta.getId());
 		cestaEntity.setIdUsuario(cesta.getIdUsuario());
 		cestaEntity.setProductoCesta(cesta.getProductoCantidad());
 		return cestaEntity;
-		
+
 	}
+
 	public Cesta mapToCestaFromCestaEntity(CestaEntity cestaEntity) {
 		CestaEntity cesta = new CestaEntity();
 		cesta.setId(cestaEntity.getId());
 		cesta.setIdUsuario(cestaEntity.getIdUsuario());
 		cesta.setProductoCesta(cestaEntity.getProductoCantidad());
 		return cestaEntity;
-		
+
 	}
-	
-	public List<Cesta> mapToListCestaFromListCestaEntity(List<CestaEntity> listaCestaEntity){
+
+	public List<Cesta> mapToListCestaFromListCestaEntity(List<CestaEntity> listaCestaEntity) {
 		List<Cesta> listaCesta = new ArrayList<Cesta>();
 		listaCesta = listaCestaEntity.stream()
-				.map((cestaEntity)->mapToCestaFromCestaEntity(cestaEntity))
+				.map((cestaEntity) -> mapToCestaFromCestaEntity(cestaEntity))
 				.collect(Collectors.toList());
 		return listaCesta;
-		
+
 	}
 
 }
- 

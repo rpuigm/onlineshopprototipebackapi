@@ -33,7 +33,7 @@ public class Producto implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id")
 	private Long id;
 	private String nombre;
 	private Double precio;
@@ -44,20 +44,20 @@ public class Producto implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date createAt;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="fk_idProductoCaracteristicas")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "fk_idProductoCaracteristicas")
 	private ProductoCaracteristicas productoCaracteristicas;
-    
-    @OneToMany
-    @JoinColumn(
-    		name="idProducto",
-    		foreignKey = @ForeignKey(name="id_producto", value=ConstraintMode.CONSTRAINT))
-    private List<ProductoCantidad> productoCantidad;
-    
-    @PrePersist
-    public void prePersist() {
-    	createAt= new Date();
-    }
+
+	@OneToMany
+	@JoinColumn(
+			name = "idProducto",
+			foreignKey = @ForeignKey(name = "id_producto", value = ConstraintMode.CONSTRAINT))
+	private List<ProductoCantidad> productoCantidad;
+
+	@PrePersist
+	public void prePersist() {
+		createAt = new Date();
+	}
 
 
 	/**

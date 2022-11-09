@@ -24,32 +24,32 @@ public class ProductoServiceImplTest {
 
 	@InjectMocks
 	ProductoServiceImpl productoServiceImpl;
-	
+
 	@Mock
 	ProductoRepository proRepository;
-	
+
 	@Test
 	public void insertarProductoTest() throws ParseException {
 		Mockito.when(proRepository.save(Mockito.any(ProductoEntity.class))).thenReturn(mapToProducto());
 		productoServiceImpl.insertProducto(mapToProducto());
 	}
-	
+
 	@Test
 	public void buscarPorContieneEnNombre() throws ParseException {
 		Mockito.when(proRepository.findByNombreLike(Mockito.anyString())).thenReturn(mapToListaProducto());
 		productoServiceImpl.buscarPorContieneEnNombre("prueba");
-		
+
 	}
-	
-	private List<ProductoEntity> mapToListaProducto() throws ParseException{
+
+	private List<ProductoEntity> mapToListaProducto() throws ParseException {
 		List<ProductoEntity> listaProductos = new ArrayList<ProductoEntity>();
 		listaProductos.add(mapToProducto());
 		listaProductos.add(mapToProducto());
 		listaProductos.add(mapToProducto());
 		return listaProductos;
-		
+
 	}
-	
+
 	private ProductoEntity mapToProducto() throws ParseException {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
 		ProductoEntity productoEntity = new ProductoEntity();
@@ -59,9 +59,9 @@ public class ProductoServiceImplTest {
 		productoEntity.setProductoCaracteristicas(mapToProductoCaracteristicas());
 		productoEntity.setCategoria("categoria");
 		return productoEntity;
-		
+
 	}
-	
+
 	private ProductoEspecificaciones mapToProductoEspecificaciones() {
 		ProductoEspecificaciones productoEspecificaciones = new ProductoEspecificaciones();
 		productoEspecificaciones.setClaveEspecificacion("clave");
@@ -69,7 +69,7 @@ public class ProductoServiceImplTest {
 		productoEspecificaciones.setIdProductoEspecificacion(1L);
 		return productoEspecificaciones;
 	}
-	
+
 	private ProductoCaracteristicas mapToProductoCaracteristicas() {
 		ProductoCaracteristicas productoCaracteristicas = new ProductoCaracteristicas();
 		List<ImagenProducto> listaImagenesProducto = new ArrayList<ImagenProducto>();
@@ -81,7 +81,7 @@ public class ProductoServiceImplTest {
 		productoCaracteristicas.setProductoEspecificaciones(listaProductoEspecificaciones);
 		return productoCaracteristicas;
 	}
-	
+
 	private ImagenProducto mapToImagenProducto() {
 		ImagenProducto imagenProducto = new ImagenProducto();
 		imagenProducto.setDescripcionImagen("imagen descripcion");
@@ -91,5 +91,5 @@ public class ProductoServiceImplTest {
 		return imagenProducto;
 	}
 
-		
+
 }

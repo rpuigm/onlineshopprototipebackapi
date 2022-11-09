@@ -7,8 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class Tienda implements Serializable{
-	
+public class Tienda implements Serializable {
+
 	/**
 	 * 
 	 */
@@ -16,9 +16,9 @@ public class Tienda implements Serializable{
 	private String nombreTienda;
 
 	@Id
-	@Column(name="id")
+	@Column(name = "id")
 	private Long id;
-	
+
 
 	public Long getId() {
 		return id;
@@ -35,7 +35,6 @@ public class Tienda implements Serializable{
 	public void setNombreTienda(String nombreTienda) {
 		this.nombreTienda = nombreTienda;
 	}
-	
-	
+
 
 }

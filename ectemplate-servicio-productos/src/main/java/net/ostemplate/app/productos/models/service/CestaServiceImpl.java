@@ -18,7 +18,7 @@ public class CestaServiceImpl implements CestaServiceI {
 
 	@Autowired
 	private ComprasRepository comprasRepository;
-	
+
 	@Autowired
 	private ProductoCantidadRepository productoCantidadRepository;
 
@@ -39,16 +39,16 @@ public class CestaServiceImpl implements CestaServiceI {
 	public Cesta buscarCestaPorUsuarioId(Long idUsuario) {
 		return comprasRepository.findByIdUsuario(idUsuario);
 	}
-	
+
 	@Override
 	@Transactional
-	public CestaEntity actualizaCesta (CestaEntity cestaEntity) {
+	public CestaEntity actualizaCesta(CestaEntity cestaEntity) {
 		return comprasRepository.save(cestaEntity);
 	}
-	
+
 	@Override
 	@Transactional
-	public void eliminaCesta (CestaEntity cestaEntity) {
+	public void eliminaCesta(CestaEntity cestaEntity) {
 		comprasRepository.delete(cestaEntity);
 	}
 
@@ -71,11 +71,12 @@ public class CestaServiceImpl implements CestaServiceI {
 		return guardaCesta(cestaEntity);
 
 	}
+
 	@Override
 	@Transactional
 	public void eliminarUnProductoDeLasCestas(Long idProducto) {
 		productoCantidadRepository.deleteAllByIdProducto(idProducto);
-		
+
 	}
 
 	private ProductoCantidad disminuye(ProductoCantidad productoCantidad) {

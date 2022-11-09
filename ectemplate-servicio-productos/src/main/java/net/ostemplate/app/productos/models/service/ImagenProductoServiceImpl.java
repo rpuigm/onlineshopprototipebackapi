@@ -14,20 +14,20 @@ import net.ostemplate.app.productos.models.entity.ImagenProducto;
 
 @Service
 public class ImagenProductoServiceImpl implements ImagenProductoI {
-	
+
 	@Autowired
 	private ImagenProductoDao imagenProductoDao;
-	
+
 	@Override
 	@Transactional
-	public void borrarImagen (String imagen) {
+	public void borrarImagen(String imagen) {
 		Path rutaFotoAnterior = Paths.get("uploads").resolve(imagen).toAbsolutePath();
 		File archivoFotoAnterior = rutaFotoAnterior.toFile();
-		if(archivoFotoAnterior.exists() && archivoFotoAnterior.canRead()) {
+		if (archivoFotoAnterior.exists() && archivoFotoAnterior.canRead()) {
 			archivoFotoAnterior.delete();
 		}
 		imagenProductoDao.deleteByImagen(imagen);
-		
+
 	}
 
 }

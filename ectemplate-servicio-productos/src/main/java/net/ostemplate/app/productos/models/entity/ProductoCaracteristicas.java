@@ -21,22 +21,22 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name="productos_caracteristicas")
+@Table(name = "productos_caracteristicas")
 public class ProductoCaracteristicas implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="id_producto_caracteristicas")
+	@Column(name = "id_producto_caracteristicas")
 	private Long idProductoCaracteristicas;
-	
+
 	private String descripcion;
-	
+
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name="fk_id_imagen_producto")
+	@JoinColumn(name = "fk_id_imagen_producto")
 	private List<ImagenProducto> imagenesProducto;
-	
+
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name="fk_id_producto_especificacion")
+	@JoinColumn(name = "fk_id_producto_especificacion")
 	private List<ProductoEspecificaciones> productoEspecificaciones;
 
 	public Long getIdProductoCaracteristicas() {

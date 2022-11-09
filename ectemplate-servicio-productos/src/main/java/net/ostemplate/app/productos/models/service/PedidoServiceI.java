@@ -17,6 +17,6 @@ public interface PedidoServiceI {
 	List<Pedido> recuperaPedidosPorEstado(String estado);
 
 	List<Pedido> recuperaPedidos();
-	
+
 
 }

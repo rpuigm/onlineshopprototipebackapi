@@ -6,7 +6,6 @@ import net.ostemplate.app.productos.models.entity.Cesta;
 import net.ostemplate.app.productos.models.entity.CestaEntity;
 
 public interface CestaServiceI {
-	
 
 
 	Cesta buscarCestaPorUsuarioId(Long idUsuario);

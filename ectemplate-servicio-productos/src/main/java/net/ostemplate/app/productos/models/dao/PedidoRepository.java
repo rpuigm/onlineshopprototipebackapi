@@ -6,10 +6,10 @@ import org.springframework.data.repository.CrudRepository;
 
 import net.ostemplate.app.productos.models.entity.Pedido;
 
-public interface PedidoRepository extends CrudRepository <Pedido, Long>{
-	
-	List<Pedido> findByIdUsuario (Long idUsuario);
-	
+public interface PedidoRepository extends CrudRepository<Pedido, Long> {
+
+	List<Pedido> findByIdUsuario(Long idUsuario);
+
 	List<Pedido> findByEstado(String estado);
 
 }

@@ -10,17 +10,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="productos_cantidades")
-public class ProductoCantidad implements Serializable{
-	
+@Table(name = "productos_cantidades")
+public class ProductoCantidad implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id")
 	private Long id;
-	
+
 	private Long idProducto;
 	private Long cantidad;
-	
+
 	public Long getId() {
 		return id;
 	}

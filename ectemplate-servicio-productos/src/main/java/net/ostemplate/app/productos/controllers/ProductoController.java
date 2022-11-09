@@ -49,7 +49,7 @@ public class ProductoController {
 
 	@Autowired
 	private ImagenProductoI imagenProductoI;
-	
+
 	@Autowired
 	private FileService fileService;
 
@@ -91,55 +91,55 @@ public class ProductoController {
 	}
 
 	@PostMapping("/producto/imagen")
-	public ResponseEntity<?> subidaImagen (@RequestParam ("archivo") MultipartFile archivo, @RequestParam("id") Long id
-			,@RequestParam("descripcionImagen") String descripcionImagen){
-		Map<String, Object> response= new HashMap<>();
-		
+	public ResponseEntity<?> subidaImagen(@RequestParam("archivo") MultipartFile archivo, @RequestParam("id") Long id
+																																																																													, @RequestParam("descripcionImagen") String descripcionImagen) {
+		Map<String, Object> response = new HashMap<>();
+
 		Producto producto = productoService.findById(id);
-		
+
 		if (!archivo.isEmpty()) {
-			
+
 			String nombreArchivo = UUID.randomUUID().toString() + "_";
-					
-			if(archivo.getOriginalFilename()!=null) 
-					nombreArchivo+=archivo.getOriginalFilename().replace(" ", "");
-			
+
+			if (archivo.getOriginalFilename() != null)
+				nombreArchivo += archivo.getOriginalFilename().replace(" ", "");
+
 			Path rutaArchivo = Paths.get("uploads").resolve(nombreArchivo).toAbsolutePath();
 			log.info(rutaArchivo.toString());
 			try {
-				if (fileService.copyFile(archivo.getInputStream(), rutaArchivo)<=0)
+				if (fileService.copyFile(archivo.getInputStream(), rutaArchivo) <= 0)
 					throw new IOException();
 			} catch (IOException e) {
 				response.put("mensaje", "Error al subir la imagen" + nombreArchivo);
 				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 			}
-			
-			ProductoCaracteristicas productoCaracteristicas =producto.getProductoCaracteristicas();
+
+			ProductoCaracteristicas productoCaracteristicas = producto.getProductoCaracteristicas();
 			ImagenProducto imagenProducto = new ImagenProducto();
 			List<ImagenProducto> listaImagenProducto = new ArrayList<ImagenProducto>();
-			
+
 			if (!Objects.isNull(producto.getProductoCaracteristicas()))
 				productoCaracteristicas = producto.getProductoCaracteristicas();
-				if (!Objects.isNull(productoCaracteristicas.getImagenesProducto()))
-					listaImagenProducto = productoCaracteristicas.getImagenesProducto();
-			
+			if (!Objects.isNull(productoCaracteristicas.getImagenesProducto()))
+				listaImagenProducto = productoCaracteristicas.getImagenesProducto();
+
 			imagenProducto.setNombreImagen(archivo.getOriginalFilename());
 			imagenProducto.setImagen(nombreArchivo);
 			imagenProducto.setDescripcionImagen(descripcionImagen);
 			listaImagenProducto.add(imagenProducto);
 			productoCaracteristicas.setImagenesProducto(listaImagenProducto);
 			producto.setProductoCaracteristicas(productoCaracteristicas);
-			
+
 			productoService.modificarProducto(ProductoMapper
 					.mapToProductoEntityByProducto(producto));
-			
+
 			response.put("producto", producto);
-			response.put("mensaje", "Se ha subido la imagen: "+ nombreArchivo);
-			
+			response.put("mensaje", "Se ha subido la imagen: " + nombreArchivo);
+
 		}
-		
+
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
-		
+
 	}
 
 	@DeleteMapping("producto/borrar-imagen/{imagen}")

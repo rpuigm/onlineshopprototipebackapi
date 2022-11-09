@@ -13,20 +13,20 @@ import net.ostemplate.app.productos.models.service.TiendaServiceI;
 
 @RestController
 public class TiendaController {
-	
+
 	@Autowired
 	private TiendaServiceI tiendaServiceI;
-	
+
 	@GetMapping("/tienda/nombre")
 	public Tienda getNombreTienda() {
 		return tiendaServiceI.getNombreDeTienda();
 	}
-	
+
 	@PostMapping("/tienda/cambia-nombre/{nombre}")
 	public String cambiaNombre(@PathVariable String nombre) {
 		return tiendaServiceI.actualizaTienda(nombre);
 	}
-	
+
 	@PostMapping("/tienda/cambia-tienda")
 	public Tienda cambiaNombre(@RequestBody Tienda tienda) {
 		TiendaEntity tiendaEntity = new TiendaEntity();

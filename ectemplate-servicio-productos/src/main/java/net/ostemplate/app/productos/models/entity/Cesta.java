@@ -13,19 +13,19 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 
 @MappedSuperclass
-public class Cesta implements Serializable{
-	
+public class Cesta implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id")
 	private Long id;
-	
+
 	private Long idUsuario;
-	
+
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name="fk_id_cesta")
+	@JoinColumn(name = "fk_id_cesta")
 	private List<ProductoCantidad> productoCantidad;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -34,9 +34,7 @@ public class Cesta implements Serializable{
 		this.id = id;
 	}
 
-	
 
-	
 	public Long getIdUsuario() {
 		return idUsuario;
 	}
@@ -50,13 +48,9 @@ public class Cesta implements Serializable{
 	}
 
 
-
-
 	public void setProductoCesta(List<ProductoCantidad> productoCantidad) {
 		this.productoCantidad = productoCantidad;
 	}
-
-
 
 
 	/**

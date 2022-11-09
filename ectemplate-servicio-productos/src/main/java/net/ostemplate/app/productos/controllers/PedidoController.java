@@ -15,41 +15,42 @@ import net.ostemplate.app.productos.models.service.PedidoServiceI;
 
 @RestController
 public class PedidoController {
-	
+
 	@Autowired
 	private PedidoServiceI pedidoServiceI;
-	
+
 	@GetMapping("/pedidos/recupera-pedidos-usuario/{id}")
 	public List<Pedido> recuperaPedidoPorId(@PathVariable Long id) {
 		return pedidoServiceI.recuperaPedidosPorIdUsario(id);
-		
+
 	}
+
 	@GetMapping("/pedidos/recupera-pedido/{id}")
 	public Pedido recuperaPedidoId(@PathVariable Long id) {
 		return pedidoServiceI.findById(id);
-		
+
 	}
-	
+
 	@PostMapping("/pedidos/actualiza-pedido")
-	public Pedido actualizaPedido (@RequestBody Pedido pedido) {
+	public Pedido actualizaPedido(@RequestBody Pedido pedido) {
 		return pedidoServiceI.guardaPedido(pedido);
 	}
-	
+
 	@DeleteMapping("/pedidos/borra-pedido/{id}")
-	public void actualizaPedido (@PathVariable Long id) {
+	public void actualizaPedido(@PathVariable Long id) {
 		pedidoServiceI.borraPedido(id);
 	}
-	
+
 	@GetMapping("/pedidos/pedidos-estado/{estado}")
 	public List<Pedido> recuperaPedidoId(@PathVariable String estado) {
 		return pedidoServiceI.recuperaPedidosPorEstado(estado);
-		
+
 	}
-	
+
 	@GetMapping("/pedidos/lista")
 	public List<Pedido> recuperaPedidos() {
 		return pedidoServiceI.recuperaPedidos();
-		
+
 	}
 
 }

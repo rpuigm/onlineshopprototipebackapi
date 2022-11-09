@@ -12,32 +12,31 @@ import net.ostemplate.app.productos.models.entity.CestaEntity;
 
 @ExtendWith(MockitoExtension.class)
 public class CestaMapperTest {
-	
-	
+
+
 	private Cesta cestaDummy() {
 		EasyRandom easyRandom = new EasyRandom();
 		Cesta cesta = easyRandom.nextObject(Cesta.class);
 		return cesta;
 	}
-	
+
 	private CestaEntity cestaEntityDummyFromCestaDummy() {
 		return CestaMapper.mapToCestaEntityFromCesta(cestaDummy());
 	}
-	
-	private List<CestaEntity> listCestaEntityDummy(){
+
+	private List<CestaEntity> listCestaEntityDummy() {
 		List<CestaEntity> listaCestaEntity = new ArrayList<CestaEntity>();
 		listaCestaEntity.add(cestaEntityDummyFromCestaDummy());
 		return listaCestaEntity;
-	
+
 	}
-	
-	private List<Cesta> listCestaDummy(){
+
+	private List<Cesta> listCestaDummy() {
 		List<Cesta> listaCesta = new ArrayList<Cesta>();
 		listaCesta.add(cestaDummy());
 		return listaCesta;
-	
+
 	}
-	
-	
+
 
 }

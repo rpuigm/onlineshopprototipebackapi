@@ -36,7 +36,7 @@ public class ProductoControllerTest {
 
 	@Mock
 	FileService fileService;
-	
+
 	@Mock
 	InputStream inputStream;
 
@@ -44,7 +44,7 @@ public class ProductoControllerTest {
 	public void subidaImagen() {
 		try {
 			Mockito.when(productoServiceI.findById(Mockito.anyLong())).thenReturn(mapToProductoDummy());
-			Mockito.when(fileService.copyFile(Mockito.any(InputStream.class), Mockito.any(Path.class))).thenReturn(1L);
+			Mockito.when(fileService.copyFile(Mockito.any(InputStream.class),Mockito.any(Path.class))).thenReturn(1L);
 			Mockito.when(multiparteFile.getInputStream()).thenReturn(inputStream);
 			Mockito.when(productoServiceI.modificarProducto(Mockito.any(ProductoEntity.class))).thenReturn(mapToProductoDummy());
 		} catch (IOException e) {
@@ -52,7 +52,7 @@ public class ProductoControllerTest {
 			e.printStackTrace();
 		}
 
-		productoController.subidaImagen(multiparteFile, 1L, "descripcion");
+		productoController.subidaImagen(multiparteFile,1L,"descripcion");
 
 	}
 
@@ -80,7 +80,6 @@ public class ProductoControllerTest {
 		listProductoCantidad.add(mapToProductoCantidadDummy());
 		return listProductoCantidad;
 	}
-	
 
 
 }

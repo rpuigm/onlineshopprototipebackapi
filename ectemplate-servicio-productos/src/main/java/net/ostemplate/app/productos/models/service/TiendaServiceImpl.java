@@ -24,11 +24,12 @@ public class TiendaServiceImpl implements TiendaServiceI {
 		return tiendaEntity.getNombreTienda();
 
 	}
+
 	@Override
 	@Transactional
 	public TiendaEntity guardaTienda(TiendaEntity tiendaEntity) {
 		return tiendaRepository.save(tiendaEntity);
-		
+
 	}
 
 	@Override

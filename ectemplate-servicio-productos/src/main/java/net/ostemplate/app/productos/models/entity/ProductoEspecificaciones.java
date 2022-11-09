@@ -10,33 +10,38 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="productos_especificaciones")
+@Table(name = "productos_especificaciones")
 public class ProductoEspecificaciones implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="id_producto_especificacion")
+	@Column(name = "id_producto_especificacion")
 	private Long idProductoEspecificacion;
-	
+
 	private String claveEspecificacion;
 	private String descripcionEspecificacion;
-	
-	
+
+
 	public Long getIdProductoEspecificacion() {
 		return idProductoEspecificacion;
 	}
+
 	public void setIdProductoEspecificacion(Long idProductoEspecificacion) {
 		this.idProductoEspecificacion = idProductoEspecificacion;
 	}
+
 	public String getClaveEspecificacion() {
 		return claveEspecificacion;
 	}
+
 	public void setClaveEspecificacion(String claveEspecificacion) {
 		this.claveEspecificacion = claveEspecificacion;
 	}
+
 	public String getDescripcionEspecificacion() {
 		return descripcionEspecificacion;
 	}
+
 	public void setDescripcionEspecificacion(String descripcionEspecificacion) {
 		this.descripcionEspecificacion = descripcionEspecificacion;
 	}
@@ -45,5 +50,5 @@ public class ProductoEspecificaciones implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -8328511308302986532L;
-	
+
 }
