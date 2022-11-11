@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,7 +55,4 @@ public class PersonasServicesImpl implements PersonasServicesI {
 
 	}
 
-	private String encripta(String string) {
-		return bCryp.encode(string);
-	}
 }

@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import net.ostemplate.app.productos.models.dao.ImagenProductoDao;
-import net.ostemplate.app.productos.models.entity.ImagenProducto;
 
 @Service
 public class ImagenProductoServiceImpl implements ImagenProductoI {
