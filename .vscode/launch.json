@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-EctemplateServiceConfigServerApplication<etctemplate-service-config-server>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "net.ectemplate.app.config.EctemplateServiceConfigServerApplication",
+            "projectName": "etctemplate-service-config-server",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
