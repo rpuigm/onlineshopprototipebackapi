@@ -8,5 +8,15 @@
     "name": "ribbon.ConnectTimeout",
     "type": "java.lang.String",
     "description": "A description for 'ribbon.ConnectTimeout'"
+  },
+  {
+    "name": "ribbon.ReadTimeout",
+    "type": "java.lang.String",
+    "description": "A description for 'ribbon.ReadTimeout'"
+  },
+  {
+    "name": "config.security.oauth.client.id",
+    "type": "java.lang.String",
+    "description": "A description for 'config.security.oauth.client.id'"
   }
 ]}
