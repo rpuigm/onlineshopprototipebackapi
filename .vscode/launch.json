@@ -41,6 +41,17 @@
             "mainClass": "net.ectemplate.app.personas.EctemplateServicioPersonasApplication",
             "projectName": "etctemplate-servicio-personas",
             "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=45735 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=etctemplate-servicio-personas"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EctemplateServicioProductosApplication<ectemplate-servicio-productos>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "net.ostemplate.app.productos.EctemplateServicioProductosApplication",
+            "projectName": "ectemplate-servicio-productos",
+            "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
     ]
