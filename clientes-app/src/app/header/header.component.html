@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="true? '/productosgrid' :null"
+          <a class="nav-link" aria-current="page" routerLink="/productosgrid"
             >La tienda</a
           >
         </li>
@@ -25,7 +25,7 @@
         </li>
 
         <li class="nav-item">
-          <a *ngIf="tienePermisos('ROLE_USER')" class="nav-link" routerLink="true? '/cesta' :null">Mi Cesta</a>
+          <a *ngIf="tienePermisos('ROLE_USER')" class="nav-link" routerLink="/cesta">Mi Cesta</a>
         </li>
         <li *ngIf="tienePermisos('ROLE_ADMIN')" class="nav-item">
           <a
@@ -38,12 +38,12 @@
           >
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
-              <a routerLink="true? '/altaproducto' :null" class="dropdown-item"
+              <a routerLink="/altaproducto" class="dropdown-item"
                 >Alta Producto</a
               >
             </li>
-            <li><a routerLink="true? '/configuracion' :null" class="dropdown-item">Configuracion Tienda</a></li>
-            <li><a routerLink="true? '/despacho' :null" class="dropdown-item">Pedidos</a></li>
+            <li><a routerLink="/configuracion" class="dropdown-item">Configuracion Tienda</a></li>
+            <li><a routerLink="/despacho" class="dropdown-item">Pedidos</a></li>
           </ul>
         </li>
       </ul>
@@ -66,7 +66,7 @@
             {{ getUsuario() }}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a routerLink="true? '/empleados' :null" class="dropdown-item">Cuenta</a></li>
+            <li><a routerLink="/empleados" class="dropdown-item">Cuenta</a></li>
             <li><a (click)="logout()" class="dropdown-item">Salir</a></li>
           </ul>
         </li>
