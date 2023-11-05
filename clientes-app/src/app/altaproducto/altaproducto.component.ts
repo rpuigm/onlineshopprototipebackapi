@@ -1,7 +1,6 @@
 import swal from 'sweetalert2';
 import { ProductoCaracteristicas } from './../producto/productoCaracteristicas.model';
-import { Observable } from 'rxjs';
-import { ProductoEspecificaciones } from '../producto/productoEspecificaciones.model';
+import { ProductoEspecificaciones } from '../producto/productoespecificaciones.model';
 import { ProductoService } from './../producto/producto.service';
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { Producto } from '../producto/producto.model';
@@ -46,7 +45,7 @@ export class AltaproductoComponent implements OnInit {
       console.log(this.producto.productoCaracteristicas.descripcion);
       this.productoService
         .setProducto(this.producto)
-        .subscribe((response) =>
+        .subscribe((response: { id: any; }) =>
           this.router.navigate(['/item/' + response.id])
         );
       console.log('sale');

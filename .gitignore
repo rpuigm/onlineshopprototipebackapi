@@ -50,3 +50,6 @@ edicionDemo_assets/
 RemoteSystemsTempFiles/
 ectemplate.iml
 *.iml
+
+# Angular Files
+.angular/

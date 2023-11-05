@@ -1,10 +1,7 @@
-import { map } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductoService } from './../producto/producto.service';
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Producto } from '../producto/producto.model';
-import { ThrowStmt } from '@angular/compiler';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-producto-item',
@@ -28,7 +25,7 @@ export class ProductoItemComponent implements OnInit {
       {
         let id:number = +params.get('id')!;
         if (id){
-          this.productoService.getProductoById(id).subscribe(producto =>{
+          this.productoService.getProductoById(id).subscribe((producto: any) =>{
             this.producto = producto;
             console.log(this.producto?.productoCaracteristicas.descripcion);
           });
@@ -47,7 +44,7 @@ export class ProductoItemComponent implements OnInit {
 
   subirImagen(){
     this.productoService.subirFoto(this.imagenSeleccionada, String(this.producto.id), this.descripcionImagen)
-    .subscribe(producto => {
+    .subscribe((producto: Producto) => {
       this.producto = producto;
     });
   }
