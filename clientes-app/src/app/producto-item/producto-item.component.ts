@@ -1,10 +1,7 @@
-import { map } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductoService } from './../producto/producto.service';
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Producto } from '../producto/producto.model';
-import { ThrowStmt } from '@angular/compiler';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-producto-item',

@@ -1,4 +1,4 @@
-import { ProductoEspecificaciones } from './productoEspecificaciones.model';
+import { ProductoEspecificaciones } from './productoespecificaciones.model';
 import { ImagenProducto } from './imagenproducto.model';
 export class ProductoCaracteristicas{
   idProductoCaracteristicas!: number;
