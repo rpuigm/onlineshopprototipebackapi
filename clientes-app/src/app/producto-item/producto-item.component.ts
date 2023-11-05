@@ -25,7 +25,7 @@ export class ProductoItemComponent implements OnInit {
       {
         let id:number = +params.get('id')!;
         if (id){
-          this.productoService.getProductoById(id).subscribe(producto =>{
+          this.productoService.getProductoById(id).subscribe((producto: any) =>{
             this.producto = producto;
             console.log(this.producto?.productoCaracteristicas.descripcion);
           });
@@ -44,7 +44,7 @@ export class ProductoItemComponent implements OnInit {
 
   subirImagen(){
     this.productoService.subirFoto(this.imagenSeleccionada, String(this.producto.id), this.descripcionImagen)
-    .subscribe(producto => {
+    .subscribe((producto: Producto) => {
       this.producto = producto;
     });
   }

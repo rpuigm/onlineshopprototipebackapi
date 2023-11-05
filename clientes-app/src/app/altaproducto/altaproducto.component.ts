@@ -45,7 +45,7 @@ export class AltaproductoComponent implements OnInit {
       console.log(this.producto.productoCaracteristicas.descripcion);
       this.productoService
         .setProducto(this.producto)
-        .subscribe((response) =>
+        .subscribe((response: { id: any; }) =>
           this.router.navigate(['/item/' + response.id])
         );
       console.log('sale');
