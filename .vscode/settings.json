@@ -1,5 +1,6 @@
 {
     "boot-java.change-detection.on": true,
     "maven.terminal.useJavaHome": true,
-    "java.configuration.updateBuildConfiguration": "automatic"
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.compile.nullAnalysis.mode": "automatic"
 }

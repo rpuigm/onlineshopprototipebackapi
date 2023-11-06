@@ -1,0 +1,69 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-EctemplateServiceConfigServerApplication<etctemplate-service-config-server>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "net.ectemplate.app.config.EctemplateServiceConfigServerApplication",
+            "projectName": "etctemplate-service-config-server",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=37071 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=etctemplate-service-config-server"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EctemplateServicioEurekaServerApplication<ectemplate-servicio-eureka-server>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "net.ostemplate.app.eureka.EctemplateServicioEurekaServerApplication",
+            "projectName": "ectemplate-servicio-eureka-server",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=39435 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=ectemplate-servicio-eureka-server"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EctemplateServiceOauthApplication<etctemplate-service-oauth>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "net.ectemplate.app.oauth.EctemplateServiceOauthApplication",
+            "projectName": "etctemplate-service-oauth",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=34949 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=etctemplate-service-oauth"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EctemplateServicioPersonasApplication<etctemplate-servicio-personas>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "net.ectemplate.app.personas.EctemplateServicioPersonasApplication",
+            "projectName": "etctemplate-servicio-personas",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=45735 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=etctemplate-servicio-personas"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EctemplateServicioProductosApplication<ectemplate-servicio-productos>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "net.ostemplate.app.productos.EctemplateServicioProductosApplication",
+            "projectName": "ectemplate-servicio-productos",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=35889 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=ectemplate-servicio-productos"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EctemplateServiceZuulServerApplication<etctemplate-service-zuul-server>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "net.ectemplate.app.zuul.EctemplateServiceZuulServerApplication",
+            "projectName": "etctemplate-service-zuul-server",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
