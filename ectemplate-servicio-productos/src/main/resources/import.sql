@@ -3,6 +3,17 @@
 -- ALTER TABLE productos_especificaciones DISABLE TRIGGER ALL;
 -- ALTER TABLE imagenes_productos DISABLE TRIGGER ALL;
 
+INSERT INTO productos_caracteristicas (id_producto_caracteristicas,descripcion) VALUES (1,'Bolas de papel para decorar el árbol de navidad o la estancia');
+INSERT INTO productos_caracteristicas (id_producto_caracteristicas,descripcion) VALUES (7,'Estrellas de papel en 3D para decorar el árbol o la estancia');
+INSERT INTO productos_caracteristicas (id_producto_caracteristicas,descripcion) VALUES (11,'Estrellas de papel en 2D para decorar el árbol o la estancia');
+INSERT INTO productos_caracteristicas (id_producto_caracteristicas,descripcion) VALUES (15,'Corazones de papel para decorar el árbol');
+INSERT INTO productos_caracteristicas (id_producto_caracteristicas,descripcion) VALUES (20,'Servilleteros para decorar la mesa de Navidad');
+INSERT INTO productos_caracteristicas (id_producto_caracteristicas,descripcion) VALUES (26,'Posavasos para la mesa de Navidad');
+INSERT INTO productos_caracteristicas (id_producto_caracteristicas,descripcion) VALUES (31,'Copos de nieve de resina con efecto de perla, para decoración de árbol o estancia');
+INSERT INTO productos_caracteristicas (id_producto_caracteristicas,descripcion) VALUES (36,'Magnífico árbol para recrear una estancia navideña, con set de adornos de bolas y guirnaldas');
+
+
+
 INSERT INTO productos (categoria,create_at,nombre,precio,valoracion,fk_id_producto_caracteristicas) VALUES ('Decoración',NOW(),'Bolas de Papel para árbol',3.99,NULL,1);
 INSERT INTO productos (categoria,create_at,nombre,precio,valoracion,fk_id_producto_caracteristicas) VALUES('Decoracion',NOW(),'Estrellas de Papel 3D',5.99,NULL,7);
 INSERT INTO productos (categoria,create_at,nombre,precio,valoracion,fk_id_producto_caracteristicas) VALUES('Decoración',NOW(),'Estrellas de Papel 2D',4.99,NULL,11);
@@ -12,14 +23,6 @@ INSERT INTO productos (categoria,create_at,nombre,precio,valoracion,fk_id_produc
 INSERT INTO productos (categoria,create_at,nombre,precio,valoracion,fk_id_producto_caracteristicas) VALUES('Decoración',NOW(),'Copos de Nieve',9.99,NULL,31);
 INSERT INTO productos (categoria,create_at,nombre,precio,valoracion,fk_id_producto_caracteristicas) VALUES('Arboles',NOW(),'Arbol Delux',25.99,NULL,36);
 	 
-INSERT INTO productos_caracteristicas (id_producto_caracteristicas,descripcion) VALUES (1,'Bolas de papel para decorar el árbol de navidad o la estancia');
-INSERT INTO productos_caracteristicas (id_producto_caracteristicas,descripcion) VALUES (7,'Estrellas de papel en 3D para decorar el árbol o la estancia');
-INSERT INTO productos_caracteristicas (id_producto_caracteristicas,descripcion) VALUES (11,'Estrellas de papel en 2D para decorar el árbol o la estancia');
-INSERT INTO productos_caracteristicas (id_producto_caracteristicas,descripcion) VALUES (15,'Corazones de papel para decorar el árbol');
-INSERT INTO productos_caracteristicas (id_producto_caracteristicas,descripcion) VALUES (20,'Servilleteros para decorar la mesa de Navidad');
-INSERT INTO productos_caracteristicas (id_producto_caracteristicas,descripcion) VALUES (26,'Posavasos para la mesa de Navidad');
-INSERT INTO productos_caracteristicas (id_producto_caracteristicas,descripcion) VALUES (31,'Copos de nieve de resina con efecto de perla, para decoración de árbol o estancia');
-INSERT INTO productos_caracteristicas (id_producto_caracteristicas,descripcion) VALUES (36,'Magnífico árbol para recrear una estancia navideña, con set de adornos de bolas y guirnaldas');
 	 
 
 INSERT INTO productos_especificaciones (id_producto_especificacion,clave_especificacion,descripcion_especificacion,fk_id_producto_especificacion) VALUES(2,'Pack','6 bolas',1);

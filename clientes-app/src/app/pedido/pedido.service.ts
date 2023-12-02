@@ -1,12 +1,12 @@
-import { ProductoService } from './../producto/producto.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
-import { PersonaServices } from '../persona/persona.service';
-import { Pedido } from './pedido.model';
-import swal from 'sweetalert2';
 import { catchError } from 'rxjs/operators';
+import swal from 'sweetalert2';
+import { PersonaServices } from '../persona/persona.service';
+import { ProductoService } from './../producto/producto.service';
+import { Pedido } from './pedido.model';
 
 @Injectable({
   providedIn: 'root',

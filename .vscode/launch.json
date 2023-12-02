@@ -64,6 +64,16 @@
             "projectName": "etctemplate-service-zuul-server",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EctemplateServiceZuulServerApplication<springboot-servicio-zuul-server>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "net.ectemplate.app.zuul.EctemplateServiceZuulServerApplication",
+            "projectName": "springboot-servicio-zuul-server",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
