@@ -1,0 +1,42 @@
+{"properties": [
+  {
+    "name": "hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds",
+    "type": "java.lang.String",
+    "description": "A description for 'hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds'"
+  },
+  {
+    "name": "ribbon.ConnectTimeout",
+    "type": "java.lang.String",
+    "description": "A description for 'ribbon.ConnectTimeout'"
+  },
+  {
+    "name": "ribbon.ReadTimeout",
+    "type": "java.lang.String",
+    "description": "A description for 'ribbon.ReadTimeout'"
+  },
+  {
+    "name": "config.security.oauth.client.id",
+    "type": "java.lang.String",
+    "description": "A description for 'config.security.oauth.client.id'"
+  },
+  {
+    "name": "config.security.oauth.jwt.key",
+    "type": "java.lang.String",
+    "description": "A description for 'config.security.oauth.jwt.key'"
+  },
+  {
+    "name": "config.security.oauth.client.secret",
+    "type": "java.lang.String",
+    "description": "A description for 'config.security.oauth.client.secret'"
+  },
+  {
+    "name": "ribbon.ReadTimeout",
+    "type": "java.lang.String",
+    "description": "A description for 'ribbon.ReadTimeout'"
+  },
+  {
+    "name": "ribbon.ConnectTimeout",
+    "type": "java.lang.String",
+    "description": "A description for 'ribbon.ConnectTimeout'"
+  }
+]}

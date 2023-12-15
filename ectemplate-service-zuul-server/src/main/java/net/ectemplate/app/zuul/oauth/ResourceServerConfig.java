@@ -35,18 +35,17 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/productos/lista").permitAll()
-				.antMatchers("/api/security/oauth/**").permitAll()
-				.antMatchers(HttpMethod.GET,"/api/productos/producto/**").permitAll()
-				.antMatchers(HttpMethod.POST,"/api/personas/crea-cliente").permitAll()
-				.antMatchers(HttpMethod.GET,"/api/productos/tienda/nombre").permitAll()
-				.antMatchers("/api/productos/cesta/**").permitAll()
-				.antMatchers("/api/productos/producto/nuevo").hasRole("ADMIN")
-				.antMatchers("/api/productos/producto/imagen").hasRole("ADMIN")
-				.antMatchers(HttpMethod.POST, "/api/productos/tienda/cambia-tienda").hasRole("ADMIN")
-				.anyRequest().authenticated()
-				.and().cors()
-				.configurationSource(corsConfigurationSource());
+        http.authorizeRequests(requests -> requests.antMatchers(HttpMethod.GET, "/api/productos/lista").permitAll()
+                .antMatchers("/api/security/oauth/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/productos/producto/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/personas/crea-cliente").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/productos/tienda/nombre").permitAll()
+                .antMatchers("/api/productos/cesta/**").permitAll()
+                .antMatchers("/api/productos/producto/nuevo").hasRole("ADMIN")
+                .antMatchers("/api/productos/producto/imagen").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/api/productos/tienda/cambia-tienda").hasRole("ADMIN")
+                .anyRequest().authenticated()).cors(cors -> cors
+                .configurationSource(corsConfigurationSource()));
 	}
 
 	@Bean
