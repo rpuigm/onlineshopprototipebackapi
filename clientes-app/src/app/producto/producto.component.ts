@@ -1,12 +1,10 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Cesta } from '../cesta/cesta.model';
+import { CestaService } from './../cesta/cesta.service';
 import { ProductoCantidad } from './../cesta/productoCantidad.model';
 import { PersonaServices } from './../persona/persona.service';
-import { CestaService } from './../cesta/cesta.service';
-import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
 import { Producto } from './producto.model';
-import { Usuario } from '../login/usuario.model';
-import { Observable } from 'rxjs';
-import { Cesta } from '../cesta/cesta.model';
 
 @Component({
   selector: 'app-producto',
@@ -38,7 +36,7 @@ export class ProductoComponent implements OnInit {
   getImagenEscaparate(): void {
     if (this.producto?.productoCaracteristicas?.imagenesProducto?.length > 0)
       this.imagenEscaparate =
-        'http://localhost:8090/api/productos/producto/imagen/' +
+        'http://https://psychic-succotash-5x944xv45qjh4wxr-8090.app.github.dev/api/productos/producto/imagen/' +
         this.producto.productoCaracteristicas.imagenesProducto[0].imagen;
   }
 

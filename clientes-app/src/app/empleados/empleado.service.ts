@@ -1,12 +1,10 @@
-import { catchError } from 'rxjs/operators';
-import { PersonaServices } from './../persona/persona.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { Injectable, Input } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Usuario } from '../login/usuario.model';
 import { ProductoService } from '../producto/producto.service';
-import swal from 'sweetalert2';
+import { PersonaServices } from './../persona/persona.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +14,8 @@ export class EmpleadoService{
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-  private urlUsuarioActualizar="http://localhost:8090/api/personas/actualiza-usuario"
-  private urlUsuarioPorUsername="http://localhost:8090/api/personas/usuarios/search/buscar-username?username="
+  private urlUsuarioActualizar="http://https://psychic-succotash-5x944xv45qjh4wxr-8090.app.github.dev/api/personas/actualiza-usuario"
+  private urlUsuarioPorUsername="http://https://psychic-succotash-5x944xv45qjh4wxr-8090.app.github.dev/api/personas/usuarios/search/buscar-username?username="
 
   constructor(private httpClient:HttpClient, private router: Router, private productoService: ProductoService, private personaServices: PersonaServices){}
 

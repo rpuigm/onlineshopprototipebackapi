@@ -1,14 +1,14 @@
-import { ProductoCantidad } from './productoCantidad.model';
-import { ProductosPedido } from './../pedido/ProductosPedido';
-import { ProductoService } from './../producto/producto.service';
-import { PersonaServices } from './../persona/persona.service';
-import { CestaService } from './cesta.service';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Cesta } from './cesta.model';
-import { Producto } from '../producto/producto.model';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Pedido } from '../pedido/pedido.model';
 import { PedidoService } from '../pedido/pedido.service';
+import { Producto } from '../producto/producto.model';
+import { ProductosPedido } from './../pedido/ProductosPedido';
+import { PersonaServices } from './../persona/persona.service';
+import { ProductoService } from './../producto/producto.service';
+import { Cesta } from './cesta.model';
+import { CestaService } from './cesta.service';
+import { ProductoCantidad } from './productoCantidad.model';
 
 @Component({
   selector: 'app-cesta',
@@ -58,7 +58,7 @@ export class CestaComponent implements OnInit {
               this.total +
               producto.precio * this.cesta.productoCantidad[index].cantidad;
             producto.productoCaracteristicas.imagenesProducto[0].imagen =
-              'http://localhost:8090/api/productos/producto/imagen/' +
+              'http://https://psychic-succotash-5x944xv45qjh4wxr-8090.app.github.dev/api/productos/producto/imagen/' +
               item.productoCaracteristicas?.imagenesProducto[0]?.imagen;
             this.productos.push(item);
             console.log('itemnombre  ' + item.nombre);

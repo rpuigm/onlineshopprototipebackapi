@@ -1,8 +1,7 @@
-import { Usuario } from './../login/usuario.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Persona } from './persona.model';
+import { Usuario } from './../login/usuario.model';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +9,8 @@ import { Persona } from './persona.model';
 export class PersonaServices implements OnInit {
   private _usuario: Usuario;
   private _token: any;
-  urlToken: string = 'http://localhost:8090/api/security/oauth/token';
-  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+  urlToken: string = 'http://https://psychic-succotash-5x944xv45qjh4wxr-8090.app.github.dev/api/security/oauth/token';
+  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Github-Token':'ghu_CPMN4vJ3Tl4E6OlhqVXd3cSOwvvQWW4HIwib' });
 
   constructor(private httpClient: HttpClient) {}
 
@@ -20,7 +19,7 @@ export class PersonaServices implements OnInit {
   }
 
   login(usuario: Usuario): Observable<any> {
-    const urlEndpoint = 'http://localhost:8090/api/security/oauth/token';
+    const urlEndpoint = 'http://https://psychic-succotash-5x944xv45qjh4wxr-8090.app.github.dev/api/security/oauth/token';
 
     const credenciales = btoa('frontendapp' + ':' + '12345');
 
