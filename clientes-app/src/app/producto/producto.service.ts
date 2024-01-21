@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import swal from 'sweetalert2';
 import { Tienda } from '../configuracion/tienda.model';
 import { PersonaServices } from './../persona/persona.service';
@@ -18,7 +19,8 @@ export class ServiceNameService {
 })
 export class ProductoService {
   
-  private urlRoot: string = 'https://psychic-succotash-5x944xv45qjh4wxr-8090.app.github.dev'
+ // private urlRoot: string = '//psychic-succotash-5x944xv45qjh4wxr-8090.app.github.dev'
+  private urlRoot= environment.backEndURL;
   private urlProductosLista: string = this.urlRoot + '/api/productos/lista';
   private urlProductoNuevo: string = this.urlRoot + '/api/productos/producto/nuevo';
   private urlEndPoint: string = this.urlRoot + '/api/productos/producto';
