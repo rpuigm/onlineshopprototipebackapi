@@ -1,12 +1,11 @@
-import { CestaService } from './../cesta/cesta.service';
-import { PersonaServices } from './../persona/persona.service';
-import { ProductoCaracteristicas } from './../producto/productoCaracteristicas.model';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ProductoService } from './../producto/producto.service';
 import { Component, OnInit } from '@angular/core';
-import { Producto } from '../producto/producto.model';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Cesta } from '../cesta/cesta.model';
 import { ProductoCantidad } from '../cesta/productoCantidad.model';
+import { Producto } from '../producto/producto.model';
+import { CestaService } from './../cesta/cesta.service';
+import { PersonaServices } from './../persona/persona.service';
+import { ProductoService } from './../producto/producto.service';
 
 @Component({
   selector: 'app-detalleproducto',
@@ -35,7 +34,7 @@ export class DetalleproductoComponent implements OnInit {
         this.productoService.getProductoById(id).subscribe((producto) => {
           this.producto = producto;
           this.imagenPrincipal =
-            'http://localhost:8090/api/productos/producto/imagen/' +
+            'http://https://psychic-succotash-5x944xv45qjh4wxr-8090.app.github.dev/api/productos/producto/imagen/' +
             this.producto?.productoCaracteristicas.imagenesProducto[0].imagen;
         });
       }

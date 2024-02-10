@@ -5,11 +5,21 @@
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"forwardPorts": [4200, 8090 ,5432],
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {},
 		"ghcr.io/devcontainers-contrib/features/angular-cli:2": {}
+
+	},
+	//"customizations": {
+		//"vscode": {
+			//"extensions": [
+				//"vscjava.vscode-java-pack"
+				// Puedes añadir más extensiones si es necesario, separándolas por comas
+			//  ]
+		//}
+	//}
 	
-	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {}

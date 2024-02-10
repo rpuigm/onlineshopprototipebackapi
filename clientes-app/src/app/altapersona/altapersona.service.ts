@@ -1,8 +1,8 @@
-import { AltaPersona } from './altapersona.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 import { Usuario } from "../login/usuario.model";
+import { AltaPersona } from './altapersona.model';
 
 @Injectable({
   providedIn: "root"
@@ -11,7 +11,7 @@ export class AltaPersonaService implements OnInit{
 
   private altaPersona: AltaPersona;
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-  private urlAltaCliente="http://localhost:8090/api/personas/crea-cliente"
+  private urlAltaCliente="http://https://psychic-succotash-5x944xv45qjh4wxr-8090.app.github.dev/api/personas/crea-cliente"
 
   constructor(private httpClient: HttpClient){}
   ngOnInit(): void {

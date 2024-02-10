@@ -1,12 +1,13 @@
-import { PersonaServices } from './../persona/persona.service';
-import { Router } from '@angular/router';
-import { Observable, of, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Producto } from './producto.model';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { catchError, map, switchAll } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import swal from 'sweetalert2';
 import { Tienda } from '../configuracion/tienda.model';
+import { PersonaServices } from './../persona/persona.service';
+import { Producto } from './producto.model';
 
 @Injectable({ providedIn: 'root' })
 export class ServiceNameService {
@@ -17,21 +18,18 @@ export class ServiceNameService {
   providedIn: 'root',
 })
 export class ProductoService {
-  private urlProductosLista: string =
-    'http://localhost:8090/api/productos/lista';
-  private urlProductoNuevo: string =
-    'http://localhost:8090/api/productos/producto/nuevo';
-  private urlEndPoint: string = 'http://localhost:8090/api/productos/producto';
-  private urlEliminarProducto: string =
-    'http://localhost:8090/api/productos/producto/borrar';
-  private urlEliminarImagen: string =
-    'http://localhost:8090/api/productos/producto/borrar-imagen';
-  private urlCambiarNombre: string =
-    'http://localhost:8090/api/productos/tienda/cambia-tienda';
-  private urlNombre: string =
-    'http://localhost:8090/api/productos/tienda/nombre';
+  
+ // private urlRoot: string = '//psychic-succotash-5x944xv45qjh4wxr-8090.app.github.dev'
+  private urlRoot= environment.backEndURL;
+  private urlProductosLista: string = this.urlRoot + '/api/productos/lista';
+  private urlProductoNuevo: string = this.urlRoot + '/api/productos/producto/nuevo';
+  private urlEndPoint: string = this.urlRoot + '/api/productos/producto';
+  private urlEliminarProducto: string = this.urlRoot + '/api/productos/producto/borrar';
+  private urlEliminarImagen: string = this.urlRoot + '/api/productos/producto/borrar-imagen';
+  private urlCambiarNombre: string = this.urlRoot + '/api/productos/tienda/cambia-tienda';
+  private urlNombre: string = this.urlRoot + '/api/productos/tienda/nombre';
 
-  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json'});
 
   busqueda: string;
 

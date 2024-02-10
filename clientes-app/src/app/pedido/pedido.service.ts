@@ -13,17 +13,17 @@ import { Pedido } from './pedido.model';
 })
 export class PedidoService {
   private urlProductosLista: string =
-    'http://localhost:8090/api/productos/lista';
+    'http://https://psychic-succotash-5x944xv45qjh4wxr-8090.app.github.dev/api/productos/lista';
   private urlActualizaPedido: string =
-    'http://localhost:8090/api/productos/pedidos/actualiza-pedido';
+    'http://https://psychic-succotash-5x944xv45qjh4wxr-8090.app.github.dev/api/productos/pedidos/actualiza-pedido';
   private urlRecuperaPedido: string =
-    'http://localhost:8090/api/productos/pedidos/recupera-pedido';
+    'http://https://psychic-succotash-5x944xv45qjh4wxr-8090.app.github.dev/api/productos/pedidos/recupera-pedido';
   private urlRecuperaPedidoIdUsuario: string =
-    'http://localhost:8090/api/productos/pedidos/recupera-pedidos-usuario';
+    'http://https://psychic-succotash-5x944xv45qjh4wxr-8090.app.github.dev/api/productos/pedidos/recupera-pedidos-usuario';
   private urlRecuperaPedidos: string =
-    'http://localhost:8090/api/productos/pedidos/lista';
+    'http://https://psychic-succotash-5x944xv45qjh4wxr-8090.app.github.dev/api/productos/pedidos/lista';
   private urlEliminaPedido: string =
-    'http://localhost:8090/api/productos/pedidos/borra-pedido';
+    'http://https://psychic-succotash-5x944xv45qjh4wxr-8090.app.github.dev/api/productos/pedidos/borra-pedido';
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 

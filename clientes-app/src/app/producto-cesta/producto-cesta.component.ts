@@ -36,7 +36,7 @@ export class ProductoCestaComponent implements OnInit {
   getImagenEscaparate(): void {
     if (this.producto?.productoCaracteristicas?.imagenesProducto?.length > 0)
       this.imagenEscaparate =
-        'http://localhost:8090/api/productos/producto/imagen/' +
+        'http://https://psychic-succotash-5x944xv45qjh4wxr-8090.app.github.dev/api/productos/producto/imagen/' +
         this.producto.productoCaracteristicas.imagenesProducto[0].imagen;
   }
 
