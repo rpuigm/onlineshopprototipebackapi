@@ -1,5 +1,7 @@
 package net.ostemplate.app.productos.controllers;
 
+import static org.junit.Assert.*;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Path;
@@ -53,6 +55,15 @@ public class ProductoControllerTest {
 		}
 
 		productoController.subidaImagen(multiparteFile, 1L, "descripcion");
+
+	}
+
+	@Test
+	public void detalleTest(){
+		Producto producto = mapToProductoDummy();
+		Mockito.when(productoServiceI.findById(Mockito.anyLong()))
+			.thenReturn(producto);
+		assertEquals(productoController.detalle(1L),producto);
 
 	}
 
