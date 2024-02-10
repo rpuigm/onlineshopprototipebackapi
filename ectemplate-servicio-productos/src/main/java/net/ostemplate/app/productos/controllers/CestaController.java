@@ -2,6 +2,8 @@ package net.ostemplate.app.productos.controllers;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,8 @@ import net.ostemplate.app.productos.models.service.CestaServiceI;
 @RestController
 public class CestaController {
 
+	Logger logger = LoggerFactory.getLogger(CestaController.class);
+
 	@Autowired
 	private CestaServiceI cestaServiceI;
 	
@@ -28,8 +32,9 @@ public class CestaController {
 	
 	@PostMapping("/cesta/actualiza-cesta")
 	public Cesta actualizaCesta(@RequestBody Cesta cesta) {
-		System.out.println("numero productos en cesta"+cesta.getProductoCantidad().size());
-		return cestaServiceI.actualizaCesta(CestaMapper.mapToCestaEntityFromCesta(cesta));
+		logger.debug("numero productos en cesta"+cesta.getProductoCantidad().size());
+		return CestaMapper.mapToCestaFromCestaEntity(
+			cestaServiceI.actualizaCesta(CestaMapper.mapToCestaEntityFromCesta(cesta)));
 	}
 	
 	@GetMapping("/cesta/listacestas")
