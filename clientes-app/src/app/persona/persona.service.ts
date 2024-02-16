@@ -10,7 +10,7 @@ export class PersonaServices implements OnInit {
   private _usuario: Usuario;
   private _token: any;
   urlToken: string = 'http://https://psychic-succotash-5x944xv45qjh4wxr-8090.app.github.dev/api/security/oauth/token';
-  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Github-Token':'ghu_CPMN4vJ3Tl4E6OlhqVXd3cSOwvvQWW4HIwib' });
+  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private httpClient: HttpClient) {}
 
