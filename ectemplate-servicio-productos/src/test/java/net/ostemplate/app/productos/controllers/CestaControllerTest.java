@@ -24,7 +24,7 @@ import net.ostemplate.app.productos.models.service.CestaServiceI;
 public class CestaControllerTest {
 
     @Mock
-    private CestaServiceI CestaServiceI;
+    private CestaServiceI cestaServiceI;
 
 	@InjectMocks
 	private CestaController cestaController;
@@ -39,7 +39,7 @@ public class CestaControllerTest {
     public void testRecuperaCestaPorIdUsuario() {
         Long idUsuario = 1L;
         Cesta cesta = new Cesta(); // crea una cesta ficticia para el test
-        when(CestaServiceI.buscarCestaPorUsuarioId(idUsuario)).thenReturn(cesta);
+        when(cestaServiceI.buscarCestaPorUsuarioId(idUsuario)).thenReturn(cesta);
         Cesta resultado = cestaController.recuperaCestaPorIdUsuario(idUsuario);
         assertEquals(cesta, resultado);
 
@@ -49,7 +49,7 @@ public class CestaControllerTest {
     public void testActualizaCesta() {
         Cesta cesta = newCestabyRandom(); // crea una cesta ficticia para el test
 		CestaEntity cestaEntity= CestaMapper.mapToCestaEntityFromCesta(cesta);
-        when(CestaServiceI.actualizaCesta(Mockito.any(CestaEntity.class)))
+        when(cestaServiceI.actualizaCesta(Mockito.any(CestaEntity.class)))
 			.thenReturn(cestaEntity);
         Cesta response = cestaController.actualizaCesta(cesta);
         assertEquals(cestaEntity, response);
@@ -60,11 +60,19 @@ public class CestaControllerTest {
     public void testListaCestas() {
 		List<CestaEntity> listCestasEntity= new ArrayList<>();
 		listCestasEntity = createListCestaEntitiesByRandom();
-        when(CestaServiceI.listaCestas()).thenReturn(listCestasEntity);
+        when(cestaServiceI.listaCestas()).thenReturn(listCestasEntity);
         List<Cesta> resultado = cestaController.listaCestas();
         assertEquals(listCestasEntity, resultado);
 
     }
+
+	@Test
+	public void recuperaCestaPorIdUsuarioEliminandoTest(){
+		doNothing().when(cestaServiceI).eliminaCesta(Mockito.any(CestaEntity.class));
+		cestaController.recuperaCestaPorIdUsuario(newCestabyRandom());
+	}
+
+
 
 	private Cesta newCestabyRandom (){
 		Cesta cesta = new Cesta();

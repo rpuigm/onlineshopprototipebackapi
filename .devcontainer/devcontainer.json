@@ -11,6 +11,13 @@
 		"ghcr.io/devcontainers-contrib/features/angular-cli:2": {}
 
 	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ryanluker.vscode-coverage-gutters"
+			]
+		}
+	},
 	//"customizations": {
 		//"vscode": {
 			//"extensions": [
