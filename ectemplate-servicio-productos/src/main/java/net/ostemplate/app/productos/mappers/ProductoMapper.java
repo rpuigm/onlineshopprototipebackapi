@@ -7,11 +7,6 @@ import net.ostemplate.app.productos.models.entity.ProductoEntity;
 @UtilityClass
 public class ProductoMapper {
 
-	public Producto mapToProducto() {
-		return null;
-
-	}
-
 	public ProductoEntity mapToProductoEntityByProducto(Producto producto) {
 		ProductoEntity productoEntity = new ProductoEntity();
 		productoEntity.setCategoria(producto.getCategoria());
